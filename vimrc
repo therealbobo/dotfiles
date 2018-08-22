@@ -19,6 +19,7 @@ Plugin 'xolox/vim-misc'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/ZoomWin'
 Plugin 'fatih/vim-go'
+Plugin 'ryanoasis/vim-devicons'
 
 call vundle#end()
 filetype plugin indent on
@@ -77,3 +78,7 @@ let g:bufferline_echo=0
 	let g:airline#extensions#tabline#show_splits = 1 "enable/disable displaying open splits per tab (only when tabs are opened). >
 	let g:airline#extensions#tabline#show_buffers = 1 " enable/disable displaying buffers with a single tab
 	let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
+
+
+"vim-devincos
+	set encoding=UTF-8

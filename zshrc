@@ -143,3 +143,4 @@ source $ZSH/oh-my-zsh.sh
 #vars
 export GOPATH=/home/robi/go
 export PATH=$PATH:$GOPATH/bin
+export VISUAL="vim"

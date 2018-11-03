@@ -55,9 +55,9 @@ if ! test -f /usr/bin/tmux -o -f /bin/tmux; then
 fi
 
 #create links
-ln -vfs ~/dotfiles/vimrc ~/.vimrc
-ln -vfs ~/dotfiles/tmux.conf ~/.tmux.conf
-ln -vfs ~/dotfiles/zshrc ~/.zshrc
+ln -vfs "$HOME"dotfiles/vimrc "$HOME".vimrc
+ln -vfs "$HOME"dotfiles/tmux.conf "$HOME".tmux.conf
+ln -vfs "$HOME"dotfiles/zshrc "$HOME".zshrc
 
 #restore plugins
 vim +PluginInstall +qa

@@ -82,3 +82,7 @@ let g:bufferline_echo=0
 
 "vim-devincos
 	set encoding=UTF-8
+
+
+"system clipboard
+	set clipboard=unnamedplus

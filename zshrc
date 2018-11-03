@@ -59,10 +59,15 @@ ZSH_THEME="gentoo"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git
+  tmux
+  colored-man-pages 
+  extract
+  sudo
+  python
+  pip
 )
 
-source $ZSH/oh-my-zsh.sh
+#source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
@@ -110,14 +115,11 @@ compinit
 export KEYTIMEOUT=1
 
 # Alias ssh las
-alias Client='ssh -X las@192.168.56.201'
-alias Router='ssh -X las@192.168.56.202'
-alias Server='ssh -X las@192.168.56.203'
+#alias Client='ssh -X las@192.168.56.201'
+#alias Router='ssh -X las@192.168.56.202'
+#alias Server='ssh -X las@192.168.56.203'
 
 # ssh alias
-alias pihole-bologna='ssh pi@192.168.1.200'
-alias Debian_vm='ssh -X bobo@192.168.56.101'
-alias Debian_minimal='ssh -X robi@192.168.56.102'
 
 #more alias
 alias ll='ls -alF'
@@ -127,15 +129,10 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-#alias freemind='env GTK_THEME=Adwaita:light /opt/freemind/freemind.sh'
 
 #alias vpn
 alias nordvpn='sudo openvpn --config /etc/openvpn/current --auth-user-pass /etc/openvpn/auth.txt'
-
-#Plugins
-#plugins=(colored-man-pages extract sudo vi-mode)
-plugins=(colored-man-pages extract sudo)
-
+alias lab2='sudo openvpn --config /etc/openvpn/lab2 --auth-user-pass /etc/openvpn/auth.txt'
 
 ## source OhMyZsh
 source $ZSH/oh-my-zsh.sh
@@ -144,3 +141,5 @@ source $ZSH/oh-my-zsh.sh
 export GOPATH=/home/robi/go
 export PATH=$PATH:$GOPATH/bin
 export VISUAL="vim"
+
+. /etc/profile.d/vte.sh

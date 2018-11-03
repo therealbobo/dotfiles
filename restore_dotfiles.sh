@@ -4,6 +4,8 @@
 function install_packet {
 	if egrep -qi "arch" "/etc/os-release"; then
 		sudo pacman -S $1
+	elif egrep -qi "opensuse" "/etc/os-release"; then
+		sudo zypper install $1
 	elif egrep -qi "debian" "/etc/os-release"; then
 		sudo apt install $1
 	fi

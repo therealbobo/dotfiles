@@ -58,6 +58,7 @@ fi
 ln -vfs "$HOME"dotfiles/vimrc "$HOME".vimrc
 ln -vfs "$HOME"dotfiles/tmux.conf "$HOME".tmux.conf
 ln -vfs "$HOME"dotfiles/zshrc "$HOME".zshrc
+ln -vfs "$HOME"dotfiles/gdbinit "$HOME".gdbinit
 
 #restore plugins
 vim +PluginInstall +qa

@@ -65,6 +65,7 @@ plugins=(
   sudo
   python
   pip
+  vagrant
 )
 
 #source $ZSH/oh-my-zsh.sh
@@ -129,10 +130,15 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
+alias disable_randomization='sudo bash -c "echo 0 > /proc/sys/kernel/randomize_va_space"'
+alias peda='gdb -q -x "/usr/share/peda/peda.py"'
 
 #alias vpn
 alias nordvpn='sudo openvpn --config /etc/openvpn/current --auth-user-pass /etc/openvpn/auth.txt'
 alias lab2='sudo openvpn --config /etc/openvpn/lab2 --auth-user-pass /etc/openvpn/auth.txt'
+
+#other alias
+alias emacs='emacs -nw'
 
 ## source OhMyZsh
 source $ZSH/oh-my-zsh.sh

@@ -36,6 +36,8 @@ filetype plugin indent on
 	set list lcs=tab:\|\ 
 	set background=dark
 	set t_Co=256
+	set undofile
+	set undodir=~/.vim/undodir
 
 
 "inoremaps
@@ -48,6 +50,9 @@ filetype plugin indent on
 	nmap <F9> :NERDTreeToggle<CR>
 	nmap <F7> :SyntasticCheck<CR>
 	nmap <S-F7> :SyntasticReset<CR>
+
+"cnoremap
+	cnoremap w!!! execute 'silent! write !sudo tee % > /dev/null' <bar> edit!
 
 
 "statusline

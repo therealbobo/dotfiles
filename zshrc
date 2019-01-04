@@ -132,6 +132,8 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias disable_randomization='sudo bash -c "echo 0 > /proc/sys/kernel/randomize_va_space"'
 alias peda='gdb -q -x "/usr/share/peda/peda.py"'
+alias copypassword='lpass show --clip --password'
+alias r2help="r2 -q -c '?*~...' -"
 
 #alias vpn
 alias nordvpn='sudo openvpn --config /etc/openvpn/current --auth-user-pass /etc/openvpn/auth.txt'

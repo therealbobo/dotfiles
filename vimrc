@@ -20,6 +20,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/ZoomWin'
 Plugin 'fatih/vim-go'
 Plugin 'ryanoasis/vim-devicons'
+"Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()
 filetype plugin indent on
@@ -69,6 +70,11 @@ filetype plugin indent on
 	let g:syntastic_java_javac_classpath = "/home/robi/vim_workspace/**"
 	" let g:syntastic_error_symbol = "✗"
 	" let g:syntastic_warning_symbol = "⚠"
+
+
+"youcompleteme
+	nnoremap <C-P> :YcmCompleter GoTo<CR>
+	let g:ycm_python_binary_path = 'python'
 
 
 let g:bufferline_echo=0

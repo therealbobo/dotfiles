@@ -66,6 +66,7 @@ plugins=(
   python
   pip
   vagrant
+  docker
 )
 
 #source $ZSH/oh-my-zsh.sh
@@ -134,6 +135,7 @@ alias disable_randomization='sudo bash -c "echo 0 > /proc/sys/kernel/randomize_v
 alias peda='gdb -q -x "/usr/share/peda/peda.py"'
 alias copypassword='lpass show --clip --password'
 alias r2help="r2 -q -c '?*~...' -"
+alias weather="curl -s us.wttr.in"
 
 #alias vpn
 alias nordvpn='sudo openvpn --config /etc/openvpn/current --auth-user-pass /etc/openvpn/auth.txt'
@@ -150,4 +152,10 @@ export GOPATH=/home/robi/go
 export PATH=$PATH:$GOPATH/bin
 export VISUAL="vim"
 
-. /etc/profile.d/vte.sh
+#. /etc/profile.d/vte.sh
+
+# arduino-mk vars
+export ARDUINO_DIR=/usr/share/arduino
+export ARDMK_DIR=/usr/share/arduino
+export AVR_TOOLS_DIR=/usr
+export AVRDUDE_CONF=/etc/avrdude.conf

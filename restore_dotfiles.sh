@@ -55,10 +55,22 @@ if ! test -f /usr/bin/tmux -o -f /bin/tmux; then
 fi
 
 #create links
-ln -vfs "$HOME"dotfiles/vimrc "$HOME".vimrc
-ln -vfs "$HOME"dotfiles/tmux.conf "$HOME".tmux.conf
-ln -vfs "$HOME"dotfiles/zshrc "$HOME".zshrc
-ln -vfs "$HOME"dotfiles/gdbinit "$HOME".gdbinit
+ln -vfs $HOME/dotfiles/vimrc $HOME/.vimrc
+ln -vfs $HOME/dotfiles/tmux.conf $HOME/.tmux.conf
+ln -vfs $HOME/dotfiles/zshrc $HOME/.zshrc
+
+
+I3_DIR="$HOME/.config/i3"
+I3STATUS_DIR="$HOME/.config/i3"
+if ! test -d $I3_DIR ; then
+	mkdir -p $I3_DIR
+fi
+if ! test -d $I3STATUS_DIR ; then
+	mkdir -p $I3STATUS_DIR
+fi
+ln -vfs $HOME/dotfiles/i3config $I3_DIR/config
+ln -vfs $HOME/dotfiles/i3status $I3STATUS_DIR/config
+ln -vfs $HOME/dotfiles/termite.info $HOME/termite.info
 
 #restore plugins
 vim +PluginInstall +qa

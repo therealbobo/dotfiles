@@ -61,7 +61,7 @@ ln -vfs $HOME/dotfiles/zshrc $HOME/.zshrc
 
 
 I3_DIR="$HOME/.config/i3"
-I3STATUS_DIR="$HOME/.config/i3"
+I3STATUS_DIR="$HOME/.config/i3status"
 if ! test -d $I3_DIR ; then
 	mkdir -p $I3_DIR
 fi

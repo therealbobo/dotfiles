@@ -54,6 +54,11 @@ filetype plugin indent on
 "cnoremap
 	cnoremap w!!! execute 'silent! write !sudo tee % > /dev/null' <bar> edit!
 
+"remember last cursor position
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+endif
+
 
 "statusline
 	set statusline+=%#warningmsg#

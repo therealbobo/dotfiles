@@ -148,6 +148,7 @@ alias emacs='emacs -nw'
 source $ZSH/oh-my-zsh.sh
 
 #vars
+export PATH=$PATH:/home/robi/bin
 export GOPATH=/home/robi/go
 export PATH=$PATH:$GOPATH/bin
 export VISUAL="vim"

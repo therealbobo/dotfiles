@@ -203,7 +203,7 @@ bindsym XF86AudioNext+Shift exec playerctl next
 bindsym XF86AudioPrev+Shift exec playerctl previous
 
 #lockscreen
-bindsym Mod4+x exec i3lock -c 000000
+bindsym Mod4+x exec i3lock -c 000000 & sleep 5 && xset dpms force off
 bindsym Mod4+Shift+x exec i3lock -c 000000 && systemctl suspend
 
 # Termite bindings

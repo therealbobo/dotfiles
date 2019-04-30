@@ -12,6 +12,7 @@ general {
 }
 
 order += "cpu_temperature 0"
+order += "read_file brightness"
 order += "volume master"
 order += "ipv6"
 order += "disk /"
@@ -62,6 +63,11 @@ volume master {
 	mixer_idx = 0
 	# termsyn font
 	#format = "À %volume "
+}
+
+read_file brightness {
+	format = "☀️: %content"
+	path = "/sys/class/backlight/intel_backlight/actual_brightness"
 }
 
 cpu_temperature 0 {

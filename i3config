@@ -203,7 +203,7 @@ bindsym XF86AudioNext+Shift exec playerctl next
 bindsym XF86AudioPrev+Shift exec playerctl previous
 
 #lockscreen
-bindsym Mod4+x exec i3lock -c 000000 & sleep 5 && xset dpms force off
+bindsym Mod4+x exec i3lock -c 000000 & sleep 5 && xset s activate
 bindsym Mod4+Shift+x exec i3lock -c 000000 && systemctl suspend
 
 # Termite bindings
@@ -215,7 +215,7 @@ bindsym Mod4+Ctrl+Shift+Print exec "maim -s --format=png /tmp/screen.png && /hom
 
 
 exec_always --no-startup-id nm-applet
-exec_always --no-startup-id udiskie -t
+exec_always --no-startup-id if ! [[ $(pgrep udiskie) ]]; then udiskie -t; fi
 exec_always --no-startup-id feh --randomize --bg-fill ~/Pictures/Wallpapers/*
 
 

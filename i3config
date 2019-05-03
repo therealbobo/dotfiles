@@ -186,9 +186,9 @@ bar {
 
 
 # Xbacklight controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 5 && notify-send --expire-time=300 "LCD Backlight $(printf %.0f%% $(xbacklight -get))" # increase screen brightness 
+bindsym XF86MonBrightnessUp exec xbacklight -inc 1 #&& notify-send --expire-time=300 "LCD Backlight $(printf %.0f%% $(xbacklight -get))" # increase screen brightness 
 #bindsym XF86MonBrightnessUp exec /usr/bin/xbacklight -inc 10 && notify-send --expire-time=50 "LCD Backlight $(printf %.0f%% $(xbacklight -get))
-bindsym XF86MonBrightnessDown exec xbacklight -dec 5 && notify-send --expire-time=300 "LCD Backlight $(printf %.0f%% $(xbacklight -get))" # decrease screen brightness 
+bindsym XF86MonBrightnessDown exec xbacklight -dec 1 #&& notify-send --expire-time=300 "LCD Backlight $(printf %.0f%% $(xbacklight -get))" # decrease screen brightness 
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5% #increase sound volume

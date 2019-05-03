@@ -62,6 +62,7 @@ ln -vfs $HOME/dotfiles/zshrc $HOME/.zshrc
 
 I3_DIR="$HOME/.config/i3"
 I3STATUS_DIR="$HOME/.config/i3status"
+TERMITE_DIR="$HOME/.config/termite"
 if ! test -d $I3_DIR ; then
 	mkdir -p $I3_DIR
 fi
@@ -70,7 +71,8 @@ if ! test -d $I3STATUS_DIR ; then
 fi
 ln -vfs $HOME/dotfiles/i3config $I3_DIR/config
 ln -vfs $HOME/dotfiles/i3status $I3STATUS_DIR/config
-ln -vfs $HOME/dotfiles/termite.info $HOME/termite.info
+ln -vfs $HOME/dotfiles/termiteconfig $TERMITE_DIR/config
+ln -vfs $HOME/dotfiles/termite.terminfo $HOME/termite.terminfo
 
 #restore plugins
 vim +PluginInstall +qa

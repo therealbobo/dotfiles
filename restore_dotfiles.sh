@@ -58,6 +58,7 @@ fi
 ln -vfs $HOME/dotfiles/vimrc $HOME/.vimrc
 ln -vfs $HOME/dotfiles/tmux.conf $HOME/.tmux.conf
 ln -vfs $HOME/dotfiles/zshrc $HOME/.zshrc
+ln -vfs $HOME/dotfiles/radare2rc $HOME/.radare2rc
 
 
 I3_DIR="$HOME/.config/i3"

@@ -166,4 +166,4 @@ export AVRDUDE_CONF=/etc/avrdude.conf
 
 
 # keymap
-setxkeymap us
+setxkbmap us

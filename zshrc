@@ -144,6 +144,9 @@ alias lab2='sudo openvpn --config /etc/openvpn/lab2 --auth-user-pass /etc/openvp
 #other alias
 alias emacs='emacs -nw'
 
+# python pip upgrades
+alias pip-upgrade='pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 sudo pip install -U'
+
 ## source OhMyZsh
 source $ZSH/oh-my-zsh.sh
 
@@ -160,3 +163,7 @@ export ARDUINO_DIR=/usr/share/arduino
 export ARDMK_DIR=/usr/share/arduino
 export AVR_TOOLS_DIR=/usr
 export AVRDUDE_CONF=/etc/avrdude.conf
+
+
+# keymap
+setxkeymap us

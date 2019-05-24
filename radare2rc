@@ -2,7 +2,7 @@
 e asm.cmtright=true
 
 # Shows pseudocode in disassembly. Eg mov eax, str.ok = > eax = str.ok
-e asm.pseudo = true
+#e asm.pseudo = true
 
 # Solarized theme
 eco solarized

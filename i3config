@@ -209,9 +209,13 @@ bindsym Mod4+Shift+x exec i3lock -c 000000 && systemctl suspend
 # Termite bindings
 bindsym Mod4+Shift+Return exec "termite -d $(xcwd)"
 
+# screenshots bindings
 bindsym Mod4+Print exec "maim -s --format=png /dev/stdout | xclip -selection clipboard -t image/png -i"
 bindsym Mod4+Shift+Print exec "maim -s --format=png /tmp/screen$(date +'%H%M%S').png"
 bindsym Mod4+Ctrl+Shift+Print exec "maim -s --format=png /tmp/screen.png && /home/robi/Documents/tools/screenshot_tool/screenshot_tool.py"
+
+# misc bindings
+bindsym Mod4+b exec "firefox"
 
 
 exec_always --no-startup-id nm-applet

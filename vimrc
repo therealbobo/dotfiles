@@ -10,7 +10,6 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'mattn/emmet-vim'
-Plugin 'vim-syntastic/syntastic'
 Plugin 'edkolev/tmuxline.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -18,7 +17,7 @@ Plugin 'bling/vim-bufferline'
 Plugin 'xolox/vim-misc'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/ZoomWin'
-Plugin 'fatih/vim-go'
+"Plugin 'fatih/vim-go'
 Plugin 'ryanoasis/vim-devicons'
 
 call vundle#end()
@@ -61,17 +60,17 @@ endif
 
 
 "statusline
-	set statusline+=%#warningmsg#
-	set statusline+=%{SyntasticStatuslineFlag()}
-	set statusline+=%*
+"	set statusline+=%#warningmsg#
+"	set statusline+=%{SyntasticStatuslineFlag()}
+"	set statusline+=%*
 
 
 "syntastic
-	let g:syntastic_always_populate_loc_list = 1
-	let g:syntastic_auto_loc_list = 1
-	let g:syntastic_check_on_open = 0
-	let g:syntastic_check_on_wq = 0
-	let g:syntastic_java_javac_classpath = "/home/robi/vim_workspace/**"
+"	let g:syntastic_always_populate_loc_list = 1
+"	let g:syntastic_auto_loc_list = 1
+"	let g:syntastic_check_on_open = 0
+"	let g:syntastic_check_on_wq = 0
+"	let g:syntastic_java_javac_classpath = "/home/robi/vim_workspace/**"
 	" let g:syntastic_error_symbol = "✗"
 	" let g:syntastic_warning_symbol = "⚠"
 

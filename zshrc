@@ -143,6 +143,7 @@ alias lab2='sudo openvpn --config /etc/openvpn/lab2 --auth-user-pass /etc/openvp
 
 #other alias
 alias emacs='emacs -nw'
+alias android_emulator='/home/robi/Android/Sdk/emulator/emulator -avd Nexus_6_API_19'
 
 # python pip upgrades
 alias pip-upgrade='pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 sudo pip install -U'
@@ -151,7 +152,7 @@ alias pip-upgrade='pip list --outdated --format=freeze | grep -v '^\-e' | cut -d
 source $ZSH/oh-my-zsh.sh
 
 #vars
-export PATH=$PATH:/home/robi/bin
+export PATH=$PATH:/home/robi/bin:"/home/robi/Android/Sdk/build-tools/28.0.3"
 export GOPATH=/home/robi/go
 export PATH=$PATH:$GOPATH/bin
 export VISUAL="vim"

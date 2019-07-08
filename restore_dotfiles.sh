@@ -63,6 +63,7 @@ ln -vfs $HOME/dotfiles/radare2rc $HOME/.radare2rc
 
 I3_DIR="$HOME/.config/i3"
 I3STATUS_DIR="$HOME/.config/i3status"
+POLYBAR_DIR="$HOME/.config/polybar"
 TERMITE_DIR="$HOME/.config/termite"
 if ! test -d $I3_DIR ; then
 	mkdir -p $I3_DIR
@@ -70,8 +71,12 @@ fi
 if ! test -d $I3STATUS_DIR ; then
 	mkdir -p $I3STATUS_DIR
 fi
+if ! test -d $POLYBAR_DIR ; then
+	mkdir -p $POLYBAR_DIR
+fi
 ln -vfs $HOME/dotfiles/i3config $I3_DIR/config
-ln -vfs $HOME/dotfiles/i3status $I3STATUS_DIR/config
+#ln -vfs $HOME/dotfiles/i3status $I3STATUS_DIR/config
+ln -vfs $HOME/dotfiles/polybarconfig $POLYBAR_DIR/config
 ln -vfs $HOME/dotfiles/termiteconfig $TERMITE_DIR/config
 ln -vfs $HOME/dotfiles/termite.terminfo $HOME/termite.terminfo
 

@@ -83,7 +83,6 @@ ln -vfs $HOME/dotfiles/i3config $I3_DIR/config
 ln -vfs $HOME/dotfiles/polybarconfig $POLYBAR_DIR/config
 ln -vfs $HOME/dotfiles/roficonfig $ROFI_DIR/config
 ln -vfs $HOME/dotfiles/termiteconfig $TERMITE_DIR/config
-ln -vfs $HOME/dotfiles/termite.terminfo $HOME/termite.terminfo
 
 #restore plugins
 vim +PluginInstall +qa

@@ -152,9 +152,12 @@ alias pip-upgrade='pip list --outdated --format=freeze | grep -v '^\-e' | cut -d
 source $ZSH/oh-my-zsh.sh
 
 #vars
+export TERM=xterm-256color
 export PATH=$PATH:/home/robi/bin:"/home/robi/Android/Sdk/build-tools/28.0.3"
 export GOPATH=/home/robi/go
 export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:/home/robi/.bin 
+export PATH=$PATH:/home/robi/.local/bin 
 export VISUAL="vim"
 
 #. /etc/profile.d/vte.sh

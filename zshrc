@@ -136,6 +136,7 @@ alias peda='gdb -q -x "/usr/share/peda/peda.py"'
 alias copypassword='lpass show --clip --password'
 alias r2help="r2 -q -c '?*~...' -"
 alias weather="curl -s us.wttr.in"
+alias myip="curl -fSs https://1.1.1.1/cdn-cgi/trace | egrep '^(ip|loc)'"
 
 #alias vpn
 alias nordvpn='sudo openvpn --config /etc/openvpn/current --auth-user-pass /etc/openvpn/auth.txt'

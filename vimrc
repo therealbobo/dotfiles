@@ -17,8 +17,10 @@ Plugin 'bling/vim-bufferline'
 Plugin 'xolox/vim-misc'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/ZoomWin'
-"Plugin 'fatih/vim-go'
 Plugin 'ryanoasis/vim-devicons'
+"Latex plugins
+Plugin 'lervag/vimtex'
+Plugin 'SirVer/ultisnips'
 
 call vundle#end()
 filetype plugin indent on
@@ -45,7 +47,7 @@ filetype plugin indent on
 
 
 "nmap
-	nmap <F8> :TagbarToggle<CR>
+"nmap <F8> :TagbarToggle<CR>
 	nmap <F9> :NERDTreeToggle<CR>
 	nmap <F7> :SyntasticCheck<CR>
 	nmap <S-F7> :SyntasticReset<CR>
@@ -65,18 +67,6 @@ endif
 "	set statusline+=%*
 
 
-"syntastic
-"	let g:syntastic_always_populate_loc_list = 1
-"	let g:syntastic_auto_loc_list = 1
-"	let g:syntastic_check_on_open = 0
-"	let g:syntastic_check_on_wq = 0
-"	let g:syntastic_java_javac_classpath = "/home/robi/vim_workspace/**"
-	" let g:syntastic_error_symbol = "✗"
-	" let g:syntastic_warning_symbol = "⚠"
-
-
-
-
 let g:bufferline_echo=0
 
 
@@ -93,6 +83,18 @@ let g:bufferline_echo=0
 
 "vim-devincos
 	set encoding=UTF-8
+
+
+"vimtex
+	let g:tex_flavor='latex'
+	let g:vimtex_view_method='zathura'
+	let g:vimtex_quickfix_mode=0
+	set conceallevel=1
+	let g:tex_conceal='abdmg'
+"ultrasnip
+	let g:UltiSnipsExpandTrigger = '<tab>'
+	let g:UltiSnipsJumpForwardTrigger = '<tab>'
+	let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 
 
 "system clipboard

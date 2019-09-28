@@ -56,6 +56,8 @@ fi
 
 #create links
 ln -vfs $HOME/dotfiles/vimrc $HOME/.vimrc
+mkdir -p $HOME/.vim/after/ftplugin
+ln -vfs $HOME/dotfiles/tex.vim $HOME/.vim/after/ftplugin
 ln -vfs $HOME/dotfiles/tmux.conf $HOME/.tmux.conf
 ln -vfs $HOME/dotfiles/zshrc $HOME/.zshrc
 ln -vfs $HOME/dotfiles/radare2rc $HOME/.radare2rc
@@ -94,6 +96,8 @@ ln -vfs $HOME/dotfiles/zathurarc $ZATHURA_DIR/zathurarc
 
 #restore plugins
 vim +PluginInstall +qa
+mkdir -p "$HOME/.vim/spell"
+wget http://ftp.vim.org/pub/vim/runtime/spell/it.utf-8.spl -O "$HOME/.vim/spell"
 
 #restore snippets
 ln -vfs $HOME/dotfiles/ultisnips $SNIPPTES_DIR

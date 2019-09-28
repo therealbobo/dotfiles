@@ -39,6 +39,7 @@ filetype plugin indent on
 	set t_Co=256
 	set undofile
 	set undodir=~/.vim/undodir
+	set spelllang=it,en_us
 
 
 "inoremaps

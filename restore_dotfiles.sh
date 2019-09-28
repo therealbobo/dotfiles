@@ -87,6 +87,7 @@ fi
 ln -vfs $HOME/dotfiles/i3config $I3_DIR/config
 #ln -vfs $HOME/dotfiles/i3status $I3STATUS_DIR/config
 ln -vfs $HOME/dotfiles/polybarconfig $POLYBAR_DIR/config
+ln -vfs $HOME/dotfiles/polybar_launch.sh $POLYBAR_DIR/launch.sh
 ln -vfs $HOME/dotfiles/roficonfig $ROFI_DIR/config
 ln -vfs $HOME/dotfiles/termiteconfig $TERMITE_DIR/config
 ln -vfs $HOME/dotfiles/zathurarc $ZATHURA_DIR/zathurarc

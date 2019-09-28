@@ -66,7 +66,7 @@ I3STATUS_DIR="$HOME/.config/i3status"
 POLYBAR_DIR="$HOME/.config/polybar"
 ROFI_DIR="$HOME/.config/rofi"
 TERMITE_DIR="$HOME/.config/termite"
-SNIPPTES_DIR="$HOME/.vim/snippets"
+SNIPPTES_DIR="$HOME/.vim/ultisnips"
 
 if ! test -d $I3_DIR ; then
 	mkdir -p $I3_DIR
@@ -90,4 +90,4 @@ ln -vfs $HOME/dotfiles/termiteconfig $TERMITE_DIR/config
 vim +PluginInstall +qa
 
 #restore snippets
-ln -vfs $HOME/dotfiles/snippets $SNIPPTES_DIR
+ln -vfs $HOME/dotfiles/ultisnips $SNIPPTES_DIR

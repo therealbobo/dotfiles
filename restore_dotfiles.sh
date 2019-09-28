@@ -67,6 +67,7 @@ POLYBAR_DIR="$HOME/.config/polybar"
 ROFI_DIR="$HOME/.config/rofi"
 TERMITE_DIR="$HOME/.config/termite"
 SNIPPTES_DIR="$HOME/.vim/ultisnips"
+ZATHURA_DIR="$HOME/.config/zathura"
 
 if ! test -d $I3_DIR ; then
 	mkdir -p $I3_DIR
@@ -80,11 +81,15 @@ fi
 if ! test -d $ROFI_DIR ; then
 	mkdir -p $ROFI_DIR
 fi
+if ! test -d $ZATHURA_DIR ; then
+	mkdir -p $ZATHURA_DIR
+fi
 ln -vfs $HOME/dotfiles/i3config $I3_DIR/config
 #ln -vfs $HOME/dotfiles/i3status $I3STATUS_DIR/config
 ln -vfs $HOME/dotfiles/polybarconfig $POLYBAR_DIR/config
 ln -vfs $HOME/dotfiles/roficonfig $ROFI_DIR/config
 ln -vfs $HOME/dotfiles/termiteconfig $TERMITE_DIR/config
+ln -vfs $HOME/dotfiles/zathurarc $ZATHURA_DIR/zathurarc
 
 #restore plugins
 vim +PluginInstall +qa

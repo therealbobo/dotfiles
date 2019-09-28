@@ -50,10 +50,9 @@ filetype plugin indent on
 "nmap
 "nmap <F8> :TagbarToggle<CR>
 	nmap <F9> :NERDTreeToggle<CR>
-	nmap <F7> :SyntasticCheck<CR>
-	nmap <S-F7> :SyntasticReset<CR>
 
 "cnoremap
+	"sudo edit
 	cnoremap w!!! execute 'silent! write !sudo tee % > /dev/null' <bar> edit!
 
 "remember last cursor position
@@ -61,15 +60,7 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 endif
 
-
-"statusline
-"	set statusline+=%#warningmsg#
-"	set statusline+=%{SyntasticStatuslineFlag()}
-"	set statusline+=%*
-
-
 let g:bufferline_echo=0
-
 
 "airline
 	let g:airline#extensions#bufferline#enabled = 1

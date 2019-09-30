@@ -56,6 +56,7 @@ fi
 
 #create links
 ln -vfs $HOME/dotfiles/vimrc $HOME/.vimrc
+mkdir -p $HOME/.vim/undodir
 mkdir -p $HOME/.vim/after/ftplugin
 ln -vfs $HOME/dotfiles/tex.vim $HOME/.vim/after/ftplugin
 ln -vfs $HOME/dotfiles/tmux.conf $HOME/.tmux.conf

@@ -23,7 +23,7 @@ function install_packet {
 
 
 check_pkg_installed (){
-	if test -f /usr/bin/$1 -o -f /bin/$1; then
+	if ! test -f /usr/bin/$1 -o -f /bin/$1; then
 		echo "[-] no $1 installed"
 		echo "[-] installing $1"
 		install_packet $1
@@ -39,7 +39,7 @@ function install_vundle {
 }
 
 PACKAGES=("zsh" "vim" "tmux" "gdb" "i3" "polybar" "zathura" "rofi" "radare2")
-for PKG in $PACKAGES ; do
+for PKG in ${PACKAGES[@]} ; do
 	check_pkg_installed $PKG
 done
 
@@ -77,7 +77,7 @@ ZATHURA_DIR="$HOME/.config/zathura"
 
 DIRS=($I3_DIR $I3STATUS_DIR $POLYBAR_DIR $ROFI_DIR $TERMITE_DIR $SNIPPTES_DIR $ZATHURA_DIR) 
 
-for DIR in $DIRS; do
+for DIR in ${DIRS[@]}; do
 	if ! test -d $DIR ; then
 		mkdir -p $DIR
 	fi

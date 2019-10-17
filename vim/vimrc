@@ -51,6 +51,18 @@ filetype plugin indent on
 "nmap <F8> :TagbarToggle<CR>
 	nmap <F9> :NERDTreeToggle<CR>
 
+func SwapLayout()
+	let currentLayout = system("setxkbmap -query | grep layout | awk '{print $2}'")
+	if currentLayout =~ "us"
+		call system("setxkbmap it")
+	else
+		call system("setxkbmap us")
+	endif
+
+endfunc
+	nmap <C-c> :call SwapLayout()<CR>
+
+
 "cnoremap
 	"sudo edit
 	cnoremap w!!! execute 'silent! write !sudo tee % > /dev/null' <bar> edit!

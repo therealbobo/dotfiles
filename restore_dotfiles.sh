@@ -99,3 +99,10 @@ wget http://ftp.vim.org/pub/vim/runtime/spell/it.utf-8.spl -O "$HOME/.vim/spell"
 
 #restore snippets
 ln -vfs $HOME/dotfiles/vim/ultisnips $SNIPPTES_DIR
+
+
+#other some configs
+# create /etc/X11/xorg.conf.d/00-keyboard.conf to swap capslock and esc, https://superuser.com/questions/566871/how-to-map-the-caps-lock-key-to-escape-key-in-arch-linux
+localectl set-x11-keymap us "" "" caps:escape
+
+

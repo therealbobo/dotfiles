@@ -168,7 +168,3 @@ export ARDUINO_DIR=/usr/share/arduino
 export ARDMK_DIR=/usr/share/arduino
 export AVR_TOOLS_DIR=/usr
 export AVRDUDE_CONF=/etc/avrdude.conf
-
-
-# keymap
-setxkbmap us

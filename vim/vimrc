@@ -8,15 +8,15 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'mattn/emmet-vim'
-Plugin 'edkolev/tmuxline.vim'
+"Plugin 'scrooloose/nerdtree'
+"Plugin 'mattn/emmet-vim'
+"Plugin 'edkolev/tmuxline.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'bling/vim-bufferline'
 Plugin 'xolox/vim-misc'
 Plugin 'tpope/vim-surround'
-Plugin 'vim-scripts/ZoomWin'
+"Plugin 'vim-scripts/ZoomWin'
 Plugin 'ryanoasis/vim-devicons'
 "Latex plugins
 Plugin 'lervag/vimtex'

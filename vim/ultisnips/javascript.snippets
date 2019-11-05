@@ -1,0 +1,25 @@
+snippet class_override "frida snippet for class override" b
+console.log("Script loaded correctly!");
+Java.perform(function() {
+	var class = Java.use("$1")
+
+	class.$2.implementation  = function(a){
+		console.log("$2",a);
+		this.$2(a);
+		//return ret;
+	}
+}, 0);
+endsnippet
+
+snippet lib_override "frida snippet for lib override" b
+console.log("Script loaded correctly!");
+Java.perform(function() {
+	var System = Java.use("java.lang.System")
+
+	System.loadLibrary.implementation  = function(a){
+		console.log("Loading lib",a);
+		this.loadLibrary(a);
+		//return ret;
+	}
+}, 0);
+endsnippet

@@ -201,8 +201,8 @@ bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle # mute sound
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl position 5+
 bindsym XF86AudioPrev exec playerctl position 5-
-bindsym XF86AudioNext+Shift exec playerctl next
-bindsym XF86AudioPrev+Shift exec playerctl previous
+bindsym Shift+XF86AudioNext exec playerctl next
+bindsym Shift+XF86AudioPrev exec playerctl previous
 
 #lockscreen
 bindsym Mod4+x exec i3lock -c 000000 & sleep 5 && xset s activate

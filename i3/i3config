@@ -14,76 +14,81 @@ set $down j
 set $left h
 set $right l
 
+# $mod -> Alt
+set $mod Mod1
+# $sup -> Super
+set $sup Mod4
+
 # use Mouse+Mod4 to drag floating windows to their wanted position
-floating_modifier Mod4
+floating_modifier $sup
 
 # start a terminal
-bindsym Mod4+Return exec i3-sensible-terminal
+bindsym $sup+Return exec i3-sensible-terminal
 
 # kill focused window
-bindsym Mod4+Shift+q kill
+bindsym $sup+Shift+q kill
 
 # start dmenu (a program launcher)
-#bindsym Mod4+d exec dmenu_run
-bindsym Mod4+d exec rofi -modi drun -show drun -show-icons -icons-theme hicolor
-bindsym Mod4+Tab exec rofi -combi-modi window -show combi -show-icons -icons-theme hicolor
+#bindsym $sup+d exec dmenu_run
+bindsym $sup+d exec rofi -modi drun -show drun -show-icons -icons-theme hicolor
+bindsym $sup+Tab exec rofi -combi-modi window -show combi -show-icons -icons-theme hicolor
 
 # change focus
-bindsym Mod4+$left focus left
-bindsym Mod4+$down focus down
-bindsym Mod4+$up focus up
-bindsym Mod4+$right focus right
+bindsym $sup+$left focus left
+bindsym $sup+$down focus down
+bindsym $sup+$up focus up
+bindsym $sup+$right focus right
 
 # alternatively, you can use the cursor keys:
-bindsym Mod4+Left focus left
-bindsym Mod4+Down focus down
-bindsym Mod4+Up focus up
-bindsym Mod4+Right focus right
+bindsym $sup+Left focus left
+bindsym $sup+Down focus down
+bindsym $sup+Up focus up
+bindsym $sup+Right focus right
 
 # move focused window
-bindsym Mod4+Shift+$left move left
-bindsym Mod4+Shift+$down move down
-bindsym Mod4+Shift+$up move up
-bindsym Mod4+Shift+$right move right
+bindsym $sup+Shift+$left move left
+bindsym $sup+Shift+$down move down
+bindsym $sup+Shift+$up move up
+bindsym $sup+Shift+$right move right
 
 # alternatively, you can use the cursor keys:
-bindsym Mod4+Shift+Left move left
-bindsym Mod4+Shift+Down move down
-bindsym Mod4+Shift+Up move up
-bindsym Mod4+Shift+Right move right
+bindsym $sup+Shift+Left move left
+bindsym $sup+Shift+Down move down
+bindsym $sup+Shift+Up move up
+bindsym $sup+Shift+Right move right
 
 # split in horizontal orientation
-bindsym Mod4+o split h
+bindsym $sup+o split h
 
 # split in vertical orientation
-bindsym Mod4+v split v
+bindsym $sup+v split v
 
 # enter fullscreen mode for the focused container
-bindsym Mod4+f fullscreen toggle
+bindsym $sup+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym Mod4+s layout stacking
-bindsym Mod4+w layout tabbed
-bindsym Mod4+e layout toggle split
+bindsym $sup+s layout stacking
+bindsym $sup+w layout tabbed
+bindsym $sup+e layout toggle split
 
 # toggle tiling / floating
-bindsym Mod4+Shift+space floating toggle
+bindsym $sup+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym Mod4+space focus mode_toggle
+bindsym $sup+space focus mode_toggle
 
 # focus the parent container
-bindsym Mod4+a focus parent
+bindsym $sup+a focus parent
 
 # focus the child container
-#bindsym Mod4+d focus child
+#bindsym $sup+d focus child
 
 # move the currently focused window to the scratchpad
-bindsym Mod4+Shift+minus move scratchpad
+bindsym $sup+Shift+minus move scratchpad
 
 # Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
-bindsym Mod4+minus scratchpad show
+bindsym $sup+minus scratchpad show
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -100,35 +105,35 @@ set $ws10 "10"
 
 
 # switch to workspace
-bindsym Mod4+1 workspace $ws1
-bindsym Mod4+2 workspace $ws2
-bindsym Mod4+3 workspace $ws3
-bindsym Mod4+4 workspace $ws4
-bindsym Mod4+5 workspace $ws5
-bindsym Mod4+6 workspace $ws6
-bindsym Mod4+7 workspace $ws7
-bindsym Mod4+8 workspace $ws8
-bindsym Mod4+9 workspace $ws9
-bindsym Mod4+0 workspace $ws10
+bindsym $sup+1 workspace $ws1
+bindsym $sup+2 workspace $ws2
+bindsym $sup+3 workspace $ws3
+bindsym $sup+4 workspace $ws4
+bindsym $sup+5 workspace $ws5
+bindsym $sup+6 workspace $ws6
+bindsym $sup+7 workspace $ws7
+bindsym $sup+8 workspace $ws8
+bindsym $sup+9 workspace $ws9
+bindsym $sup+0 workspace $ws10
 
 # move focused container to workspace
-bindsym Mod4+Shift+1 move container to workspace $ws1
-bindsym Mod4+Shift+2 move container to workspace $ws2
-bindsym Mod4+Shift+3 move container to workspace $ws3
-bindsym Mod4+Shift+4 move container to workspace $ws4
-bindsym Mod4+Shift+5 move container to workspace $ws5
-bindsym Mod4+Shift+6 move container to workspace $ws6
-bindsym Mod4+Shift+7 move container to workspace $ws7
-bindsym Mod4+Shift+8 move container to workspace $ws8
-bindsym Mod4+Shift+9 move container to workspace $ws9
-bindsym Mod4+Shift+0 move container to workspace $ws10
+bindsym $sup+Shift+1 move container to workspace $ws1
+bindsym $sup+Shift+2 move container to workspace $ws2
+bindsym $sup+Shift+3 move container to workspace $ws3
+bindsym $sup+Shift+4 move container to workspace $ws4
+bindsym $sup+Shift+5 move container to workspace $ws5
+bindsym $sup+Shift+6 move container to workspace $ws6
+bindsym $sup+Shift+7 move container to workspace $ws7
+bindsym $sup+Shift+8 move container to workspace $ws8
+bindsym $sup+Shift+9 move container to workspace $ws9
+bindsym $sup+Shift+0 move container to workspace $ws10
 
 # reload the configuration file
-bindsym Mod4+Shift+c reload
+bindsym $sup+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym Mod4+Shift+r restart
+bindsym $sup+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym Mod4+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $sup+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -149,14 +154,14 @@ mode "resize" {
         bindsym Up          resize shrink height 10 px or 10 ppt
         bindsym Right       resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape or Mod4+r
+        # back to normal: Enter or Escape or $sup+r
         bindsym Return mode "default"
         bindsym Escape mode "default"
-        bindsym Mod4+r mode "default"
+        bindsym $sup+r mode "default"
 }
 
-bindsym Mod4+r mode "resize"
-bindsym Mod4+t sticky toggle
+bindsym $sup+r mode "resize"
+bindsym $sup+t sticky toggle
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -183,19 +188,19 @@ bindsym Shift+XF86AudioNext exec playerctl next
 bindsym Shift+XF86AudioPrev exec playerctl previous
 
 #lockscreen
-bindsym Mod4+x exec i3lock -c 000000 & sleep 5 && xset s activate
-bindsym Mod4+Shift+x exec i3lock -c 000000 && systemctl suspend
+bindsym $sup+x exec i3lock -c 000000 & sleep 5 && xset s activate
+bindsym $sup+Shift+x exec i3lock -c 000000 && systemctl suspend
 
 # Termite bindings
-bindsym Mod4+Shift+Return exec "termite -d $(xcwd)"
+bindsym $sup+Shift+Return exec "termite -d $(xcwd)"
 
 # screenshots bindings
-bindsym Mod4+Print exec "maim -s --format=png /dev/stdout | xclip -selection clipboard -t image/png -i"
-bindsym Mod4+Shift+Print exec "maim -s --format=png /tmp/screen$(date +'%H%M%S').png"
-bindsym Mod4+Ctrl+Shift+Print exec "maim -s --format=png /tmp/screen.png && /home/robi/Documents/tools/screenshot_tool/screenshot_tool.py"
+bindsym $sup+Print exec "maim -s --format=png /dev/stdout | xclip -selection clipboard -t image/png -i"
+bindsym $sup+Shift+Print exec "maim -s --format=png /tmp/screen$(date +'%H%M%S').png"
+bindsym $sup+Ctrl+Shift+Print exec "maim -s --format=png /tmp/screen.png && /home/robi/Documents/tools/screenshot_tool/screenshot_tool.py"
 
 # misc bindings
-bindsym Mod4+b exec "firefox"
+bindsym $sup+b exec "firefox"
 
 
 exec_always --no-startup-id nm-applet

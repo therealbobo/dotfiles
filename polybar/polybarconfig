@@ -98,7 +98,7 @@ label-indicator-underline = ${colors.secondary}
 
 [module/spotify]
 type = custom/script
-interval = 1
+interval = 5
 format-prefix = " "
 format = <label>
 exec = python ~/dotfiles/polybar/scripts/spotify_status.py -f '{play_pause} {artist}: {song}'

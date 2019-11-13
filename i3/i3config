@@ -31,7 +31,7 @@ bindsym $sup+Shift+q kill
 # start dmenu (a program launcher)
 #bindsym $sup+d exec dmenu_run
 bindsym $sup+d exec rofi -modi drun -show drun -show-icons -icons-theme hicolor
-bindsym $sup+Tab exec rofi -combi-modi window -show combi -show-icons -icons-theme hicolor
+bindsym $sup+Shift+Tab exec rofi -combi-modi window -show combi -show-icons -icons-theme hicolor
 
 # change focus
 bindsym $sup+$left focus left
@@ -115,6 +115,10 @@ bindsym $sup+7 workspace $ws7
 bindsym $sup+8 workspace $ws8
 bindsym $sup+9 workspace $ws9
 bindsym $sup+0 workspace $ws10
+
+# switch to last workspace
+bindsym $sup+z workspace back_and_forth
+
 
 # move focused container to workspace
 bindsym $sup+Shift+1 move container to workspace $ws1

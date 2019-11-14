@@ -70,7 +70,7 @@ let g:bufferline_echo=0
 
 "airline
 let g:airline#extensions#bufferline#enabled = 1
-let g:airline_powerline_fonts=1
+"let g:airline_powerline_fonts=1
 " let g:airline_solarized_db='dark'
 let g:airline_theme='luna'
 " let g:airline#extensions#tabline#enabled=1

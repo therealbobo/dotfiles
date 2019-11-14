@@ -4,7 +4,7 @@
 #bold_is_bright = true
 #clickable_url = true
 #dynamic_title = true
-font = Monospace 14
+font = Roboto Mono 14
 #font = Hack 14
 #fullscreen = true
 #icon_name = terminal

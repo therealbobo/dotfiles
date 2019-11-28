@@ -16,8 +16,6 @@ ZSH_THEME="gentoo"
 # An empty array have no effect
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
@@ -28,9 +26,6 @@ ZSH_THEME="gentoo"
 
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
 # DISABLE_AUTO_TITLE="true"
@@ -69,8 +64,6 @@ plugins=(
   docker
 )
 
-#source $ZSH/oh-my-zsh.sh
-
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -91,15 +84,6 @@ plugins=(
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-# Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
@@ -112,7 +96,6 @@ zstyle :compinstall filename '/home/robi/.zshrc'
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
-
 
 export KEYTIMEOUT=1
 
@@ -133,38 +116,23 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias disable_randomization='sudo bash -c "echo 0 > /proc/sys/kernel/randomize_va_space"'
 alias peda='gdb -q -x "/usr/share/peda/peda.py"'
-alias copypassword='lpass show --clip --password'
+#alias copypassword='lpass show --clip --password'
 alias r2help="r2 -q -c '?*~...' -"
 alias weather="curl -s us.wttr.in"
 alias myip="curl -fSs https://1.1.1.1/cdn-cgi/trace | egrep '^(ip|loc)'"
+alias emacs='emacs -nw'
 
 #alias vpn
 alias nordvpn='sudo openvpn --config /etc/openvpn/current --auth-user-pass /etc/openvpn/auth.txt'
 alias lab2='sudo openvpn --config /etc/openvpn/lab2 --auth-user-pass /etc/openvpn/auth.txt'
-
-#other alias
-alias emacs='emacs -nw'
-alias android_emulator='/home/robi/Android/Sdk/emulator/emulator -avd Nexus_6_API_19'
-
-# python pip upgrades
-alias pip-upgrade='pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 sudo pip install -U'
 
 ## source OhMyZsh
 source $ZSH/oh-my-zsh.sh
 
 #vars
 export TERM=xterm-256color
-export PATH=$PATH:/home/robi/bin:"/home/robi/Android/Sdk/build-tools/28.0.3"
+export VISUAL="vim"
 export GOPATH=/home/robi/go
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/home/robi/.bin 
 export PATH=$PATH:/home/robi/.local/bin 
-export VISUAL="vim"
-
-#. /etc/profile.d/vte.sh
-
-# arduino-mk vars
-export ARDUINO_DIR=/usr/share/arduino
-export ARDMK_DIR=/usr/share/arduino
-export AVR_TOOLS_DIR=/usr
-export AVRDUDE_CONF=/etc/avrdude.conf

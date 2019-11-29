@@ -32,7 +32,7 @@ bindsym $sup+Shift+q kill
 # start dmenu (a program launcher)
 #bindsym $sup+d exec dmenu_run
 bindsym $sup+d exec rofi -modi drun -show drun -show-icons -icons-theme hicolor
-bindsym $sup+Shift+Tab exec rofi -combi-modi window -show combi -show-icons -icons-theme hicolor
+bindsym $sup+Tab exec rofi -combi-modi window -show combi -show-icons -icons-theme hicolor
 
 # change focus
 bindsym $sup+$left focus left

@@ -205,11 +205,11 @@ bindsym $sup+Shift+Print exec "maim -s --format=png /tmp/screen$(date +'%H%M%S')
 bindsym $sup+Ctrl+Shift+Print exec "maim -s --format=png /tmp/screen.png && /home/robi/Documents/tools/screenshot_tool/screenshot_tool.py"
 
 # misc bindings
-bindsym $sup+b exec "firefox"
+bindsym $sup+b exec "chromium"
 
 
-exec_always --no-startup-id nm-applet
-exec_always --no-startup-id if ! [[ $(pgrep udiskie) ]]; then udiskie -t; fi
+exec --no-startup-id nm-applet
+exec --no-startup-id udiskie -t
 exec_always --no-startup-id feh --randomize --bg-fill ~/Pictures/Wallpapers/*
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh

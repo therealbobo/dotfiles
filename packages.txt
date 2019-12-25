@@ -1,0 +1,9 @@
+zsh
+vim
+tmux
+gdb
+i3
+polybar
+zathura
+rofi
+radare2

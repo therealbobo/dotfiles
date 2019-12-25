@@ -1,7 +1,7 @@
 #! /bin/bash
 
 
-function install_packet {
+function install_packet (){
 	RESULT=""
 	if egrep -qi "arch" "/etc/os-release"; then
 		RESULT=$(sudo pacman -S $1)
@@ -22,7 +22,7 @@ function install_packet {
 }
 
 
-check_pkg_installed (){
+function check_pkg_installed (){
 	if ! test -f /usr/bin/$1 -o -f /bin/$1; then
 		echo "[-] no $1 installed"
 		echo "[-] installing $1"
@@ -30,29 +30,28 @@ check_pkg_installed (){
 	fi
 }
 
-function install_ohmyzsh {
+function install_ohmyzsh (){
 	sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 }
 
-function install_vundle {
+function install_vundle (){
 	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 }
 
-PACKAGES=("zsh" "vim" "tmux" "gdb" "i3" "polybar" "zathura" "rofi" "radare2")
+#PACKAGES=("zsh" "vim" "tmux" "gdb" "i3" "polybar" "zathura" "rofi" "radare2")
+readarray -t PACKAGES < ./packages.txt
 for PKG in ${PACKAGES[@]} ; do
 	check_pkg_installed $PKG
 done
 
 #oh-my-zsh
 if ! test -d ~/.oh-my-zsh ; then
-	#install oh-my-zsh
 	echo "no oh-my-zsh installed"
 	install_ohmyzsh
 fi
 
 #vundle 4 vim
 if ! test -d ~/.vim/bundle/Vundle.vim; then
-	#install Vundle
 	echo "no vundle installed"
 	install_vundle
 fi

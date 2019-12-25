@@ -74,7 +74,15 @@ TERMITE_DIR="$HOME/.config/termite"
 SNIPPTES_DIR="$HOME/.vim/ultisnips"
 ZATHURA_DIR="$HOME/.config/zathura"
 
-DIRS=($I3_DIR $I3STATUS_DIR $POLYBAR_DIR $ROFI_DIR $TERMITE_DIR $SNIPPTES_DIR $ZATHURA_DIR) 
+DIRS=(
+	$I3_DIR 
+	$I3STATUS_DIR
+	$POLYBAR_DIR
+	$ROFI_DIR
+	$TERMITE_DIR
+	$SNIPPTES_DIR
+	$ZATHURA_DIR
+) 
 
 for DIR in ${DIRS[@]}; do
 	if ! test -d $DIR ; then

@@ -1,4 +1,4 @@
-#more alias
+# basic aliases
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
@@ -6,13 +6,21 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-alias disable_randomization='sudo bash -c "echo 0 > /proc/sys/kernel/randomize_va_space"'
+
+
+# pwn
 alias peda='gdb -q -x "/usr/share/peda/peda.py"'
-#alias copypassword='lpass show --clip --password'
+alias disable_randomization='sudo bash -c "echo 0 > /proc/sys/kernel/randomize_va_space"'
 alias r2help="r2 -q -c '?*~...' -"
+
+
+# utiles
+#alias copypassword='lpass show --clip --password'
 alias weather="curl -s us.wttr.in"
 alias myip="curl -fSs https://1.1.1.1/cdn-cgi/trace | egrep '^(ip|loc)'"
 alias emacs='emacs -nw'
+alias cpv='rsync -ah --info=progress2'
+
 
 #alias vpn
 alias nordvpn='sudo openvpn --config /etc/openvpn/current --auth-user-pass /etc/openvpn/auth.txt'

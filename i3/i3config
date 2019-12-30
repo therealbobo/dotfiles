@@ -208,11 +208,14 @@ bindsym $sup+Ctrl+Shift+Print exec "maim -s --format=png /tmp/screen.png && /hom
 bindsym $sup+b exec "chromium"
 
 
+# trayicons
 exec --no-startup-id nm-applet
 exec --no-startup-id udiskie -t
-exec_always --no-startup-id feh --randomize --bg-fill ~/Pictures/Wallpapers/*
+
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id feh --randomize --bg-fill ~/Pictures/Wallpapers/*
+exec_always --no-startup-id libinput-gestures-setup start
 
 #######################################################################
 # automatically start i3-config-wizard to offer the user to create a

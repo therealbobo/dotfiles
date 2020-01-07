@@ -7,7 +7,7 @@ export ZSH="/home/robi/.oh-my-zsh"
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="gentoo"
+ZSH_THEME="../../dotfiles/zsh/bobo"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -15,8 +15,6 @@ ZSH_THEME="gentoo"
 # looking in ~/.oh-my-zsh/themes/
 # An empty array have no effect
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"

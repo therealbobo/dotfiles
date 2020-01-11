@@ -181,9 +181,9 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 1
 bindsym XF86MonBrightnessDown exec xbacklight -dec 1
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle # mute sound
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume $(pactl info | grep "Default Sink:" | cut -d' ' -f3) +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume $(pactl info | grep "Default Sink:" | cut -d' ' -f3) -5% #decrease sound volume
+bindsym XF86AudioMute exec pactl set-sink-mute $(pactl info | grep "Default Sink:" | cut -d' ' -f3) toggle # mute sound
 
 # Multimedia keys
 bindsym XF86AudioPlay exec playerctl play-pause

@@ -66,6 +66,8 @@ ln -vfs $HOME/dotfiles/zsh/zshrc $HOME/.zshrc
 ln -vfs $HOME/dotfiles/r2/radare2rc $HOME/.radare2rc
 
 
+BSPWM_DIR="$HOME/.config/bspwm"
+SXHKD_DIR="$HOME/.config/sxhkd"
 I3_DIR="$HOME/.config/i3"
 I3STATUS_DIR="$HOME/.config/i3status"
 POLYBAR_DIR="$HOME/.config/polybar"
@@ -90,6 +92,8 @@ for DIR in ${DIRS[@]}; do
 	fi
 done
 
+ln -vfs $HOME/dotfiles/bspwm/bspwmrc $BSPWM_DIR/bspwmrc
+ln -vfs $HOME/dotfiles/sxhkd/sxhkdrc $SXHKD_DIR/sxhkdrc
 ln -vfs $HOME/dotfiles/i3/i3config $I3_DIR/config
 #ln -vfs $HOME/dotfiles/i3/i3status $I3STATUS_DIR/config
 ln -vfs $HOME/dotfiles/polybar/polybarconfig $POLYBAR_DIR/config

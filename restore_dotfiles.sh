@@ -84,6 +84,8 @@ DIRS=(
 	$TERMITE_DIR
 	$SNIPPTES_DIR
 	$ZATHURA_DIR
+	$BSPWM_DIR
+	$SXHKD_DIR
 ) 
 
 for DIR in ${DIRS[@]}; do

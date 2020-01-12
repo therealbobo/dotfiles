@@ -38,9 +38,7 @@ function install_vundle (){
 	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 }
 
-#PACKAGES=("zsh" "vim" "tmux" "gdb" "i3" "polybar" "zathura" "rofi" "radare2")
-readarray -t PACKAGES < ./packages.txt
-for PKG in ${PACKAGES[@]} ; do
+cat ./packages.txt | egrep -v "^#.*" | while read PKG; do
 	check_pkg_installed $PKG
 done
 

@@ -1,9 +1,11 @@
 zsh
 vim
-tmux
+#tmux
 gdb
-i3
+#i3
 polybar
 zathura
 rofi
 radare2
+bspwm
+sxhkd

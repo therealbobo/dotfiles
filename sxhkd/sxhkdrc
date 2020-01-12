@@ -111,6 +111,10 @@ super + ctrl + shift + space
 # move/resize
 #
 
+# move to next/prev monitor
+super + n
+	bspc monitor -f {prev,next}
+
 # expand a window by moving one of its side outward
 super + alt + {h,j,k,l}
 	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}

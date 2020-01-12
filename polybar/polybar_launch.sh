@@ -7,6 +7,14 @@ killall -q polybar
 while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 # Launch Polybar, using default config location ~/.config/polybar/config
-polybar mybar &
+#polybar primary &
 
-echo "Polybar launched..."
+PRIMARY=$(xrandr -q | grep primary | cut -d' ' -f1)
+
+for m in $(xrandr -q | grep " connected" | cut -d" " -f1); do
+	if [ "$m" = "$PRIMARY" ] ; then
+		MONITOR=$m polybar primary &
+	else
+		MONITOR=$m polybar secondary &
+	fi
+done

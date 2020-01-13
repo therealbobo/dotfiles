@@ -1,6 +1,6 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-export ZSH="/home/robi/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="../../dotfiles/zsh/bobo"
 export UPDATE_ZSH_DAYS=14
 COMPLETION_WAITING_DOTS="true"
@@ -25,6 +25,7 @@ else
   export EDITOR='mvim'
 fi
 
+if [ ! -f ~/.histfile ]; then touch ~/.histfile ; fi
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
@@ -34,20 +35,20 @@ bindkey -v
 
 
 # The following lines were added by compinstall
-zstyle :compinstall filename '/home/robi/.zshrc'
-
+zstyle :compinstall filename "$HOME/.zshrc"
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
 export KEYTIMEOUT=1
 
+
+### SOURCES ###{{{
 source $HOME/dotfiles/zsh/aliases
-
-## source OhMyZsh
 source $ZSH/oh-my-zsh.sh
+###}}}
 
-#vars
+### VARS ###{{{
 export TERM=xterm-256color
 export VISUAL="vim"
 export GOPATH=/home/robi/go
@@ -55,3 +56,4 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/home/$USER/.bin 
 export PATH=$PATH:/home/$USER/.local/bin 
 export PATH=$PATH:/home/$USER/scripts
+###}}}

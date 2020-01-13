@@ -133,30 +133,20 @@ super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
 # Xbacklight controls
-XF86MonBrightnessUp 
-	xbacklight -inc 1
-XF86MonBrightnessDown 
-	xbacklight -dec 1
+XF86MonBrightness{Up,Down}
+	xbacklight -{inc,dec} 1
 
 # Pulse Audio controls
-XF86AudioRaiseVolume 
-	pactl set-sink-volume $(pactl info | grep "Default Sink:" | cut -d' ' -f3) +5% #increase sound volume
-XF86AudioLowerVolume 
-	pactl set-sink-volume $(pactl info | grep "Default Sink:" | cut -d' ' -f3) -5% #decrease sound volume
+XF86Audio{RaiseVolume,LowerVolume}
+	pactl set-sink-volume $(pactl info | grep "Default Sink:" | cut -d' ' -f3) {+5%,-5%}
 XF86AudioMute 
 	pactl set-sink-mute $(pactl info | grep "Default Sink:" | cut -d' ' -f3) toggle # mute sound
 
 # Multimedia keys
-XF86AudioPlay 
-	playerctl play-pause
-XF86AudioNext 
-	playerctl position 5+
-XF86AudioPrev 
-	playerctl position 5-
-Shift+XF86AudioNext 
-	playerctl next
-Shift+XF86AudioPrev 
-	playerctl previous
+XF86Audio{Play,Next,Prev}
+	playerctl {play-pause,position 5+,position 5-}
+Shift+XF86Audio{Next,Prev}
+	playerctl {next,previous}
 
 # Lockscreen
 super + x 
@@ -167,13 +157,13 @@ super + Shift + x
 
 # Screenshot to clipboard
 super + Print 
-	"maim -s --format=png /dev/stdout | xclip -selection clipboard -t image/png -i"
+	maim -s --format=png /dev/stdout | xclip -selection clipboard -t image/png -i
 # Screenshot to tmp
 super + Shift + Print 
-	"maim -s --format=png /tmp/screen$(date +'%H%M%S').png"
+	maim -s --format=png /tmp/screen$(date +'%H%M%S').png
 # Screenshot helper
 super + Ctrl + Shift + Print 
-	"maim -s --format=png /tmp/screen.png && /home/robi/Documents/tools/screenshot_tool/screenshot_tool.py"
+	maim -s --format=png /tmp/screen.png && /home/robi/Documents/tools/screenshot_tool/screenshot_tool.py
 
 # Chromium
 super + z

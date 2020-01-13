@@ -1,43 +1,53 @@
 #! /bin/sh
+# My github : https://github.com/therealbobo
 
-sxhkd &
-#picom &
+### BSPWM CONFIGS ### {{{
 
+# Define workpaces
 i=0
 MONITOR_NUM=$(xrandr -q | grep ' connected' | cut -d' ' -f1 | wc -l)
 DESKTOP_PER_MONITOR=$(((10 / $MONITOR_NUM)))
 for MONITOR in $(xrandr -q | grep ' connected' | cut -d' ' -f1); do
-	BEGIN=$((($i * $DESKTOP_PER_MONITOR)))
-	END=$((($i + 1)))
-	END=$((($END * $DESKTOP_PER_MONITOR)))
-	BEGIN=$((($BEGIN + 1)))
-	i=$((($i + 1)))
-	eval echo {$BEGIN..$END} | sed -e 's/10/0/g' | xargs bspc monitor $MONITOR -d
+	BEGIN=$(($i * $DESKTOP_PER_MONITOR))
+	END=$(($i + 1))
+	END=$(($END * $DESKTOP_PER_MONITOR))
+	BEGIN=$(($BEGIN + 1))
+	i=$(($i + 1))
+	eval echo {$BEGIN..$END} | sed 's/10/0/' | xargs bspc monitor $MONITOR -d
 done
 
-bspc config border_width         2
-bspc config window_gap           0
-bspc config top_padding          0
+bspc config border_width             2
+bspc config window_gap               0
+bspc config top_padding              0
 
-bspc config split_ratio          0.52
-bspc config borderless_monocle   true
-bspc config gapless_monocle      true
+bspc config split_ratio              0.52
+bspc config borderless_monocle       true
+bspc config gapless_monocle          true
+bspc config focus_follows_pointer    true
+
+###}}}
 
 
-#bspc rule -a polybar state=sticky
-bspc rule -a Gimp desktop='^8' state=floating follow=on
-bspc rule -a Chromium desktop='^2'
-bspc rule -a mplayer2 state=floating
-bspc rule -a Kupfer.py focus=on
-bspc rule -a Screenkey manage=off
+### WINDOW RULES ###{{{
 
-sleep 1
+#-----------Class-Name--------------------Workspaces---Focus----Follow------Other-------#
+bspc rule -a Gimp                        desktop='^8'          follow=on  state=floating
+bspc rule -a Chromium                    desktop='^2'
+bspc rule -a mplayer2                                                     state=floating
+bspc rule -a Kupfer.py                                focus=on
+bspc rule -a Screenkey                   manage=off
 
-sh $HOME/.config/polybar/launch.sh
+###}}}
+
+
+### AUTOSTART ###{{{
+
+sxhkd &
+#picom &
+$HOME/.config/polybar/launch.sh
 feh --randomize --bg-fill ~/Pictures/Wallpapers/*
 libinput-gestures-setup start
-
-
-# trayicons
 ! pgrep nm-applet && nm-applet
 ! pgrep udiskie   && udiskie -t
+
+###}}}

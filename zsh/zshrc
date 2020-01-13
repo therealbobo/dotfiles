@@ -6,14 +6,15 @@ export UPDATE_ZSH_DAYS=14
 COMPLETION_WAITING_DOTS="true"
 
 plugins=(
-	git
 	colored-man-pages 
-	extract
-	sudo
-	python
-	pip
-	vagrant
 	docker
+	extract
+	git
+	pip
+	python
+	sudo
+	vagrant
+	z
 )
 
 # User configuration

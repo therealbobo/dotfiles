@@ -5,17 +5,22 @@
 # terminal emulator
 super + Return
 	termite
+super + shift + Return
+	termite -d $(xcwd)
 
 # program launcher
 super + d
 	rofi -modi drun -show drun -show-icons -icons-theme hicolor
-
 super + Tab
 	rofi -combi-modi window -show combi -show-icons -icons-theme hicolor
 
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
+# show sxhkd helper
+super + shift + Escape
+	cat ~/.config/sxhkd/sxhkdrc | awk -F\# '/^[a-z]/ && last \{print $0,"\t",last\} \{last=""\} /^#/\{last=$2\}' | column -t -s $'\t' | rofi -dmenu -i -no-show-icons -width 1000
+	
 
 #
 # bspwm hotkeys
@@ -26,7 +31,7 @@ super + shift + {e,r}
 	bspc {quit,wm -r}
 
 # close and kill
-super + shift + q
+super + shift + {q,k}
 	bspc node -{c,k}
 
 # alternate between the tiled and monocle layout
@@ -153,24 +158,26 @@ Shift+XF86AudioNext
 Shift+XF86AudioPrev 
 	playerctl previous
 
-#lockscreen
+# Lockscreen
 super + x 
 	i3lock -c 000000 & sleep 5 && xset s activate
+# Lockscreen and suspend
 super + Shift + x 
 	i3lock -c 000000 && systemctl suspend
 
-# Termite bindings
-super + shift + Return 
-	"termite -d $(xcwd)"
-
-# screenshots bindings
+# Screenshot to clipboard
 super + Print 
 	"maim -s --format=png /dev/stdout | xclip -selection clipboard -t image/png -i"
+# Screenshot to tmp
 super + Shift + Print 
 	"maim -s --format=png /tmp/screen$(date +'%H%M%S').png"
+# Screenshot helper
 super + Ctrl + Shift + Print 
 	"maim -s --format=png /tmp/screen.png && /home/robi/Documents/tools/screenshot_tool/screenshot_tool.py"
 
-# misc bindings
+# Chromium
 super + z
 	chromium
+# Chromium incognito
+super + shift + z
+	chromium --incognito

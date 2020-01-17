@@ -171,3 +171,8 @@ super + z
 # Chromium incognito
 super + shift + z
 	chromium --incognito
+
+
+# Change wallpaper
+super + w
+	feh --randomize --bg-fill ~/Pictures/Wallpapers/*

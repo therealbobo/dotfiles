@@ -43,7 +43,7 @@ bspc rule -a Screenkey                   manage=off
 ### AUTOSTART ###{{{
 
 sxhkd &
-#picom &
+picom &
 $HOME/.config/polybar/launch.sh
 feh --randomize --bg-fill ~/Pictures/Wallpapers/*
 libinput-gestures-setup start

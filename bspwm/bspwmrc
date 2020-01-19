@@ -16,14 +16,25 @@ for MONITOR in $(xrandr -q | grep ' connected' | cut -d' ' -f1); do
 	eval echo {$BEGIN..$END} | sed 's/10/0/' | xargs bspc monitor $MONITOR -d
 done
 
-bspc config border_width             2
-bspc config window_gap               0
-bspc config top_padding              0
+bspc config border_width                0
+bspc config window_gap                  10
+bspc config top_padding                 0
+bspc config bottom_padding              0
+bspc config left_padding                0
+bspc config right_padding               0
+
+#bspc config normal_border_color  "${color[8]}"
+#bspc config focused_border_color "${color[0]}"
 
 bspc config split_ratio              0.52
 bspc config borderless_monocle       true
 bspc config gapless_monocle          true
 bspc config focus_follows_pointer    true
+
+bspc config click_to_focus     true
+bspc config pointer_action1    move
+bspc config pointer_action2    resize_side
+bspc config pointer_action3    resize_corner
 
 ###}}}
 

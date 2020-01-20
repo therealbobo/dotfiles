@@ -221,12 +221,10 @@ pin-workspaces = true
 inline-mode = false
 
 ; Create click handler used to focus workspace
-; Default: true
-enable-click = false
+enable-click = true
 
 ; Create scroll handlers used to cycle workspaces
-; Default: true
-enable-scroll = false
+enable-scroll = true
 
 ; Set the scroll cycle direction 
 ; Default: true

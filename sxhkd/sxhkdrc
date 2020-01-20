@@ -152,7 +152,7 @@ Shift+XF86Audio{Next,Prev}
 super + x 
 	i3lock -c 000000 & sleep 5 && xset s activate
 # Lockscreen and suspend
-super + Shift + x 
+super + shift + x 
 	i3lock -c 000000 && systemctl suspend
 
 # Screenshot to clipboard

@@ -54,8 +54,19 @@ bspc rule -a Screenkey                   manage=off
 ### AUTOSTART ###{{{
 
 sxhkd &
-picom &
+#picom &
 $HOME/.config/polybar/launch.sh
+
+SIZE="1920x24+0+0"
+FOREGROUND="#93a1a1"
+BACKGROUND="#002b36"
+ICON_FONT="Font Awesome 5 Free Solid:style=Solid"
+FONT="DejaVu Sans"
+
+
+#( sleep 1s && bash $HOME/dotfiles/lemonbar/lemonbar.sh | \
+#	lemonbar -g "$SIZE" -p -F "$FOREGROUND" -B "$BACKGROUND" -f "$ICON_FONT" -f "$FONT") &
+
 feh --randomize --bg-fill ~/Pictures/Wallpapers/*
 libinput-gestures-setup start
 ! pgrep nm-applet && nm-applet

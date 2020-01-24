@@ -70,6 +70,7 @@ I3_DIR="$HOME/.config/i3"
 I3STATUS_DIR="$HOME/.config/i3status"
 POLYBAR_DIR="$HOME/.config/polybar"
 ROFI_DIR="$HOME/.config/rofi"
+DUNST_DIR="$HOME/.config/dunst"
 TERMITE_DIR="$HOME/.config/termite"
 SNIPPTES_DIR="$HOME/.vim/ultisnips"
 ZATHURA_DIR="$HOME/.config/zathura"
@@ -79,6 +80,7 @@ DIRS=(
 	$I3STATUS_DIR
 	$POLYBAR_DIR
 	$ROFI_DIR
+	$DUNST_DIR
 	$TERMITE_DIR
 	$SNIPPTES_DIR
 	$ZATHURA_DIR
@@ -99,6 +101,7 @@ ln -vfs $HOME/dotfiles/i3/i3config $I3_DIR/config
 ln -vfs $HOME/dotfiles/polybar/polybarconfig $POLYBAR_DIR/config
 ln -vfs $HOME/dotfiles/polybar/polybar_launch.sh $POLYBAR_DIR/launch.sh
 ln -vfs $HOME/dotfiles/rofi/roficonfig $ROFI_DIR/config
+ln -vfs $HOME/dotfiles/dunst/dunstrc $DUNST_DIR/dunstrc
 ln -vfs $HOME/dotfiles/termite/termiteconfig $TERMITE_DIR/config
 ln -vfs $HOME/dotfiles/gdb/gdbinit $HOME/.gdbinit
 ln -vfs $HOME/dotfiles/zathura/zathurarc $ZATHURA_DIR/zathurarc

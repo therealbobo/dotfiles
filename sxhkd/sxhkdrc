@@ -159,10 +159,10 @@ super + shift + x
 super + Print 
 	maim -s --format=png /dev/stdout | xclip -selection clipboard -t image/png -i
 # Screenshot to tmp
-super + Shift + Print 
+super + shift + Print 
 	maim -s --format=png /tmp/screen$(date +'%H%M%S').png
 # Screenshot helper
-super + Ctrl + Shift + Print 
+super + ctrl + shift + Print 
 	maim -s --format=png /tmp/screen.png && /home/robi/Documents/tools/screenshot_tool/screenshot_tool.py
 
 # Chromium

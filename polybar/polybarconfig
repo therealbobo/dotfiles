@@ -51,13 +51,13 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = fixed:pixelsize=10;1
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = siji:pixelsize=10;1
+font-0 = fixed:pixelsize=12;1
+font-1 = unifont:fontformat=truetype:size=1:antialias=false;0
+font-2 = siji:pixelsize=12;1
 
 modules-left = i3 bspwm 
 modules-center = xwindow
-modules-right = spotify filesystem xbacklight pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
+modules-right = spotify filesystem xbacklight pulseaudio memory cpu wlan eth battery temperature date powermenu
 
 tray-position = right
 tray-padding = 2
@@ -284,7 +284,7 @@ label-song-ellipsis = true
 type = internal/xbacklight
 
 format = <label> <bar>
-label = BL
+label = BL 
 
 bar-width = 10
 bar-indicator = |

@@ -67,6 +67,8 @@ FONT="DejaVu Sans"
 #( sleep 1s && bash $HOME/dotfiles/lemonbar/lemonbar.sh | \
 #	lemonbar -g "$SIZE" -p -F "$FOREGROUND" -B "$BACKGROUND" -f "$ICON_FONT" -f "$FONT") &
 
+killall nm-applet udiskie
+
 feh --randomize --bg-fill ~/Pictures/Wallpapers/*
 libinput-gestures-setup start
 ! pgrep nm-applet && nm-applet

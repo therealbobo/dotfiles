@@ -145,7 +145,7 @@ XF86AudioMute
 # Multimedia keys
 XF86Audio{Play,Next,Prev}
 	playerctl {play-pause,position 5+,position 5-}
-Shift+XF86Audio{Next,Prev}
+shift+XF86Audio{Next,Prev}
 	playerctl {next,previous}
 
 # Lockscreen

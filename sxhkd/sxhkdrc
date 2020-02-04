@@ -54,7 +54,7 @@ super + g
 super + {t,shift + t,s,f}
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
-# set the node flags
+# set the node flags (marked,locked,sticky,private)
 super + ctrl + {m,x,y,z}
 	bspc node -g {marked,locked,sticky,private}
 
@@ -171,6 +171,9 @@ super + z
 # Chromium incognito
 super + shift + z
 	chromium --incognito
+# Youtube Sticky
+super + shift + y
+	chromium --new-window youtube.com
 
 
 # Change wallpaper

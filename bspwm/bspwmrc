@@ -36,15 +36,17 @@ bspc config pointer_action1    move
 bspc config pointer_action2    resize_side
 bspc config pointer_action3    resize_corner
 
+bspc config ignore_ewmh_fullscreen  all
+
 ###}}}
 
 
 ### WINDOW RULES ###{{{
 
-#-----------Class-Name--------------------Workspaces---Focus----Follow------Other-------#
-bspc rule -a Gimp                        desktop='^8'          follow=on  state=floating
+#-----------Class-Name--------------------Workspaces---Focus-----Follow------Other-----------------------------------------------#
+bspc rule -a Gimp                        desktop='^8'           follow=on  state=floating
 bspc rule -a Chromium                    desktop='^2'
-bspc rule -a mplayer2                                                     state=floating
+bspc rule -a MPlayer                                  focus=off            state=floating  sticky=on  rectangle=720x480+1264+704
 bspc rule -a Kupfer.py                                focus=on
 bspc rule -a Screenkey                   manage=off
 
@@ -52,6 +54,10 @@ bspc rule -a Screenkey                   manage=off
 
 
 ### AUTOSTART ###{{{
+
+setxkbmap us
+setxkbmap -option caps:swapescape
+
 
 sxhkd &
 #picom &

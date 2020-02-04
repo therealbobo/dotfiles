@@ -166,14 +166,14 @@ super + ctrl + shift + Print
 	maim -s --format=png /tmp/screen.png && /home/robi/Documents/tools/screenshot_tool/screenshot_tool.py
 
 # Chromium
-super + z
-	chromium
+#super + z
+#	chromium
 # Chromium incognito
-super + shift + z
-	chromium --incognito
+#super + shift + z
+#	chromium --incognito
 # Youtube Sticky
 super + shift + y
-	chromium --new-window youtube.com
+	rofi -dmenu -lines 0 | xargs -I\{\} -r mpsyt /\{\},1,exit
 
 
 # Change wallpaper

@@ -71,7 +71,7 @@ killall nm-applet udiskie
 
 feh --randomize --bg-fill ~/Pictures/Wallpapers/*
 libinput-gestures-setup start
-! pgrep nm-applet && nm-applet
-! pgrep udiskie   && udiskie -t
+nm-applet &
+udiskie -t
 
 ###}}}

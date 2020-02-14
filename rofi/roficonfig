@@ -8,3 +8,11 @@ rofi.kb-remove-to-eol:               Control+Shift+e
 rofi.kb-mode-next:                   Shift+Right,Control+Tab,Control+l
 rofi.kb-mode-previous:               Shift+Left,Control+Shift+Tab,Control+h
 rofi.kb-remove-char-back:            BackSpace
+
+# options
+rofi.case-sensitive:       false
+
+# ssh
+rofi.terminal:             termite
+rofi.ssh-client:           ssh
+rofi.ssh-command:          {terminal} -e "{ssh-client} {host}"

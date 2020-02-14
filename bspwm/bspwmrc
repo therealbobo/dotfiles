@@ -6,13 +6,13 @@
 # Define workpaces
 i=0
 MONITOR_NUM=$(xrandr -q | grep ' connected' | cut -d' ' -f1 | wc -l)
-DESKTOP_PER_MONITOR=$(((10 / $MONITOR_NUM)))
+DESKTOP_PER_MONITOR=$(((10 / MONITOR_NUM)))
 for MONITOR in $(xrandr -q | grep ' connected' | cut -d' ' -f1); do
-	BEGIN=$(($i * $DESKTOP_PER_MONITOR))
-	END=$(($i + 1))
-	END=$(($END * $DESKTOP_PER_MONITOR))
-	BEGIN=$(($BEGIN + 1))
-	i=$(($i + 1))
+	BEGIN=$((i * DESKTOP_PER_MONITOR))
+	END=$((i + 1))
+	END=$((END * DESKTOP_PER_MONITOR))
+	BEGIN=$((BEGIN + 1))
+	i=$((i + 1))
 	eval echo {$BEGIN..$END} | sed 's/10/0/' | xargs bspc monitor $MONITOR -d
 done
 
@@ -61,15 +61,14 @@ setxkbmap -option caps:swapescape
 
 sxhkd &
 #picom &
-$HOME/.config/polybar/launch.sh
+"$HOME"/.config/polybar/launch.sh
 xsetroot -cursor_name left_ptr &
 
-SIZE="1920x24+0+0"
-FOREGROUND="#93a1a1"
-BACKGROUND="#002b36"
-ICON_FONT="Font Awesome 5 Free Solid:style=Solid"
-FONT="DejaVu Sans"
-
+#SIZE="1920x24+0+0"
+#FOREGROUND="#93a1a1"
+#BACKGROUND="#002b36"
+#ICON_FONT="Font Awesome 5 Free Solid:style=Solid"
+#FONT="DejaVu Sans"
 #( sleep 1s && bash $HOME/dotfiles/lemonbar/lemonbar.sh | \
 #	lemonbar -g "$SIZE" -p -F "$FOREGROUND" -B "$BACKGROUND" -f "$ICON_FONT" -f "$FONT") &
 

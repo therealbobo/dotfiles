@@ -11,8 +11,13 @@ super + shift + Return
 # program launcher
 super + d
 	rofi -modi drun -show drun -show-icons -icons-theme hicolor
+# program switcher
 super + Tab
 	rofi -combi-modi window -show combi -show-icons -icons-theme hicolor
+# ssh
+super + e
+	rofi -show ssh
+
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -145,6 +150,7 @@ XF86AudioMute
 # Multimedia keys
 XF86Audio{Play,Next,Prev}
 	playerctl {play-pause,position 5+,position 5-}
+# Multimedia keys
 shift+XF86Audio{Next,Prev}
 	playerctl {next,previous}
 

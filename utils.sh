@@ -20,7 +20,7 @@ function install_packet (){
 }
 
 function check_pkg_installed (){
-	which $1 || install_packet $1
+	which $1 1>/dev/null || install_packet $1
 }
 
 function install_ohmyzsh (){

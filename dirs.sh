@@ -6,7 +6,7 @@ I3STATUS_DIR="$HOME/.config/i3status"
 I3_DIR="$HOME/.config/i3"
 POLYBAR_DIR="$HOME/.config/polybar"
 ROFI_DIR="$HOME/.config/rofi"
-SNIPPTES_DIR="$HOME/.vim/ultisnips"
+SNIPPETS_DIR="$HOME/.vim/ultisnips"
 SXHKD_DIR="$HOME/.config/sxhkd"
 TERMITE_DIR="$HOME/.config/termite"
 VIM_FTPLUGIN_DIR="$HOME/.vim/after/ftplugin"
@@ -21,7 +21,7 @@ DIRS=(
 	$I3_DIR 
 	$POLYBAR_DIR
 	$ROFI_DIR
-	$SNIPPTES_DIR
+	$SNIPPETS_DIR
 	$SXHKD_DIR
 	$TERMITE_DIR
 	$VIM_FTPLUGIN_DIR

@@ -14,7 +14,7 @@ function install_packet (){
 	if $RESULT ; then
 		echo "[+] $1 installed";
 	else 
-		echo "[-] Cannot install $1. Plese install it manually. Then ^D"
+		echo "[-] Cannot install $1. Please install it manually. Then ^D"
 		bash
 	fi
 }
@@ -31,3 +31,10 @@ function install_vundle (){
 	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 }
 
+function setup_vim (){
+	[ ! -d ~/.vim/bundle/Vundle.vim ] && install_vundle
+	vim +PluginInstall +qa
+	wget http://ftp.vim.org/pub/vim/runtime/spell/it.utf-8.spl -O "$HOME/.vim/spell/it.utf-8.spl"
+	ln -fs $HOME/dotfiles/vim/ultisnips   $HOME/.vim/ultisnips 
+	ln -fs $HOME/dotfiles/vim/tex.vim     $HOME/.vim/after/ftplugin
+}

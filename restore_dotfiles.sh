@@ -1,6 +1,5 @@
 #! /bin/bash
 
-source "$HOME/dotfiles/dirs.sh"
 source "$HOME/dotfiles/utils.sh"
 
 cat ./packages.txt | egrep -v "^#.*" | while read PKG; do
@@ -13,22 +12,21 @@ done
 #vundle 4 vim
 [ ! -d ~/.vim/bundle/Vundle.vim ] && install_vundle
 
-
-for DIR in ${DIRS[@]}; do
-	[ ! -d $DIR ] && mkdir -p $DIR
-done
-
 #create links
-ln -fs $HOME/dotfiles/vim/vimrc                  $HOME/.vimrc
+#ln -fs $HOME/dotfiles/vim/vimrc                  $HOME/.vimrc
 ln -fs $HOME/dotfiles/vim/tex.vim                $HOME/.vim/after/ftplugin
-ln -fs $HOME/dotfiles/tmux/tmux.conf             $HOME/.tmux.conf
-ln -fs $HOME/dotfiles/zsh/zshrc                  $HOME/.zshrc
-ln -fs $HOME/dotfiles/r2/radare2rc               $HOME/.radare2rc
+#ln -fs $HOME/dotfiles/tmux/tmux.conf             $HOME/.tmux.conf
+#ln -fs $HOME/dotfiles/zsh/zshrc                  $HOME/.zshrc
+#ln -fs $HOME/dotfiles/r2/radare2rc               $HOME/.radare2rc
 
 
 for DIR in $HOME/dotfiles/config/* ; do
 	[ -d $HOME/.config/${DIR##*/} ] && rm -r $HOME/.config/${DIR##*/}
 	ln -fs $DIR $HOME/.config
+done
+
+for DOTFILE in $HOME/dotfiles/config_home/* ; do
+	ln -fs $DOTFILE $HOME/.${DOTFILE##*/}
 done
 
 #restore plugins

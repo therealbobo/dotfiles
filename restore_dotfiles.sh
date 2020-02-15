@@ -26,17 +26,10 @@ ln -fs $HOME/dotfiles/zsh/zshrc                  $HOME/.zshrc
 ln -fs $HOME/dotfiles/r2/radare2rc               $HOME/.radare2rc
 
 
-ln -fs $HOME/dotfiles/bspwm/bspwmrc              $BSPWM_DIR/bspwmrc
-ln -fs $HOME/dotfiles/dunst/dunstrc              $DUNST_DIR/dunstrc
-ln -fs $HOME/dotfiles/gdb/gdbinit                $HOME/.gdbinit
-ln -fs $HOME/dotfiles/i3/i3config                $I3_DIR/config
-ln -fs $HOME/dotfiles/i3/i3status                $I3STATUS_DIR/config
-ln -fs $HOME/dotfiles/polybar/polybar_launch.sh  $POLYBAR_DIR/launch.sh
-ln -fs $HOME/dotfiles/polybar/polybarconfig      $POLYBAR_DIR/config
-ln -fs $HOME/dotfiles/rofi/roficonfig            $ROFI_DIR/config
-ln -fs $HOME/dotfiles/sxhkd/sxhkdrc              $SXHKD_DIR/sxhkdrc
-ln -fs $HOME/dotfiles/termite/termiteconfig      $TERMITE_DIR/config
-ln -fs $HOME/dotfiles/zathura/zathurarc          $ZATHURA_DIR/zathurarc
+for DIR in $HOME/dotfiles/config/* ; do
+	[ -d $HOME/.config/${DIR##*/} ] && rm -r $HOME/.config/${DIR##*/}
+	ln -fs $DIR $HOME/.config
+done
 
 #restore plugins
 vim +PluginInstall +qa

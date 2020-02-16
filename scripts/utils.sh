@@ -1,28 +1,5 @@
 #! /bin/bash
 
-function install_packet (){
-	RESULT=""
-	if egrep -qi "arch" "/etc/os-release"; then
-		RESULT=$(sudo pacman -S $1)
-	elif egrep -qi "opensuse" "/etc/os-release"; then
-		RESULT=$(sudo zypper install $1)
-	elif egrep -qi "debian" "/etc/os-release"; then
-		RESULT=$(sudo apt install $1)
-	fi
-
-
-	if $RESULT ; then
-		echo "[+] $1 installed";
-	else 
-		echo "[-] Cannot install $1. Please install it manually. Then ^D"
-		bash
-	fi
-}
-
-function check_pkg_installed (){
-	which $1 1>/dev/null || install_packet $1
-}
-
 function install_ohmyzsh (){
 	sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 }
@@ -35,6 +12,6 @@ function setup_vim (){
 	[ ! -d ~/.vim/bundle/Vundle.vim ] && install_vundle
 	vim +PluginInstall +qa
 	wget http://ftp.vim.org/pub/vim/runtime/spell/it.utf-8.spl -O "$HOME/.vim/spell/it.utf-8.spl"
-	ln -fs $HOME/dotfiles/vim/ultisnips   $HOME/.vim/ultisnips 
-	ln -fs $HOME/dotfiles/vim/tex.vim     $HOME/.vim/after/ftplugin
+	ln -fs "$HOME"/dotfiles/vim/ultisnips   "$HOME"/.vim
+	ln -fs "$HOME"/dotfiles/vim/tex.vim     "$HOME"/.vim/after/ftplugin
 }

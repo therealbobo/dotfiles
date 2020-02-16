@@ -1,9 +1,10 @@
 #! /bin/bash
 
-source "$HOME/dotfiles/utils.sh"
+source "$HOME/dotfiles/scripts/pkg_man.sh"
+source "$HOME/dotfiles/scripts/utils.sh"
 
 cat ./packages.txt | egrep -v "^#.*" | while read PKG; do
-	check_pkg_installed $PKG
+	check_and_install $PKG
 done
 
 #oh-my-zsh

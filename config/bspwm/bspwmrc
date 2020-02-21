@@ -60,7 +60,7 @@ setxkbmap -option caps:swapescape
 
 
 sxhkd &
-#picom &
+picom &
 "$HOME"/.config/polybar/launch.sh
 xsetroot -cursor_name left_ptr &
 

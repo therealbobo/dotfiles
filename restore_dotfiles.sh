@@ -1,21 +1,22 @@
 #! /bin/bash
 
-source "$HOME/dotfiles/utils.sh"
+source "$HOME/dotfiles/scripts/pkg_man.sh"
+source "$HOME/dotfiles/scripts/utils.sh"
 
-cat ./packages.txt | egrep -v "^#.*" | while read PKG; do
-	check_pkg_installed $PKG
+grep -v -E "^#.*" "$HOME"/dotfiles/packages.txt | while read -r PKG; do
+	check_and_install "$PKG"
 done
 
 #oh-my-zsh
 [ ! -d ~/.oh-my-zsh ] && install_ohmyzsh
 
-for DIR in $HOME/dotfiles/config/* ; do
-	[ -d $HOME/.config/${DIR##*/} ] && rm -r $HOME/.config/${DIR##*/}
-	ln -fs $DIR $HOME/.config
+for DIR in "$HOME"/dotfiles/config/* ; do
+	[ -d "$HOME/.config/${DIR##*/}" ] && rm -r "$HOME/.config/${DIR##*/}"
+	ln -fs "$DIR" "$HOME"/.config
 done
 
-for DOTFILE in $HOME/dotfiles/config_home/* ; do
-	ln -fs $DOTFILE $HOME/.${DOTFILE##*/}
+for DOTFILE in "$HOME"/dotfiles/config_home/* ; do
+	ln -fs "$DOTFILE" "$HOME/.${DOTFILE##*/}"
 done
 
 setup_vim

@@ -5,5 +5,9 @@ dist: bionic
 sudo: required
 
 
+before_script:
+    - mv ~/therealbobo/dotfiles ~/dotfiles
+    - cd ~/dotfiles
+
 script:
     - bash restore_dotfiles.sh

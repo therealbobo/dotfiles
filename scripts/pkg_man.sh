@@ -6,7 +6,7 @@ function set_pkgman(){
 	OS=$(grep -e '^NAME' /etc/os-release | cut -d\" -f2)
 	case "$OS" in
 	"Arch Linux")
-		sudo pacman -Syu
+		sudo pacman -Syy
 		echo 'sudo pacman -S --noconfirm ' > /tmp/pkgman
 	  ;;
 	"Debian"*)

@@ -10,6 +10,7 @@ grep -v -E "^#.*" "$HOME"/dotfiles/packages.txt | while read -r PKG; do
 done
 
 #oh-my-zsh
+sudo chsh -s /bin/zsh $(whoami)
 [ ! -d ~/.oh-my-zsh ] && install_ohmyzsh
 
 for DIR in "$HOME"/dotfiles/config/* ; do

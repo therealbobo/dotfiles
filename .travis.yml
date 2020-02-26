@@ -1,0 +1,9 @@
+language: bash
+
+os: linux
+dist: bionic
+sudo: required
+
+
+script:
+    - bash restore_dotfiles.sh

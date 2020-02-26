@@ -13,5 +13,6 @@ function setup_vim (){
 	vim +PluginInstall +qa
 	wget http://ftp.vim.org/pub/vim/runtime/spell/it.utf-8.spl -O "$HOME/.vim/spell/it.utf-8.spl"
 	ln -fs "$HOME"/dotfiles/vim/ultisnips   "$HOME"/.vim
+	mkdir -p "$HOME"/.vim/after/ftplugin
 	ln -fs "$HOME"/dotfiles/vim/tex.vim     "$HOME"/.vim/after/ftplugin
 }

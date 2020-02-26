@@ -24,4 +24,4 @@ done
 setup_vim
 
 # create /etc/X11/xorg.conf.d/00-keyboard.conf to swap capslock and esc, https://superuser.com/questions/566871/how-to-map-the-caps-lock-key-to-escape-key-in-arch-linux
-sudo localectl set-x11-keymap us "" "" caps:escape
+#localectl set-x11-keymap us "" "" caps:escape

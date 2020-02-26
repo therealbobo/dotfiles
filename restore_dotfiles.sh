@@ -3,6 +3,8 @@
 source "$HOME/dotfiles/scripts/pkg_man.sh"
 source "$HOME/dotfiles/scripts/utils.sh"
 
+set_pkgman
+
 grep -v -E "^#.*" "$HOME"/dotfiles/packages.txt | while read -r PKG; do
 	check_and_install "$PKG"
 done

@@ -23,7 +23,7 @@ function install (){
 		echo "[+] $1 installed";
 	else 
 		echo "[-] Cannot install $1. Please install it manually. Then ^D"
-		bash
+		#bash
 	fi
 }
 

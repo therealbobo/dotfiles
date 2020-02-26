@@ -1,4 +1,6 @@
 #i3
+wget
+curl
 bspwm
 gdb
 mutt

@@ -23,6 +23,26 @@ alias emacs='emacs -nw'
 alias cpv='rsync -ah --info=progress2'
 
 
-#alias vpn
+# vpn
 alias nordvpn='sudo openvpn --config /etc/openvpn/current --auth-user-pass /etc/openvpn/auth.txt'
 alias lab2='sudo openvpn --config /etc/openvpn/lab2 --auth-user-pass /etc/openvpn/auth.txt'
+
+
+# systemd
+alias sc=systemctl
+alias scu='systemctl --user'
+
+alias scst='sudo systemctl start'
+alias scsp='sudo systemctl stop'
+alias scrl='sudo systemctl reload'
+alias scrt='sudo systemctl restart'
+alias sce='sudo systemctl enable'
+alias scd='sudo systemctl disable'
+
+alias scs='systemctl status'
+alias scsw='systemctl show'
+alias sclu='systemctl list-units'
+alias scluf='systemctl list-unit-files'
+alias sclt='systemctl list-timers'
+alias scc='systemctl cat'
+alias scie='systemctl is-enabled'

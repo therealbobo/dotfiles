@@ -3,5 +3,10 @@ services:
     - docker
 
 script:
-    - docker build -t dotfiles .
+    - docker build -t archlinux:dotfiles -f Dockerfile .
+    - docker build -t ubuntu:dotfiles -f DockerfileUbuntu .
+
+after_script:
+    - docker exec -it --rm archlinux:dotfiles dotfiles/test.sh
+    - docker exec -it --rm ubuntu:dotfiles    dotfiles/test.sh
 

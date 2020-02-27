@@ -4,12 +4,12 @@
 # https://github.com/therealbobo/dotfiles
 #
 
-FROM archlinux:latest
+FROM ubuntu:latest
 
 
 USER root
 
-RUN pacman -Syy && pacman -S --noconfirm sudo git
+RUN apt update && apt install -y sudo git
 RUN echo 'therealbobo     ALL=(ALL) NOPASSWD:ALL' | tee /etc/sudoers && \
     useradd -d /home/therealbobo therealbobo && \
     mkdir -p /home/therealbobo && chown -R therealbobo:therealbobo /home/therealbobo
@@ -20,4 +20,4 @@ ARG HOME='/home/therealbobo'
 
 COPY --chown=therealbobo . $HOME/dotfiles/
 
-RUN bash -c '/home/therealbobo/dotfiles/restore_dotfiles.sh archlinux'
+RUN bash -c '/home/therealbobo/dotfiles/restore_dotfiles.sh ubuntu'

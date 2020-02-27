@@ -9,8 +9,11 @@ function install_vundle (){
 }
 
 function setup_vim (){
+	# Install Vundle (plugin manager)
 	[ ! -d ~/.vim/bundle/Vundle.vim ] && install_vundle
 	vim +PluginInstall +qa
+	
+	# Install spell and snippests
 	mkdir -p "$HOME"/.vim/spell
 	mkdir -p "$HOME"/.vim/after
 	wget http://ftp.vim.org/pub/vim/runtime/spell/it.utf-8.spl -O "$HOME/.vim/spell/it.utf-8.spl"

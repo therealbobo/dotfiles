@@ -1,0 +1,14 @@
+#i3
+bspwm
+curl
+gdb
+#mutt
+#radare2
+snapd
+rofi
+sxhkd
+tmux
+vim
+wget
+zathura
+zsh

@@ -12,3 +12,5 @@ cat "$PKG_DIR/*" | grep -v -E "^#.*" | while read PKG; do
 		echo "[+] $PKG ok"
 	fi
 done
+
+return $RET

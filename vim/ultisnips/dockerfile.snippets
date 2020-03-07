@@ -1,0 +1,25 @@
+snippet ubuntu "ubuntu snippet" b
+
+FROM ubuntu:latest
+
+COPY . /opt/$1
+
+#ARG VAR='value'
+
+#RUN \
+#  apt-get update && \
+#  apt-get install -y software-properties-common
+
+# Define mountable directories.
+#VOLUME ["/etc/mysql", "/var/lib/mysql"]
+
+# Define working directory.
+#WORKDIR /data
+
+# Define default command.
+#CMD ["python3", "some_program"]
+
+# Expose ports.
+#EXPOSE 3306
+
+endsnippet

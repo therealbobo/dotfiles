@@ -5,7 +5,8 @@
 #clickable_url = true
 #dynamic_title = true
 #font = Roboto Mono 14
-font = SF Mono 14
+#font = SF Mono 14
+font = Iosevka 16
 #font = Hack 14
 #fullscreen = true
 #icon_name = terminal

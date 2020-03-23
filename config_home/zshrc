@@ -10,6 +10,7 @@ plugins=(
 	docker
 	extract
 	git
+	golang
 	pip
 	python
 	sudo

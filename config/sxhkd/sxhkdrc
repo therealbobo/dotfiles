@@ -140,6 +140,8 @@ super + {Left,Down,Up,Right}
 # Xbacklight controls
 XF86MonBrightness{Up,Down}
 	xbacklight -{inc,dec} 1
+shift + XF86MonBrightness{Up,Down}
+	xbacklight -{inc,dec} 5
 
 # Pulse Audio controls
 XF86Audio{RaiseVolume,LowerVolume}

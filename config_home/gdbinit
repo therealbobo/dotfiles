@@ -2,4 +2,6 @@ set history save on
 set history filename ~/.gdb_history
 set history size 32768
 #set history save expansion on
-#set auto-load safe-path /
+set auto-load safe-path /
+unset env LINES
+unset env COLUMNS

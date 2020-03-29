@@ -6,4 +6,4 @@ source "$HOME/dotfiles/scripts/utils.sh"
 mkdir -p "$HOME/.local/bin"
 mkdir -p "$HOME/.local/share"
 
-"$HOME"/dotfiles/os_scripts/"$1".sh
+"$HOME"/dotfiles/os_scripts/"$1".sh $2

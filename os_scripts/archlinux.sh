@@ -14,20 +14,23 @@ function install_aur_pkgman(){
 PACMAN="$HOME"/dotfiles/packages/archlinux/pacman.txt
 AUR="$HOME"/dotfiles/packages/archlinux/aur.txt
 
-sudo pacman -Syy
-grep -v -E "^#.*" "$PACMAN" | while read -r PKG; do
-	sudo pacman -S --noconfirm "$PKG"
-done
+if [ "$1" == 'install' ]; then
+	sudo pacman -Syy
+	grep -v -E "^#.*" "$PACMAN" | while read -r PKG; do
+		sudo pacman -S --noconfirm "$PKG"
+	done
 
-install_aur_pkgman
+	#TODO broken aur pkg install
+	install_aur_pkgman
 
-grep -v -E "^#.*" "$AUR" | while read -r PKG; do
-	yay -S --noconfirm "$PKG"
-done
+	grep -v -E "^#.*" "$AUR" | while read -r PKG; do
+		yay -S --noconfirm "$PKG"
+	done
 
-#oh-my-zsh
-sudo chsh -s /bin/zsh $(whoami)
-[ ! -d ~/.oh-my-zsh ] && install_ohmyzsh
+	#oh-my-zsh
+	sudo chsh -s /bin/zsh $(whoami)
+	[ ! -d ~/.oh-my-zsh ] && install_ohmyzsh
+fi
 
 for DIR in "$HOME"/dotfiles/config/* ; do
 	[ -d "$HOME/.config/${DIR##*/}" ] && rm -r "$HOME/.config/${DIR##*/}"

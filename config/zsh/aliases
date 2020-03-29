@@ -10,7 +10,8 @@ alias rgrep='grep -rain'
 
 
 # pwn
-alias peda='gdb -q -x "/usr/share/peda/peda.py"'
+alias gdb='gdb -nh -x "$XDG_CONFIG_HOME"/gdb/init'
+alias peda='gdb -nh -q -x "\"$XDG_CONFIG_HOME\"/gdb/init ; /usr/share/peda/peda.py"'
 alias disable_randomization='sudo bash -c "echo 0 > /proc/sys/kernel/randomize_va_space"'
 alias r2help="r2 -q -c '?*~...' -"
 

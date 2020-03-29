@@ -5,3 +5,4 @@ set history size 32768
 set auto-load safe-path /
 unset env LINES
 unset env COLUMNS
+source /usr/share/gef/gef.py

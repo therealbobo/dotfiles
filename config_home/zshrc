@@ -1,7 +1,46 @@
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="../../.config/zsh/bobo"
+### VARS ###{{{
+export ZSH="$HOME/.local/share/oh-my-zsh"
+export TERM=xterm-256color
+export VISUAL="vim"
+export EDITOR="vim"
+###}}}
+
+### XDG-CONFIGS ###{{{
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_DATA_HOME=$HOME/.local/share
+export USER_BIN=$HOME/.local/bin
+
+# golang
+export GOPATH=$XDG_DATA_HOME/golang
+
+# less
+#export LESSKEY="$XDG_CONFIG_HOME"/less/lesskey
+export LESSHISTFILE=-
+
+# parallel
+export PARALLEL_HOME="$XDG_CONFIG_HOME"/parallel
+
+# vagrant
+export VAGRANT_HOME="$XDG_DATA_HOME"/vagrant
+export VAGRANT_ALIAS_FILE="$XDG_DATA_HOME"/vagrant/aliases
+
+# z TODO broken
+export _Z_DATA="$XDG_DATA_HOME/z"
+
+# mplayer
+export MPLAYER_HOME="$XDG_CONFIG_HOME"/mplayer
+
+###}}}
+
+
+### PATH CONFIG ###{{{
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$USER_BIN
+###}}}
+
+ZSH_THEME="../../../../.config/zsh/bobo"
 export UPDATE_ZSH_DAYS=14
 COMPLETION_WAITING_DOTS="true"
 
@@ -19,63 +58,23 @@ plugins=(
 	z
 )
 
-# User configuration
 
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='mvim'
-fi
-
-if [ ! -f ~/.histfile ]; then touch ~/.histfile ; fi
-HISTFILE=~/.histfile
+# TODO mv histfile
+[ ! -f "$XDG_DATA_HOME"/vim/histfile ] && touch "$XDG_DATA_HOME"/vim/histfile
+HISTFILE="$XDG_DATA_HOME"/vim/histfile
 HISTSIZE=1000
 SAVEHIST=1000
 setopt autocd notify
 bindkey -v
-# End of lines configured by zsh-newuser-install
 
-
-# The following lines were added by compinstall
 zstyle :compinstall filename "$HOME/.zshrc"
 autoload -Uz compinit
 compinit
-# End of lines added by compinstall
 
 export KEYTIMEOUT=1
 
-
 ### SOURCES ###{{{
-source $HOME/.config/zsh/aliases
-source $ZSH/oh-my-zsh.sh
+source "$XDG_CONFIG_HOME/zsh/aliases"
+source "$ZSH/oh-my-zsh.sh"
 ###}}}
 
-### VARS ###{{{
-export TERM=xterm-256color
-export VISUAL="vim"
-export GOPATH=/home/robi/go
-export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:/home/$USER/.bin 
-export PATH=$PATH:/home/$USER/.local/bin 
-export PATH=$PATH:/home/$USER/scripts
-###}}}
-
-### XDG-CONFIGS ###{{{
-export XDG_DATA_HOME=$HOME/.local/share
-
-
-#export LESSKEY="$XDG_CONFIG_HOME"/less/lesskey
-# less
-export LESSHISTFILE=-
-
-#parallel
-export PARALLEL_HOME="$XDG_CONFIG_HOME"/parallel
-
-# vagrant
-export VAGRANT_HOME="$XDG_DATA_HOME"/vagrant
-export VAGRANT_ALIAS_FILE="$XDG_DATA_HOME"/vagrant/aliases
-
-# z
-export _Z_DATA="$XDG_DATA_HOME/z"
-
-###}}}

@@ -2,21 +2,26 @@
 
 function install_ohmyzsh (){
 	sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+	mv .oh-my-zsh "$XDG_DATA_HOME/oh-my-zsh"
 }
 
 function install_vundle (){
-	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+	git clone https://github.com/VundleVim/Vundle.vim.git $XDG_DATA_HOME/vim/bundle/Vundle.vim
 }
 
 function setup_vim (){
 	# Install Vundle (plugin manager)
-	[ ! -d ~/.vim/bundle/Vundle.vim ] && install_vundle
+	[ ! -d "$XDG_DATA_HOME"/vim/Vundle.vim ] && install_vundle
 	vim +PluginInstall +qa
+
+	mkdir -p "$XDG_DATA_HOME"/vim
+	mkdir -p "$XDG_CACHE_HOME"/vim
+	[ ! -f "$XDG_CACHE_HOME"/vim/viminfo ] && touch "$XDG_CACHE_HOME"/vim/viminfo
 	
 	# Install spell and snippests
-	mkdir -p "$HOME"/.vim/spell
-	mkdir -p "$HOME"/.vim/after
-	wget http://ftp.vim.org/pub/vim/runtime/spell/it.utf-8.spl -O "$HOME/.vim/spell/it.utf-8.spl"
-	ln -fs "$HOME"/dotfiles/vim/ultisnips   "$HOME"/.vim
-	ln -fs "$HOME"/dotfiles/vim/tex.vim     "$HOME"/.vim/after/ftplugin
+	mkdir -p "$XDG_DATA_HOME"/vim/spell
+	mkdir -p "$XDG_DATA_HOME"/vim/after
+	wget http://ftp.vim.org/pub/vim/runtime/spell/it.utf-8.spl -O "$XDG_DATA_HOME/vim/spell/it.utf-8.spl"
+	ln -fs "$HOME"/dotfiles/vim/ultisnips   "$XDG_DATA_HOME"/vim
+	ln -fs "$HOME"/dotfiles/vim/tex.vim     "$XDG_DATA_HOME"/vim/after/ftplugin
 }

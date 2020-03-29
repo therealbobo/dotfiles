@@ -32,6 +32,12 @@ export _Z_DATA="$XDG_DATA_HOME/z"
 # mplayer
 export MPLAYER_HOME="$XDG_CONFIG_HOME"/mplayer
 
+# weechat
+export WEECHAT_HOME="$XDG_CONFIG_HOME"/weechat
+
+# weechat
+export GNUPGHOME="$XDG_CONFIG_HOME"/gnupg
+
 ###}}}
 
 
@@ -69,7 +75,7 @@ bindkey -v
 
 zstyle :compinstall filename "$HOME/.zshrc"
 autoload -Uz compinit
-compinit
+compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
 
 export KEYTIMEOUT=1
 

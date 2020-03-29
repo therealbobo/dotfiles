@@ -210,7 +210,7 @@ exec --no-startup-id udiskie -t
 
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-exec_always --no-startup-id feh --randomize --bg-fill ~/Pictures/Wallpapers/*
+exec_always --no-startup-id feh --randomize --no-fehbg --bg-fill ~/Pictures/Wallpapers/*
 exec_always --no-startup-id libinput-gestures-setup start
 
 #######################################################################

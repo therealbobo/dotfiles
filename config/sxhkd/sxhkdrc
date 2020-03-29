@@ -186,4 +186,4 @@ super + shift + y
 
 # Change wallpaper
 super + w
-	feh --randomize --bg-fill ~/Pictures/Wallpapers/*
+	feh --randomize --no-fehbg --bg-fill ~/Pictures/Wallpapers/*

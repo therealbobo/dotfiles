@@ -10,5 +10,5 @@ My Linux dotfiles.
 ```
 $ git clone https://github.com/therealbobo/dotfiles
 $ cd dotfiles
-$ ./restore_dotfiles
+$ ./restore_dotfiles (archlinux|ubuntu)
 ```

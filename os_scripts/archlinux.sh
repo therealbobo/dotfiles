@@ -29,6 +29,7 @@ if [ "$1" == 'install' ]; then
 
 	#oh-my-zsh
 	sudo chsh -s /bin/zsh $(whoami)
+	source $HOME/dotfiles/config_home/zshrc
 	[ ! -d ~/.oh-my-zsh ] && install_ohmyzsh
 fi
 

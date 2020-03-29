@@ -14,6 +14,7 @@ function install_aur_pkgman(){
 PACMAN="$HOME"/dotfiles/packages/archlinux/pacman.txt
 AUR="$HOME"/dotfiles/packages/archlinux/aur.txt
 
+source $HOME/dotfiles/config_home/zshrc
 if [ "$1" == 'install' ]; then
 	sudo pacman -Syy
 	grep -v -E "^#.*" "$PACMAN" | while read -r PKG; do
@@ -29,7 +30,6 @@ if [ "$1" == 'install' ]; then
 
 	#oh-my-zsh
 	sudo chsh -s /bin/zsh $(whoami)
-	source $HOME/dotfiles/config_home/zshrc
 	[ ! -d ~/.oh-my-zsh ] && install_ohmyzsh
 fi
 

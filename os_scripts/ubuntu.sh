@@ -1,6 +1,7 @@
 #! /bin/bash
 
 source "$HOME/dotfiles/scripts/utils.sh"
+source $HOME/dotfiles/config_home/zshrc
 
 
 APT="$HOME"/dotfiles/packages/ubuntu/apt.txt

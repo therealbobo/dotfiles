@@ -73,9 +73,10 @@ SAVEHIST=1000
 setopt autocd notify
 bindkey -v
 
+export ZSH_COMPDUMP="$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
 zstyle :compinstall filename "$HOME/.zshrc"
 autoload -Uz compinit
-compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
+compinit -d $ZSH_COMPDUMP
 
 export KEYTIMEOUT=1
 

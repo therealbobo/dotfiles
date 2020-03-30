@@ -17,6 +17,7 @@ grep -v -E "^#.*" "$SNAP" | while read -r PKG; do
 done
 
 #oh-my-zsh
+mkdir -p "$HOME/.cache/zsh"
 sudo chsh -s /bin/zsh $(whoami)
 source $HOME/dotfiles/config_home/zshrc
 [ ! -d ~/.oh-my-zsh ] && install_ohmyzsh

@@ -29,6 +29,7 @@ if [ "$1" == 'install' ]; then
 	done
 
 	#oh-my-zsh
+	mkdir -p "$HOME/.cache/zsh"
 	sudo chsh -s /bin/zsh $(whoami)
 	[ ! -d ~/.oh-my-zsh ] && install_ohmyzsh
 fi

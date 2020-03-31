@@ -1,3 +1,4 @@
+#! /usr/bin/env sh
 #
 # wm independent hotkeys
 #
@@ -5,8 +6,12 @@
 # terminal emulator
 super + Return
 	termite
+# terminal emulator with same path
 super + shift + Return
 	termite -d $(xcwd)
+# interractive terminal emulator with same path
+super + ctrl + shift + Return
+	termite -d $(xcwd) -e fish
 
 # program launcher
 super + d

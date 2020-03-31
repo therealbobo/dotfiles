@@ -1,11 +1,12 @@
 #i3
-bspwm
-curl
-gdb
 #mutt
 #radare2
-snapd
+bspwm
+curl
+fish
+gdb
 rofi
+snapd
 sxhkd
 tmux
 vim

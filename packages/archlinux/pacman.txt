@@ -1,6 +1,7 @@
 #i3
 bspwm
 curl
+fish
 gdb
 mutt
 radare2

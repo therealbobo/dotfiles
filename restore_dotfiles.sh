@@ -35,4 +35,4 @@ while getopts "hli:d" opt; do
 	esac
 done
 
-#"$HOME"/dotfiles/os_scripts/"$DISTRO".sh "$INSTALL"
+"$HOME"/dotfiles/os_scripts/"$DISTRO".sh "$INSTALL"

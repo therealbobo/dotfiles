@@ -20,4 +20,4 @@ ARG HOME='/home/therealbobo'
 
 COPY --chown=therealbobo . $HOME/dotfiles/
 
-RUN bash -c '/home/therealbobo/dotfiles/restore_dotfiles.sh archlinux'
+RUN bash -c '/home/therealbobo/dotfiles/restore_dotfiles.sh -d archlinux'

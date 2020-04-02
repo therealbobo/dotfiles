@@ -7,7 +7,7 @@ mkdir -p "$HOME/.local/bin"
 mkdir -p "$HOME/.local/share"
 
 
-while getopts "hli:d" opt; do
+while getopts "hlid:" opt; do
 	case ${opt} in
 		h ) # help message
 			echo "Usage: $0 [-h|-l|-i -d <distro>]
@@ -22,6 +22,7 @@ while getopts "hli:d" opt; do
 			;;
 		d ) # distro select
 			DISTRO=${OPTARG}
+			echo $DISTRO
 			;;
 		l ) # distro list
 			SCRIPT=$(readlink -f $0)

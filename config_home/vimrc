@@ -4,10 +4,7 @@ set rtp+=~/.local/share/vim/bundle/Vundle.vim
 
 call vundle#begin('~/.local/share/vim/bundle/Vundle.vim')
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'bling/vim-bufferline'
-"Latex plugins
+Plugin 'itchyny/lightline.vim'
 Plugin 'lervag/vimtex'
 Plugin 'SirVer/ultisnips'
 call vundle#end()
@@ -27,13 +24,14 @@ set t_Co=256
 set undofile
 "set undodir=~/.vim/undodir
 set viminfo+=n~/.cache/vim/viminfo
-set undodir=~/.vim/undodir
+set undodir=~/.cache/vim/undodir
 set spelllang=it,en_us
 set tabstop=4
 set shiftwidth=4
 set clipboard=unnamedplus
 set encoding=UTF-8
 set mouse=a
+
 
 "inoremaps
 inoremap jk <ESC>
@@ -51,30 +49,14 @@ endif
 " netrw
 let g:netrw_home=$XDG_CACHE_HOME.'/vim'
 
-"airline
-let g:airline#extensions#bufferline#enabled = 1
-let g:airline_solarized_db='dark'
-let g:airline_theme='luna'
-let g:airline_powerline_fonts = 1
-
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-
-" unicode symbols
-let g:airline_left_sep = '»'
-let g:airline_left_sep = ''
-let g:airline_right_sep = '«'
-let g:airline_right_sep = ''
-let g:airline_symbols.linenr = '␊'
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.paste = '∥'
-let g:airline_symbols.whitespace = 'Ξ'
-
+set laststatus=2
+let g:lightline = {
+      \ 'colorscheme': 'solarized',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'readonly', 'filename', 'modified'] ]
+      \ },
+  \ }
 
 "vimtex
 let g:tex_flavor='latex'

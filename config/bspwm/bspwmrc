@@ -4,16 +4,13 @@
 ### BSPWM CONFIGS ### {{{
 
 # Define workpaces
-i=0
-MONITOR_NUM=$(xrandr -q | grep ' connected' | cut -d' ' -f1 | wc -l)
+readarray -t MONITORS < <(xrandr -q | grep ' connected' | cut -d' ' -f1)
+MONITOR_NUM=${#MONITORS[@]}
 DESKTOP_PER_MONITOR=$(((10 / MONITOR_NUM)))
-for MONITOR in $(xrandr -q | grep ' connected' | cut -d' ' -f1); do
-	BEGIN=$((i * DESKTOP_PER_MONITOR))
-	END=$((i + 1))
-	END=$((END * DESKTOP_PER_MONITOR))
-	BEGIN=$((BEGIN + 1))
-	i=$((i + 1))
-	eval echo {$BEGIN..$END} | sed 's/10/0/' | xargs bspc monitor $MONITOR -d
+for ((i=0 ; i < ${#MONITORS[@]} ; i++)); do
+	BEGIN=$((i * DESKTOP_PER_MONITOR + 1))
+	END=$(((i + 1 ) * DESKTOP_PER_MONITOR))
+	eval echo {$BEGIN..$END} | sed 's/10/0/' | xargs bspc monitor ${MONITORS[i]} -d
 done
 
 bspc config border_width                0

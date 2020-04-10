@@ -2,7 +2,7 @@ set nocompatible
 filetype off
 set rtp+=~/.local/share/vim/bundle/Vundle.vim
 
-call vundle#begin('~/.local/share/vim/bundle/Vundle.vim')
+call vundle#begin('~/.local/share/vim/bundle')
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'itchyny/lightline.vim'
 Plugin 'lervag/vimtex'
@@ -11,18 +11,16 @@ call vundle#end()
 
 " Vim settings
 filetype plugin indent on
+syntax on
 set autoindent
 set smartindent
 set number relativenumber
 set showmatch
-syntax on
 set backspace=indent,eol,start
 set path+=**
-set list lcs=tab:\|\ 
 set background=dark
 set t_Co=256
 set undofile
-"set undodir=~/.vim/undodir
 set viminfo+=n~/.cache/vim/viminfo
 set undodir=~/.cache/vim/undo
 set spelllang=it,en_us
@@ -31,6 +29,7 @@ set shiftwidth=4
 set clipboard=unnamedplus
 set encoding=UTF-8
 set mouse=a
+set list lcs=tab:\|\ 
 
 
 "inoremaps

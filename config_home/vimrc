@@ -24,7 +24,7 @@ set t_Co=256
 set undofile
 "set undodir=~/.vim/undodir
 set viminfo+=n~/.cache/vim/viminfo
-set undodir=~/.cache/vim/undodir
+set undodir=~/.cache/vim/undo
 set spelllang=it,en_us
 set tabstop=4
 set shiftwidth=4

@@ -5,6 +5,7 @@ set rtp+=~/.local/share/vim/bundle/Vundle.vim
 call vundle#begin('~/.local/share/vim/bundle')
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'itchyny/lightline.vim'
+Plugin 'bling/vim-bufferline'
 Plugin 'lervag/vimtex'
 Plugin 'SirVer/ultisnips'
 call vundle#end()
@@ -14,6 +15,8 @@ filetype plugin indent on
 syntax on
 set autoindent
 set smartindent
+set tabstop=4
+set shiftwidth=4
 set number relativenumber
 set showmatch
 set backspace=indent,eol,start
@@ -24,11 +27,10 @@ set undofile
 set viminfo+=n~/.cache/vim/viminfo
 set undodir=~/.cache/vim/undo
 set spelllang=it,en_us
-set tabstop=4
-set shiftwidth=4
 set clipboard=unnamedplus
 set encoding=UTF-8
 set mouse=a
+set hls
 set list lcs=tab:\|\ 
 
 
@@ -53,9 +55,18 @@ let g:lightline = {
       \ 'colorscheme': 'solarized',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'readonly', 'filename', 'modified'] ]
+      \             [ 'readonly', 'modified'],
+      \             [ 'bufferline'] ]
       \ },
+      \ 'component': {
+      \   'bufferline': '%{bufferline#refresh_status()}%{g:bufferline_status_info.before}%#TabLineSel#%{g:bufferline_status_info.current}%#LightLineLeft_active_3#%{g:bufferline_status_info.after}'
+      \ }
   \ }
+
+"bufferline
+let g:bufferline_echo = 0
+let g:bufferline_active_buffer_left = ''
+let g:bufferline_active_buffer_right = ''
 
 "vimtex
 let g:tex_flavor='latex'

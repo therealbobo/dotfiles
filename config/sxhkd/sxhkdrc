@@ -17,7 +17,7 @@ super + ctrl + shift + Return
 super + d
 	rofi -modi drun -show drun -show-icons -icons-theme hicolor
 # program switcher
-super + Tab
+super + shift + Tab
 	rofi -combi-modi window -show combi -show-icons -icons-theme hicolor
 # ssh
 super + e

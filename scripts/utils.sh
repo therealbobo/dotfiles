@@ -5,6 +5,20 @@ function install_ohmyzsh (){
 	mv .oh-my-zsh "$XDG_DATA_HOME/oh-my-zsh"
 }
 
+function install_native_plugins (){
+	PACKAGES=(
+		'VundleVim/Vundle.vim'
+		'itchyny/lightline.vim'
+		'bling/vim-bufferline'
+		'lervag/vimtex'
+		'SirVer/ultisnips'
+	)
+	for PKG in ${PACKAGES[@]}; do
+		git clone "https://github.com/$PKG" $XDG_DATA_HOME/vim/pack/${PKG##*/}
+	done
+	
+}
+
 function install_vundle (){
 	git clone https://github.com/VundleVim/Vundle.vim.git $XDG_DATA_HOME/vim/bundle/Vundle.vim
 }
@@ -21,6 +35,7 @@ function setup_vim (){
 	# Install spell and snippests
 	mkdir -p "$XDG_DATA_HOME"/vim/spell
 	mkdir -p "$XDG_DATA_HOME"/vim/after
+	mkdir -p "$XDG_DATA_HOME"/vim/pack
 	wget http://ftp.vim.org/pub/vim/runtime/spell/it.utf-8.spl -O "$XDG_DATA_HOME/vim/spell/it.utf-8.spl"
 	ln -fs "$HOME"/dotfiles/vim/ultisnips   "$XDG_DATA_HOME"/vim
 	ln -fs "$HOME"/dotfiles/vim/tex.vim     "$XDG_DATA_HOME"/vim/after/ftplugin

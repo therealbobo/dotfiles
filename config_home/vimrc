@@ -11,6 +11,7 @@ Plugin 'SirVer/ultisnips'
 call vundle#end()
 
 " Vim settings
+"packloadall
 filetype plugin indent on
 syntax on
 set autoindent
@@ -22,7 +23,7 @@ set showmatch
 set backspace=indent,eol,start
 set path+=**
 set background=dark
-set t_Co=256
+:set t_Co=256
 set undofile
 set viminfo+=n~/.cache/vim/viminfo
 set undodir=~/.cache/vim/undo

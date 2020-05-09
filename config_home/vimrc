@@ -53,7 +53,7 @@ let g:netrw_home=$XDG_CACHE_HOME.'/vim'
 
 set laststatus=2
 let g:lightline = {
-      \ 'colorscheme': 'solarized',
+      \ 'colorscheme': 'wombat',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'readonly', 'modified'],

@@ -12,7 +12,7 @@ alias rgrep='grep -rain'
 # pwn
 alias gdb='gdb -q -nh -x "$XDG_CONFIG_HOME"/gdb/init'
 alias peda='gdb -q -nh -x "$XDG_CONFIG_HOME"/gdb/initpeda'
-alias gef='gdb -q -qnh -x "$XDG_CONFIG_HOME"/gdb/initgef'
+alias gef='gdb -q -nh -x "$XDG_CONFIG_HOME"/gdb/initgef'
 alias disable_randomization='sudo bash -c "echo 0 > /proc/sys/kernel/randomize_va_space"'
 alias r2help="r2 -q -c '?*~...' -"
 

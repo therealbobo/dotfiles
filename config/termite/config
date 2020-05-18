@@ -1,18 +1,20 @@
 [options]
-#allow_bold = true
+allow_bold = true
 #audible_bell = false
-#bold_is_bright = true
-#clickable_url = true
+bold_is_bright = true
+clickable_url = true
 #dynamic_title = true
-font = DejaVu Sans Mono 14
-#fullscreen = true
+font = Noto 14
+font = DejaVu Mono 14
+font = Roboto Mono 14
+fullscreen = true
 #icon_name = terminal
 #mouse_autohide = false
 #scroll_on_output = false
 #scroll_on_keystroke = true
 # Length of the scrollback buffer, 0 disabled the scrollback buffer
 # and setting it to a negative value means "infinite scrollback"
-scrollback_lines = 10000
+scrollback_lines = -1
 #search_wrap = true
 #urgent_on_bell = true
 #hyperlinks = false
@@ -46,7 +48,7 @@ foreground          = #93a1a1
 foreground_bold     = #eee8d5
 cursor              = #eee8d5
 cursor_foreground   = #002b36
-background          = rgba(0, 43, 54)
+background          = rgba(0,43,54,1)
 
 # 16 color space
 

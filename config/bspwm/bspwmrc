@@ -55,6 +55,7 @@ bspc rule -a Screenkey                   manage=off
 
 setxkbmap us
 setxkbmap -option caps:swapescape
+xmodmap ~/.Xmodmap
 
 
 sxhkd &

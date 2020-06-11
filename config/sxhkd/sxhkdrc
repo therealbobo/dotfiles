@@ -15,7 +15,7 @@ super + ctrl + shift + Return
 
 # program launcher
 super + d
-	rofi -modi drun -show drun -show-icons -icons-theme hicolor
+	zsh -c "rofi -modi drun -show drun -show-icons -icons-theme hicolor"
 # program switcher
 super + shift + Tab
 	rofi -combi-modi window -show combi -show-icons -icons-theme hicolor

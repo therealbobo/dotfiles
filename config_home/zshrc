@@ -11,6 +11,7 @@ export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
 export USER_BIN=$HOME/.local/bin
+export USER_SCRIPTS=$HOME/.local/scripts
 
 # golang
 export GOPATH=$XDG_DATA_HOME/golang
@@ -43,7 +44,7 @@ export GNUPGHOME="$XDG_CONFIG_HOME"/gnupg
 
 ### PATH CONFIG ###{{{
 export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:$USER_BIN
+export PATH=$PATH:$USER_BIN:$USER_SCRIPTS
 ###}}}
 
 ZSH_THEME="../../../../.config/zsh/bobo"

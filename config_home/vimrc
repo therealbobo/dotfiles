@@ -36,8 +36,8 @@ set list lcs=tab:\|\
 
 
 "inoremaps
-inoremap jk <ESC>
-inoremap JK <ESC>
+"inoremap jk <ESC>
+"inoremap JK <ESC>
 
 "cnoremap
 "sudo edit

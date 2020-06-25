@@ -39,6 +39,8 @@ export WEECHAT_HOME="$XDG_CONFIG_HOME"/weechat
 # weechat
 export GNUPGHOME="$XDG_CONFIG_HOME"/gnupg
 
+export _JAVA_AWT_WM_NONREPARENTING=1
+
 ###}}}
 
 

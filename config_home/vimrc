@@ -23,7 +23,7 @@ set showmatch
 set backspace=indent,eol,start
 set path+=**
 set background=dark
-:set t_Co=256
+set t_Co=256
 set undofile
 set viminfo+=n~/.cache/vim/viminfo
 set undodir=~/.cache/vim/undo
@@ -32,7 +32,7 @@ set clipboard=unnamedplus
 set encoding=UTF-8
 set mouse=a
 set hls
-set list lcs=tab:\|\ 
+"set list lcs=tab:\|\ 
 
 
 "inoremaps

@@ -1,7 +1,0 @@
-set history save on
-set history filename $XDG_CACHE_HOME/.gdb_history
-set history size 32768
-#set history save expansion on
-set auto-load safe-path /
-unset env LINES
-unset env COLUMNS

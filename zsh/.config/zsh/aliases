@@ -1,0 +1,52 @@
+# basic aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+alias rgrep='grep -rain'
+
+
+# pwn
+alias gdb='gdb -q -nh -x "$XDG_CONFIG_HOME"/gdb/init'
+alias peda='gdb -q -nh -x "$XDG_CONFIG_HOME"/gdb/initpeda'
+alias gef='gdb -q -nh -x "$XDG_CONFIG_HOME"/gdb/initgef'
+alias disable_randomization='sudo bash -c "echo 0 > /proc/sys/kernel/randomize_va_space"'
+alias r2help="r2 -q -c '?*~...' -"
+
+
+# utiles
+#alias copypassword='lpass show --clip --password'
+#alias weather="curl -s us.wttr.in"
+alias weather='function get_weather(){echo $1 | tr " " "_" | xargs -I{} curl -s v2.wttr.in/{} }; get_weather'
+alias myip="curl -fSs https://1.1.1.1/cdn-cgi/trace | egrep '^(ip|loc)'"
+alias emacs='emacs -nw'
+alias cpv='rsync -ah --info=progress2'
+alias cpv='rsync -ah --info=progress2'
+alias weechat='weechat -d "$XDG_CONFIG_HOME"/weechat'
+
+# vpn
+alias nordvpn='sudo openvpn --config /etc/openvpn/current --auth-user-pass /etc/openvpn/auth.txt'
+alias lab2='sudo openvpn --config /etc/openvpn/lab2 --auth-user-pass /etc/openvpn/auth.txt'
+
+
+# systemd
+alias sc=systemctl
+alias scu='systemctl --user'
+
+alias scst='sudo systemctl start'
+alias scsp='sudo systemctl stop'
+alias scrl='sudo systemctl reload'
+alias scrt='sudo systemctl restart'
+alias sce='sudo systemctl enable'
+alias scd='sudo systemctl disable'
+
+alias scs='systemctl status'
+alias scsw='systemctl show'
+alias sclu='systemctl list-units'
+alias scluf='systemctl list-unit-files'
+alias sclt='systemctl list-timers'
+alias scc='systemctl cat'
+alias scie='systemctl is-enabled'

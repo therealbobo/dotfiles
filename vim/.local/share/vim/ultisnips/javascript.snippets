@@ -1,0 +1,116 @@
+snippet class_override "frida snippet for class override" b
+console.log("Script loaded correctly!");
+Java.perform(function() {
+	var class = Java.use("$1")
+	class.$2.implementation  = function(a){
+		console.log("$2",a);
+		this.$2(a);
+		//return ret;
+	}
+}, 0);
+endsnippet
+
+snippet lib_override "frida snippet for lib override" b
+console.log("Script loaded correctly!");
+Java.perform(function() {
+	var System = Java.use("java.lang.System")
+	System.loadLibrary.implementation  = function(a){
+		console.log("Loading lib",a);
+		this.loadLibrary(a);
+		//return ret;
+	}
+}, 0);
+endsnippet
+
+
+
+snippet ssl_unpin "frida snippet for ssl unpinning" b
+Java.perform(function() {
+	var array_list = Java.use("java.util.ArrayList");
+	var ApiClient = Java.use('com.android.org.conscrypt.TrustManagerImpl');
+	ApiClient.checkTrustedRecursive.implementation = function(a1, a2, a3, a4, a5, a6) {
+		console.log('Bypassing SSL Pinning');
+		var k = array_list.$new();
+		return k;
+	}
+}, 0);
+endsnippet
+
+
+
+snippet hook_gson "frida snippet for gson" b
+Java.perform(function() {
+	var gson = Java.use('com.google.gson.Gson');
+	gson.toJson.overload('java.lang.Object').implementation = function(a) {
+		var gsonInstance = gson.$new();
+		var result = gsonInstance.toJson(a);
+		if(result != undefined)
+			console.log('Created JSON:',result);
+		return result; }
+
+	gson.toJson.overload('java.lang.Object', 'java.lang.reflect.Type').implementation = function(a,b) {
+		var gsonInstance = gson.$new();
+		var result = gsonInstance.toJson(a,b);
+		if(result != undefined)
+			console.log('Created JSON:',result);
+		return result;
+	}
+	gson.toJson.overload('com.google.gson.JsonElement').implementation = function(a) {
+		var gsonInstance = gson.$new();
+		var result = gsonInstance.toJson(a);
+		if(result != undefined)
+			console.log('Created JSON:',result);
+		return result;
+	}
+	gson.toJson.overload('com.google.gson.JsonElement', 'java.lang.Appendable').implementation = function(a,b) {
+		var gsonInstance = gson.$new();
+		var result = gsonInstance.toJson(a,b);
+		if(result != undefined)
+			console.log('Created JSON:',result);
+		return result;
+	}
+	gson.toJson.overload('java.lang.Object', 'java.lang.Appendable').implementation = function(a,b) {
+		var gsonInstance = gson.$new();
+		var result = gsonInstance.toJson(a,b);
+		if(result != undefined)
+			console.log('Created JSON:',result);
+		return result;
+	}
+	gson.toJson.overload('com.google.gson.JsonElement', 'com.google.gson.stream.JsonWriter').implementation = function(a,b) {
+		var gsonInstance = gson.$new();
+		var result = gsonInstance.toJson(a,b);
+		if(result != undefined)
+			console.log('Created JSON:',result);
+		return result;
+	}
+	gson.toJson.overload('java.lang.Object', 'java.lang.reflect.Type', 'java.lang.Appendable').implementation = function(a,b,c) {
+		var gsonInstance = gson.$new();
+		var result = gsonInstance.toJson(a,b,c);
+		if(result != undefined)
+			console.log('Created JSON:',result);
+		return result;
+	}
+	gson.toJson.overload('java.lang.Object', 'java.lang.reflect.Type', 'com.google.gson.stream.JsonWriter').implementation = function(a,b,c) {
+		var gsonInstance = gson.$new();
+		var result = gsonInstance.toJson(a,b,c);
+		if(result != undefined)
+			console.log('Created JSON:',result);
+		return result;
+	}
+}, 0);
+endsnippet
+
+
+
+snippet hook_lib "frida snippet for lib hook" b
+console.log("Script loaded correctly!");
+Java.perform(function() {
+	var System = Java.use("java.lang.System")
+
+	System.loadLibrary.implementation  = function(a){
+		console.log("Loading lib",a);
+		this.loadLibrary(a);
+		//return ret;
+	}
+}, 0);
+endsnippet

@@ -1,0 +1,81 @@
+#! /bin/bash
+# My github : https://github.com/therealbobo
+
+bspc config border_radius               5
+### BSPWM CONFIGS ### {{{
+
+# Define workpaces
+readarray -t MONITORS < <(xrandr -q | grep ' connected' | cut -d' ' -f1)
+MONITOR_NUM=${#MONITORS[@]}
+DESKTOP_PER_MONITOR=$(((10 / MONITOR_NUM)))
+for ((i=0 ; i < ${#MONITORS[@]} ; i++)); do
+	BEGIN=$((i * DESKTOP_PER_MONITOR + 1))
+	END=$(((i + 1 ) * DESKTOP_PER_MONITOR))
+	eval echo {$BEGIN..$END} | sed 's/10/0/' | xargs bspc monitor ${MONITORS[i]} -d
+done
+
+bspc config border_width                2
+bspc config window_gap                  10
+bspc config top_padding                 0
+bspc config bottom_padding              0
+bspc config left_padding                0
+bspc config right_padding               0
+
+bspc config normal_border_color  "#4C566A"
+bspc config focused_border_color "#D8DEE9"
+
+bspc config split_ratio              0.52
+bspc config borderless_monocle       true
+bspc config gapless_monocle          true
+bspc config focus_follows_pointer    true
+
+bspc config click_to_focus     true
+bspc config pointer_action1    move
+bspc config pointer_action2    resize_side
+bspc config pointer_action3    resize_corner
+
+bspc config ignore_ewmh_fullscreen  all
+
+###}}}
+
+
+### WINDOW RULES ###{{{
+
+#-----------Class-Name--------------------Workspaces---Focus-----Follow------Other-----------------------------------------------#
+bspc rule -a Gimp                        desktop='^8'           follow=on  state=floating
+bspc rule -a Chromium                    desktop='^2'
+bspc rule -a MPlayer                                  focus=off            state=floating  sticky=on  rectangle=720x480+1264+704
+bspc rule -a Kupfer.py                                focus=on
+bspc rule -a Screenkey                   manage=off
+
+###}}}
+
+
+### AUTOSTART ###{{{
+
+setxkbmap us
+setxkbmap -option caps:swapescape
+xmodmap ~/.Xmodmap
+
+
+sxhkd &
+picom &
+"$HOME"/.config/polybar/launch.sh
+xsetroot -cursor_name left_ptr &
+
+#SIZE="1920x24+0+0"
+#FOREGROUND="#93a1a1"
+#BACKGROUND="#002b36"
+#ICON_FONT="Font Awesome 5 Free Solid:style=Solid"
+#FONT="DejaVu Sans"
+#( sleep 1s && bash $HOME/dotfiles/lemonbar/lemonbar.sh | \
+#	lemonbar -g "$SIZE" -p -F "$FOREGROUND" -B "$BACKGROUND" -f "$ICON_FONT" -f "$FONT") &
+
+killall nm-applet udiskie
+
+feh --randomize --no-fehbg --bg-fill ~/Pictures/Wallpapers/*
+libinput-gestures-setup start
+nm-applet &
+udiskie -t
+
+###}}}

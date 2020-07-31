@@ -1,0 +1,52 @@
+snippet beg "begin{} / end{}" b
+\begin{$1}
+	$0
+\end{$1}
+endsnippet
+
+snippet item "begin{itemize} / end{itemize}" b
+\begin{itemize}
+	\item $1
+\end{itemize}
+endsnippet
+
+snippet enum "begin{enumerate} / end{enumerate}" b
+\begin{enumerate}
+	\item $1
+\end{enumerate}
+endsnippet
+
+snippet box "frame around the text with a box" b
+\fbox{\begin{minipage}{\textwidth}
+$1
+\end{minipage}}
+endsnippet
+
+
+
+snippet img "image" b
+\begin{center}
+	\includegraphics[width=0.75\textwidth]{images/$1}
+\end{center}
+$0
+endsnippet
+
+snippet bf "textbf{}" w
+\textbf{$1}
+endsnippet
+
+snippet it "textit{}" w
+\textit{$1}
+endsnippet
+
+snippet un "underline{}" w
+\underline{$1}
+endsnippet
+
+
+snippet math "inline math" w
+$$1$
+endsnippet
+snippet mathl "one line math" w
+$$$1$$
+endsnippet

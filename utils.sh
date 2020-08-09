@@ -20,16 +20,8 @@ function install_native_plugins (){
 	
 }
 
-function install_vundle (){
-	git clone https://github.com/VundleVim/Vundle.vim.git $XDG_DATA_HOME/vim/bundle/Vundle.vim
-}
 
 function setup_vim (){
-	# Install Vundle (plugin manager)
-	[ ! -d "$XDG_DATA_HOME"/vim/Vundle.vim ] && install_vundle
-	vim +PluginInstall +qa
-	#install_native_plugins
-
 	mkdir -p "$XDG_DATA_HOME"/vim
 	mkdir -p "$XDG_CACHE_HOME"/vim
 	[ ! -f "$XDG_CACHE_HOME"/vim/viminfo ] && touch "$XDG_CACHE_HOME"/vim/viminfo

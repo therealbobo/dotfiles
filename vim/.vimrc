@@ -1,14 +1,18 @@
 set nocompatible
 filetype off
-set rtp+=~/.local/share/vim/bundle/Vundle.vim
+set rtp+=~/.local/share/vim/
 
-call vundle#begin('~/.local/share/vim/bundle')
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'itchyny/lightline.vim'
-Plugin 'bling/vim-bufferline'
-Plugin 'lervag/vimtex'
-Plugin 'SirVer/ultisnips'
-call vundle#end()
+" Load vim-plug
+if empty(glob("~/.local/share/vim/autoload/plug.vim"))
+    execute '!curl -fLo ~/.local/share/vim/autoload/plug.vim --create-dirs https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+endif
+
+call plug#begin()
+Plug 'itchyny/lightline.vim'
+Plug 'bling/vim-bufferline'
+Plug 'lervag/vimtex', {'for': 'latex'}
+Plug 'SirVer/ultisnips'
+call plug#end()
 
 " Vim settings
 "packloadall

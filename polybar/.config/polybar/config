@@ -52,13 +52,14 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = fixed:pixelsize=12;1
-font-1 = unifont:fontformat=truetype:size=12:antialias=false;0
-font-2 = siji:pixelsize=12;1
+font-0 = Noto Sans:pixelsize=12;1
+#font-1 = unifont:fontformat=truetype:size=12:antialias=false;0
+#font-1 = siji:pixelsize=12;1
+font-1 = NotoEmoji:scale=10;
 
 modules-left = i3 bspwm 
 modules-center = xwindow
-modules-right = spotify filesystem xbacklight pulseaudio memory cpu wlan eth battery temperature date powermenu
+modules-right = spotify filesystem xbacklight pulseaudio memory cpu wlan eth battery temperature date
 
 tray-position = right
 tray-padding = 2
@@ -104,9 +105,9 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = fixed:pixelsize=10;1
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = siji:pixelsize=10;1
+#font-0 = fixed:pixelsize=10;1
+#font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+#font-2 = siji:pixelsize=10;1
 
 modules-left = i3 bspwm 
 modules-center = xwindow
@@ -153,7 +154,7 @@ label-indicator-underline = ${colors.secondary}
 [module/spotify]
 type = custom/script
 interval = 5
-format-prefix = " "
+format-prefix = ""
 format = <label>
 exec = python ~/.config/polybar/scripts/spotify_status.py -f '{play_pause} {artist}: {song}'
 format-underline = #1db954
@@ -286,7 +287,7 @@ label-song-ellipsis = true
 type = internal/xbacklight
 
 format = <label> <bar>
-label = BL 
+label = 💡
 
 bar-width = 10
 bar-indicator = |
@@ -307,7 +308,7 @@ card = intel_backlight
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = " "
+format-prefix = "🖥"
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #f90000
 label = %percentage:2%%
@@ -315,7 +316,7 @@ label = %percentage:2%%
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = " "
+format-prefix = "📊"
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #4bffdc
 label = %percentage_used%%
@@ -368,7 +369,7 @@ date-alt = " %Y-%m-%d"
 time = %H:%M
 time-alt = %H:%M:%S
 
-format-prefix = 
+format-prefix = 🕒
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #0a6cf5
 
@@ -377,8 +378,8 @@ label = %date% %time%
 [module/pulseaudio]
 type = internal/pulseaudio
 
-format-volume = <label-volume> <bar-volume>
-label-volume = VOL %percentage%%
+format-volume = <label-volume>
+label-volume = 🔈 %percentage%%
 label-volume-foreground = ${root.foreground}
 
 label-muted = 🔇 muted
@@ -450,9 +451,9 @@ ramp-capacity-1 = 
 ramp-capacity-2 = 
 ramp-capacity-foreground = ${colors.foreground-alt}
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
+animation-charging-0 = 🔌
+animation-charging-1 = 🔌
+animation-charging-2 = 🔌
 animation-charging-foreground = ${colors.foreground-alt}
 animation-charging-framerate = 750
 
@@ -472,7 +473,7 @@ format-underline = #f50a4d
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${self.format-underline}
 
-label = %temperature-c%
+label = 🌡 %temperature-c%
 label-warn = %temperature-c%
 label-warn-foreground = ${colors.secondary}
 

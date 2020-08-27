@@ -53,23 +53,8 @@ export PATH=$PATH:$USER_BIN:$USER_SCRIPTS
 PROMPT='%(?.%F{green}√.%F{red}✗ %?)%f' # error handling
 PROMPT+=' %F{green}%B%n@%M%b%f:'       # username@hostname
 PROMPT+='%F{blue}%2~%f %# '          # pwd
-#export UPDATE_ZSH_DAYS=14
-#COMPLETION_WAITING_DOTS="true"
 
-#plugins=(
-#	colored-man-pages 
-#	docker
-#	extract
-#	git
-#	golang
-#	pip
-#	python
-#	sudo
-#	vagrant
-#	web-search
-#	z
-#)
-
+COMPLETION_WAITING_DOTS="true"
 
 # TODO mv histfile
 [ ! -f "$XDG_DATA_HOME"/vim/histfile ] && touch "$XDG_DATA_HOME"/vim/histfile
@@ -84,12 +69,14 @@ autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info )
 setopt prompt_subst
+# git support
 RPROMPT=\$vcs_info_msg_0_
 zstyle ':vcs_info:git:*' formats '%F{240}(%b)%r%f'
 zstyle ':vcs_info:*' enable git
 
-#export ZSH_COMPDUMP="$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
+export ZSH_COMPDUMP="$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
 zstyle :compinstall filename "$HOME/.zshrc"
+zstyle ':completion:*' menu select
 autoload -Uz compinit
 compinit -d $ZSH_COMPDUMP
 

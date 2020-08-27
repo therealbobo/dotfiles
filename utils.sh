@@ -1,10 +1,5 @@
 #! /bin/bash
 
-function install_ohmyzsh (){
-	sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
-	mv .oh-my-zsh "$XDG_DATA_HOME/oh-my-zsh"
-}
-
 function install_native_plugins (){
 	mkdir -p "$XDG_DATA_HOME"/vim/pack/plugins
 	PACKAGES=(

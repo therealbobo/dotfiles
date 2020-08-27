@@ -49,23 +49,26 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$USER_BIN:$USER_SCRIPTS
 ###}}}
 
-ZSH_THEME="../../../../.config/zsh/bobo"
-export UPDATE_ZSH_DAYS=14
-COMPLETION_WAITING_DOTS="true"
+#ZSH_THEME="../../../../.config/zsh/bobo"
+PROMPT='%(?.%F{green}√.%F{red}✗ %?)%f' # error handling
+PROMPT+=' %F{green}%B%n@%M%b%f:'       # username@hostname
+PROMPT+='%F{blue}%2🔱~%f %# '            # pwd
+#export UPDATE_ZSH_DAYS=14
+#COMPLETION_WAITING_DOTS="true"
 
-plugins=(
-	colored-man-pages 
-	docker
-	extract
-	git
-	golang
-	pip
-	python
-	sudo
-	vagrant
-	web-search
-	z
-)
+#plugins=(
+#	colored-man-pages 
+#	docker
+#	extract
+#	git
+#	golang
+#	pip
+#	python
+#	sudo
+#	vagrant
+#	web-search
+#	z
+#)
 
 
 # TODO mv histfile
@@ -76,7 +79,7 @@ SAVEHIST=1000
 setopt autocd notify
 bindkey -v
 
-export ZSH_COMPDUMP="$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
+#export ZSH_COMPDUMP="$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
 zstyle :compinstall filename "$HOME/.zshrc"
 autoload -Uz compinit
 compinit -d $ZSH_COMPDUMP
@@ -85,6 +88,6 @@ export KEYTIMEOUT=1
 
 ### SOURCES ###{{{
 source "$XDG_CONFIG_HOME/zsh/aliases"
-source "$ZSH/oh-my-zsh.sh"
+#source "$ZSH/oh-my-zsh.sh"
 ###}}}
 

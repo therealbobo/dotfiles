@@ -12,6 +12,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'bling/vim-bufferline'
 Plug 'lervag/vimtex', {'for': 'latex'}
 Plug 'SirVer/ultisnips'
+Plug 'vim-scripts/LargeFile'
 call plug#end()
 
 " Vim settings
@@ -86,3 +87,5 @@ let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 let g:UltiSnipsSnippetDirectories=[$XDG_DATA_HOME . "/vim/ultisnips"]
+
+let g:LargeFile = 10

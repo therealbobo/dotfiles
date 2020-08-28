@@ -286,8 +286,8 @@ label-song-ellipsis = true
 [module/xbacklight]
 type = internal/xbacklight
 
-format = <label> <bar>
-label = 💡
+format = <label>
+label = 💡%percentage:2%%
 
 bar-width = 10
 bar-indicator = |
@@ -336,11 +336,11 @@ format-disconnected =
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
 
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
+ramp-signal-0 = 📡
+ramp-signal-1 = 📡
+ramp-signal-2 = 📡
+ramp-signal-3 = 📡
+ramp-signal-4 = 📡
 ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/eth]
@@ -349,7 +349,7 @@ interface = net0
 interval = 3.0
 
 format-connected-underline = #55aa55
-format-connected-prefix = " "
+format-connected-prefix = "☎️ "
 format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
 
@@ -457,9 +457,9 @@ animation-charging-2 = 🔌
 animation-charging-foreground = ${colors.foreground-alt}
 animation-charging-framerate = 750
 
-animation-discharging-0 = 
-animation-discharging-1 = 
-animation-discharging-2 = 
+animation-discharging-0 = 🔋
+animation-discharging-1 = 🔋
+animation-discharging-2 = 🔋
 animation-discharging-foreground = ${colors.foreground-alt}
 animation-discharging-framerate = 750
 

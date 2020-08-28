@@ -1,6 +1,8 @@
 
 ### VARS ###{{{
 export ZSH="$HOME/.local/share/oh-my-zsh"
+export ZSH_COMPDUMP="$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
+export KEYTIMEOUT=1
 export TERM=xterm-256color
 export VISUAL="vim"
 export EDITOR="vim"

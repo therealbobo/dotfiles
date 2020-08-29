@@ -12,9 +12,9 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 PRIMARY=$(xrandr -q | grep primary | cut -d' ' -f1)
 
 for m in $(xrandr -q | grep " connected" | cut -d" " -f1); do
-	if [ "$m" = "$PRIMARY" ] ; then
-		MONITOR=$m polybar primary &
-	else
-		MONITOR=$m polybar secondary &
-	fi
+	MONITOR=$m polybar primary &
+	#if [ "$m" = "$PRIMARY" ] ; then
+	#else
+	#	MONITOR=$m polybar secondary &
+	#fi
 done

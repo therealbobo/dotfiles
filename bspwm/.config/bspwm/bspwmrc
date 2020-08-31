@@ -59,7 +59,9 @@ xmodmap ~/.Xmodmap
 
 
 sxhkd &
-picom &
+lsmod | grep -q nouveau \
+	&& picom -b --unredir-if-possible --backend xr_glx_hybrid --vsync --use-damage --glx-no-stencil \
+	|| picom -b
 "$HOME"/.config/polybar/launch.sh
 xsetroot -cursor_name left_ptr &
 

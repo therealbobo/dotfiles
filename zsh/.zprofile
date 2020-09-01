@@ -41,6 +41,22 @@ export WEECHAT_HOME="$XDG_CONFIG_HOME"/weechat
 # gnupg
 export GNUPGHOME="$XDG_CONFIG_HOME"/gnupg
 
+# docker
+export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
+
+# cuda
+export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
+
+# pylint
+export PYLINTHOME="$XDG_CACHE_HOME"/pylint
+
+# gtk
+export GTK_RC_FILES="${XDG_CONFIG_HOME}/gtk-1.0/gtkrc"
+export GTK2_RC_FILES="${XDG_CONFIG_HOME}/gtk-2.0/gtkrc"
+
+# gradle
+export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
+
 ###}}}
 
 

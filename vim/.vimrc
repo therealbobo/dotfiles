@@ -7,7 +7,7 @@ if empty(glob("~/.local/share/vim/autoload/plug.vim"))
     execute '!curl -fLo ~/.local/share/vim/autoload/plug.vim --create-dirs https://raw.github.com/junegunn/vim-plug/master/plug.vim'
 endif
 
-call plug#begin()
+call plug#begin('~/.local/share/vim/plugged')
 Plug 'itchyny/lightline.vim'
 Plug 'bling/vim-bufferline'
 Plug 'lervag/vimtex', {'for': 'latex'}

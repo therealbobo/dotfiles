@@ -29,3 +29,5 @@ RPROMPT=\$vcs_info_msg_0_
 # autocompletion
 autoload -Uz compinit
 compinit -d $ZSH_COMPDUMP
+
+[[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh

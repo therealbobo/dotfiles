@@ -4,8 +4,11 @@
 bspc config border_radius               5
 ### BSPWM CONFIGS ### {{{
 
+# 0  1  2 3 4 5 6 7 8 9 0
+# 一 二 三	四 五 六 七 八	九 十
 # Define workpaces
 readarray -t MONITORS < <(xrandr -q | grep ' connected' | cut -d' ' -f1)
+DESKTOPS=( 一 二 三	四 五 六 七 八	九 十 )
 MONITOR_NUM=${#MONITORS[@]}
 DESKTOP_PER_MONITOR=$(((10 / MONITOR_NUM)))
 for ((i=0 ; i < ${#MONITORS[@]} ; i++)); do
@@ -60,8 +63,10 @@ xmodmap ~/.Xmodmap
 
 sxhkd &
 lsmod | grep -q nouveau \
-	&& picom -b --unredir-if-possible --backend xr_glx_hybrid --vsync --use-damage --glx-no-stencil \
-	|| picom -b
+	picom -b
+# TODO fix picom excessive cpu usage
+#	&& picom -b --unredir-if-possible --backend xr_glx_hybrid --vsync --use-damage --glx-no-stencil \
+#	|| picom -b
 "$HOME"/.config/polybar/launch.sh
 xsetroot -cursor_name left_ptr &
 

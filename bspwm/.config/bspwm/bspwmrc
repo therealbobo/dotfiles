@@ -62,8 +62,8 @@ xmodmap ~/.Xmodmap
 
 
 sxhkd &
-lsmod | grep -q nouveau \
-	picom -b
+lsmod | grep -q nouveau \ 
+	&& picom -b
 # TODO fix picom excessive cpu usage
 #	&& picom -b --unredir-if-possible --backend xr_glx_hybrid --vsync --use-damage --glx-no-stencil \
 #	|| picom -b

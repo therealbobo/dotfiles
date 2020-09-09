@@ -4,11 +4,10 @@
 bspc config border_radius               5
 ### BSPWM CONFIGS ### {{{
 
-# 0  1  2 3 4 5 6 7 8 9 0
-# 一 二 三	四 五 六 七 八	九 十
+# 1  2  3  4  5  6  7  8  9  10
+# 一 二 三 四 五 六 七 八 九 十
 # Define workpaces
 readarray -t MONITORS < <(xrandr -q | grep ' connected' | cut -d' ' -f1)
-DESKTOPS=( 一 二 三	四 五 六 七 八	九 十 )
 MONITOR_NUM=${#MONITORS[@]}
 DESKTOP_PER_MONITOR=$(((10 / MONITOR_NUM)))
 for ((i=0 ; i < ${#MONITORS[@]} ; i++)); do
@@ -60,9 +59,11 @@ setxkbmap us
 setxkbmap -option caps:swapescape
 xmodmap ~/.Xmodmap
 
+killall nm-applet udiskie picom sxhkd 2>/dev/null
+sleep 1
 
 sxhkd &
-lsmod | grep -q nouveau \ 
+lsmod | grep -q nouveau \
 	&& picom -b
 # TODO fix picom excessive cpu usage
 #	&& picom -b --unredir-if-possible --backend xr_glx_hybrid --vsync --use-damage --glx-no-stencil \
@@ -78,11 +79,10 @@ xsetroot -cursor_name left_ptr &
 #( sleep 1s && bash $HOME/dotfiles/lemonbar/lemonbar.sh | \
 #	lemonbar -g "$SIZE" -p -F "$FOREGROUND" -B "$BACKGROUND" -f "$ICON_FONT" -f "$FONT") &
 
-killall nm-applet udiskie
 
 feh --randomize --no-fehbg --bg-fill ~/Pictures/Wallpapers/*
-libinput-gestures-setup start
-nm-applet &
-udiskie -t
+command -v libinput-gestures-setup 1>/dev/null && libinput-gestures-setup start
+command -v nm-applet               1>/dev/null && nm-applet &
+command -v udiskie                 1>/dev/null && udiskie -t
 
 ###}}}

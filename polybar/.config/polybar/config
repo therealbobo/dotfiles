@@ -57,7 +57,7 @@ font-0 = Noto Sans:pixelsize=12;1
 #font-1 = siji:pixelsize=12;1
 font-1 = NotoEmoji:scale=10;
 
-modules-left = i3 bspwm 
+modules-left = bspwm 
 modules-center = xwindow
 modules-right = spotify filesystem xbacklight pulseaudio memory cpu wlan eth battery temperature date
 
@@ -328,7 +328,7 @@ interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
 format-connected-underline = #9f78e1
-label-connected = %essid%
+label-connected = 📡%essid%
 
 format-disconnected =
 ;format-disconnected = <label-disconnected>
@@ -336,11 +336,11 @@ format-disconnected =
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
 
-ramp-signal-0 = 📡
-ramp-signal-1 = 📡
-ramp-signal-2 = 📡
-ramp-signal-3 = 📡
-ramp-signal-4 = 📡
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
 ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/eth]
@@ -468,18 +468,18 @@ type = internal/temperature
 thermal-zone = 2
 warn-temperature = 60
 
-format = <ramp> <label>
+format = <label>
 format-underline = #f50a4d
-format-warn = <ramp> <label-warn>
+format-warn = <label-warn>
 format-warn-underline = ${self.format-underline}
 
 label = 🌡%temperature-c%
-label-warn = %temperature-c%
+label-warn = 🧨%temperature-c%
 label-warn-foreground = ${colors.secondary}
 
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
 ramp-foreground = ${colors.foreground-alt}
 
 [module/powermenu]

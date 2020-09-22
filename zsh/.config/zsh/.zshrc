@@ -14,10 +14,15 @@ PROMPT+='%F{blue}%2~%f %# '            # pwd
 HISTFILE="$XDG_DATA_HOME"/vim/histfile
 HISTSIZE=1000
 SAVEHIST=1000
+KEYTIMEOUT=50
+
 
 setopt autocd notify
 bindkey -v
 bindkey '^R' history-incremental-search-backward
+
+# plugins
+source $ZDOTDIR/plugins/sudo.zsh
 
 # git support
 autoload -Uz vcs_info

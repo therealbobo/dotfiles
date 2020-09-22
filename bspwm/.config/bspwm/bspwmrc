@@ -64,11 +64,7 @@ killall nm-applet udiskie picom sxhkd 2>/dev/null
 sleep 1
 
 sxhkd &
-#lsmod | grep -q nouveau \
-picom -b
-# TODO fix picom excessive cpu usage
-#	&& picom -b --unredir-if-possible --backend xr_glx_hybrid --vsync --use-damage --glx-no-stencil \
-#	|| picom -b
+command -v picom 1>/dev/null && picom -b
 "$HOME"/.config/polybar/launch.sh
 xsetroot -cursor_name left_ptr &
 

@@ -57,12 +57,15 @@ export GTK2_RC_FILES="${XDG_CONFIG_HOME}/gtk-2.0/gtkrc"
 # gradle
 export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
 
+# node
+export npm_config_prefix=$XDG_DATA_HOME/node_modules
+
 ###}}}
 
 
 ### PATH CONFIG ###{{{
 export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:$USER_BIN:$USER_SCRIPTS
+export PATH=$PATH:$USER_BIN:$USER_SCRIPTS:$npm_config_prefix/bin
 ###}}}
 
 

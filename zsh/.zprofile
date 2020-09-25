@@ -60,6 +60,9 @@ export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
 # node
 export npm_config_prefix=$XDG_DATA_HOME/node_modules
 
+# qt
+export QT_SCALE_FACTOR_ROUNDING_POLICY=Round
+
 ###}}}
 
 

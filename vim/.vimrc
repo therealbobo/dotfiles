@@ -10,7 +10,7 @@ endif
 call plug#begin('~/.local/share/vim/plugged')
 Plug 'itchyny/lightline.vim'
 Plug 'bling/vim-bufferline'
-Plug 'lervag/vimtex', {'for': 'latex'}
+Plug 'lervag/vimtex', {'for': 'tex'}
 Plug 'SirVer/ultisnips'
 Plug 'vim-scripts/LargeFile'
 call plug#end()

@@ -1,6 +1,7 @@
 set nocompatible
 filetype off
 set rtp+=~/.local/share/vim/
+set rtp+=~/.local/share/vim/after
 
 " Load vim-plug
 if empty(glob("~/.local/share/vim/autoload/plug.vim"))

@@ -37,6 +37,7 @@ bindkey '^R' history-incremental-search-backward
 
 # plugins
 source $ZDOTDIR/plugins/sudo.zsh
+source $ZDOTDIR/plugins/fzf.zsh
 
 # git support
 autoload -Uz vcs_info

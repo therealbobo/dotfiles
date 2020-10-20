@@ -50,6 +50,11 @@ endsnippet
 snippet mathl "one line math" w
 $$$1$$
 endsnippet
+snippet mmath "math" w
+\[
+	$1
+\]
+endsnippet
 
 snippet tikz "tikz pictrure" w
 \begin{center}
@@ -60,11 +65,21 @@ snippet tikz "tikz pictrure" w
 endsnippet
 
 snippet minipage "2 minipages" w
-\\
 \begin{minipage}{0.5\linewidth}
 	$1
 \end{minipage}\hfil
 \begin{minipage}{0.5\linewidth}
 	$2
 \end{minipage}\hfil
+endsnippet
+
+snippet bmatrix "[matrix]" w
+\begin{bmatrix}
+	$1
+\end{bmatrix}
+$0
+endsnippet
+
+snippet tilde "tilde" w
+\tilde{$1} $0
 endsnippet

@@ -63,7 +63,7 @@ xmodmap ~/.Xmodmap
 killall nm-applet udiskie picom sxhkd 2>/dev/null
 sleep 1
 
-sxhkd &
+sxhkd 2>/tmp/sxhkd.log &
 command -v picom 1>/dev/null && picom -b
 "$HOME"/.config/polybar/launch.sh
 xsetroot -cursor_name left_ptr &

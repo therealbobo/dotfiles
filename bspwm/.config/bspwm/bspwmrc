@@ -45,11 +45,12 @@ bspc config ignore_ewmh_fullscreen  all
 ### WINDOW RULES ###{{{
 
 #-----------Class-Name--------------------Workspaces---Focus-----Follow------Other-----------------------------------------------#
-bspc rule -a Gimp                        desktop='^8'           follow=on  state=floating
-bspc rule -a Chromium                    desktop='^2'
+#bspc rule -a Gimp                        desktop='^8'           follow=on  state=floating
+#bspc rule -a Chromium                    desktop='^2'
 bspc rule -a MPlayer                                  focus=off            state=floating  sticky=on  rectangle=720x480+1264+704
 bspc rule -a Kupfer.py                                focus=on
 bspc rule -a Screenkey                   manage=off
+bspc rule -a Zathura                                                       state=tiled
 
 ###}}}
 

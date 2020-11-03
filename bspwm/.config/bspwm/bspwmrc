@@ -7,7 +7,8 @@ bspc config border_radius               5
 # 1  2  3  4  5  6  7  8  9  10
 # 一 二 三 四 五 六 七 八 九 十
 # Define workpaces
-readarray -t MONITORS < <(bspc quuery -M)
+#readarray -t MONITORS < <(bspc quuery -M)
+readarray -t MONITORS < <(xrandr -q | grep ' connected' | cut -d' ' -f1)
 MONITOR_NUM=${#MONITORS[@]}
 DESKTOP_PER_MONITOR=$(((10 / MONITOR_NUM)))
 for ((i=0 ; i < ${#MONITORS[@]} ; i++)); do

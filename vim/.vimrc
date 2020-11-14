@@ -82,6 +82,17 @@ let g:vimtex_quickfix_mode=0
 set conceallevel=1
 let g:tex_conceal='abdmg'
 let g:vimtex_view_use_temp_files = 1
+let g:vimtex_compiler_latexmk = {
+	\ 'build_dir' : 'build',
+    \ 'options' : [
+    \   '-pdf',
+    \   '-shell-escape',
+    \   '-verbose',
+    \   '-file-line-error',
+    \   '-synctex=1',
+    \   '-interaction=nonstopmode',
+    \ ],
+    \}
 
 
 "ultrasnip

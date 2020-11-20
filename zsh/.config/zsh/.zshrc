@@ -5,9 +5,11 @@ source "$XDG_CONFIG_HOME/zsh/vars.zsh"
 source "$XDG_CONFIG_HOME/zsh/zstyles.zsh"
 ###}}}
 
-PROMPT='%(?.%F{green}√.%F{red}✗ %?)%f' # error handling
-PROMPT+=' %F{green}%B%n@%M%b%f:'       # username@hostname
-PROMPT+='%F{blue}%2~%f %# '            # pwd
+PROMPT='%f'
+PROMPT+='%F{green}%B%n'                 # username
+PROMPT+='%(?.%F{green}@.%F{black}@)%f'  # @
+PROMPT+='%F{green}%M%b%f:'              # hostname
+PROMPT+='%F{blue}%2~%f %# '             # pwd
 
 # TODO mv histfile
 [ ! -f "$XDG_DATA_HOME"/vim/histfile ] && touch "$XDG_DATA_HOME"/vim/histfile

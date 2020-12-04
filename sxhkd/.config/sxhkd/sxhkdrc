@@ -15,10 +15,10 @@ super + ctrl + shift + Return
 
 # program launcher
 super + d
-	zsh -c "rofi -modi drun -show drun -show-icons -icons-theme hicolor"
+	rofi -modi drun -show drun -show-icons -icons-theme hicolor
 # program switcher
 super + shift + Tab
-	rofi -combi-modi window -show combi -show-icons -icons-theme hicolor
+	rofi -combi-modi window -show combi -show-icons -icons-theme hicolor -window-thumbnail
 # ssh
 super + e
 	rofi -show ssh
@@ -206,3 +206,15 @@ super + v
 # unhide window
 super + shift + v
 	bspc node {,$(bspc query -N -n .hidden |tail -n 1)} -g hidden=off -d $(bspc query -D -d focused --names) -t floating -f
+
+# Toggle Telegram
+alt + t
+    bspwm-toggle-visibility TelegramDesktop telegram-desktop
+
+# Toggle WhatsApp
+alt + w
+    bspwm-toggle-visibility WhatsApp whatsapp-nativefier
+
+# Toggle Signal
+alt + s
+    bspwm-toggle-visibility Signal signal-desktop

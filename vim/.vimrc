@@ -12,6 +12,7 @@ call plug#begin('~/.local/share/vim/plugged')
 Plug 'itchyny/lightline.vim'
 Plug 'bling/vim-bufferline'
 Plug 'lervag/vimtex', {'for': 'tex'}
+Plug 'fatih/vim-go', {'for': 'go'}
 Plug 'SirVer/ultisnips'
 Plug 'vim-scripts/LargeFile'
 call plug#end()
@@ -94,11 +95,23 @@ let g:vimtex_compiler_latexmk = {
     \ ],
     \}
 
-
 "ultrasnip
 let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 let g:UltiSnipsSnippetDirectories=[$XDG_DATA_HOME . "/vim/ultisnips"]
 
+"go
+let g:go_highlight_types     = 1 
+let g:go_highlight_fields    = 1 
+let g:go_highlight_structs   = 1 
+let g:go_highlight_methods   = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_extra_types       = 1 
+let g:go_highlight_functions_calls   = 1
+let g:go_highlight_build_constraints = 1
+let g:go_gopls_enabled = 0
+
+"largefiles
 let g:LargeFile = 10

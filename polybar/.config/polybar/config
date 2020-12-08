@@ -441,12 +441,16 @@ adapter = ADP1
 format-charging = <animation-charging> <label-charging>
 format-charging-underline = #ffb52a
 
+format-low = <animation-discharging> <label-discharging>
+format-low-underline = ${self.format-charging-underline}
+
 format-discharging = <animation-discharging> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
 
 format-full-prefix = " "
 format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-underline = ${self.format-charging-underline}
+
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 

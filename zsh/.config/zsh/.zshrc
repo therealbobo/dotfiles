@@ -12,8 +12,8 @@ PROMPT+='%F{green}%M%b%f:'              # hostname
 PROMPT+='%F{blue}%2~%f %# '             # pwd
 
 # TODO mv histfile
-[ ! -f "$XDG_DATA_HOME"/vim/histfile ] && touch "$XDG_DATA_HOME"/vim/histfile
-HISTFILE="$XDG_DATA_HOME"/vim/histfile
+[ ! -f "$XDG_DATA_HOME"/zsh/histfile ] && touch "$XDG_DATA_HOME"/zsh/histfile
+HISTFILE="$XDG_DATA_HOME"/zsh/histfile
 HISTSIZE=10000000
 SAVEHIST=10000000
 setopt BANG_HIST                 # Treat the '!' character specially during expansion.

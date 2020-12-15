@@ -13,17 +13,13 @@ alias rgrep='grep -rain'
 alias gdb='gdb -q -nh -x "$XDG_CONFIG_HOME"/gdb/init'
 alias peda='gdb -q -nh -x "$XDG_CONFIG_HOME"/gdb/initpeda'
 alias gef='gdb -q -nh -x "$XDG_CONFIG_HOME"/gdb/initgef'
-alias disable_randomization='sudo bash -c "echo 0 > /proc/sys/kernel/randomize_va_space"'
+alias disable_randomization='echo 0 |sudo tee /proc/sys/kernel/randomize_va_space'
 alias r2help="r2 -q -c '?*~...' -"
 
 
 # utiles
-#alias copypassword='lpass show --clip --password'
-#alias weather="curl -s us.wttr.in"
-alias weather='function get_weather(){echo $1 | tr " " "_" | xargs -I{} curl -s v2.wttr.in/{} }; get_weather'
+alias weather='get_weather(){echo $1 | tr " " "_" | xargs -I{} curl -s v2.wttr.in/{} }; get_weather'
 alias myip="curl -fSs https://1.1.1.1/cdn-cgi/trace | egrep '^(ip|loc)'"
-alias emacs='emacs -nw'
-alias cpv='rsync -ah --info=progress2'
 alias cpv='rsync -ah --info=progress2'
 alias weechat='weechat -d "$XDG_CONFIG_HOME"/weechat'
 

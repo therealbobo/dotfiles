@@ -7,7 +7,7 @@ DEF='\033[00;39m'
 
 source utils.sh
 
-command -v stow 1>/dev/null || eval "echo '[!] Please install stow!'; exit"
+! command -v stow 1>/dev/null && echo '[!] Please install stow!' && exit -1
 
 echo -e "$BOLD[-] Start stowing"
 echo -ne "$REDB"

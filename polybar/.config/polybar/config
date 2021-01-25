@@ -61,7 +61,7 @@ font-1 = NotoEmoji:scale=10;
 
 modules-left = bspwm 
 modules-center = xwindow
-modules-right = spotify filesystem xbacklight pulseaudio memory cpu wlan eth battery temperature date
+modules-right = filesystem xbacklight pulseaudio memory cpu wlan eth battery temperature date
 
 tray-position = right
 tray-padding = 2

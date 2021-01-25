@@ -54,6 +54,8 @@ bspc rule -a MPlayer                                  focus=off            state
 bspc rule -a Kupfer.py                                focus=on
 bspc rule -a Screenkey                   manage=off
 bspc rule -a Zathura                                                       state=tiled
+bspc rule -a Emacs                                                         state=tiled
+bspc rule -a Pavucontrol                                                   state=floating
 
 ###}}}
 
@@ -69,6 +71,7 @@ sleep 1
 
 sxhkd &
 command -v picom 1>/dev/null && picom -b
+pulseaudio
 "$HOME"/.config/polybar/launch.sh
 xsetroot -cursor_name left_ptr &
 

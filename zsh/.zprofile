@@ -60,6 +60,21 @@ export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
 # node
 export npm_config_prefix=$XDG_DATA_HOME/node_modules
 
+# android
+export ANDROID_PREFS_ROOT="$XDG_CONFIG_HOME"/android
+export ANDROID_EMULATOR_HOME="$XDG_DATA_HOME"/android/emulator
+
+# java
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
+
+# ruby
+export GEM_HOME="$XDG_DATA_HOME"/gem
+export GEM_SPEC_CACHE="$XDG_CACHE_HOME"/gem
+
+# ipython/jupyter
+export IPYTHONDIR="$XDG_CONFIG_HOME"/jupyter
+export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME"/jupyter
+
 # qt
 export QT_SCALE_FACTOR_ROUNDING_POLICY=Round
 

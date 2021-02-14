@@ -43,8 +43,7 @@ set hls
 
 
 "inoremaps
-"inoremap jk <ESC>
-"inoremap JK <ESC>
+inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
 "cnoremap
 "sudo edit

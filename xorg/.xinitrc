@@ -34,5 +34,4 @@ fi
 
 numlockx &
 #exec bspwm
-exec fvwm -f ~/.config/fvwm/config
-
+exec fvwm

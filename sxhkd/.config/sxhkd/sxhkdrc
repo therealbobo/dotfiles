@@ -154,9 +154,9 @@ shift + XF86MonBrightness{Up,Down}
 
 # Pulse Audio controls
 XF86Audio{RaiseVolume,LowerVolume}
-	pactl set-sink-volume $(pactl info | grep "Default Sink:" | cut -d' ' -f3) {+5%,-5%}
+	pactl set-sink-volume @DEFAULT_SINK@ {+5%,-5%}
 XF86AudioMute 
-	pactl set-sink-mute $(pactl info | grep "Default Sink:" | cut -d' ' -f3) toggle # mute sound
+	pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # Multimedia keys
 XF86Audio{Play,Next,Prev}

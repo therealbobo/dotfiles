@@ -17,10 +17,11 @@ InfoStoreAdd terminal /usr/bin/alacritty
 
 DestroyFunc StartFunction
 AddToFunc   StartFunction
-+ I Test (Init, f $[FVWM_USERDIR]/.BGdefault) \
-    Exec exec fvwm-root $[FVWM_USERDIR]/.BGdefault
-+ I TestRc (NoMatch) Exec exec fvwm-root \
-    $[FVWM_DATADIR]/default-config/images/background/bg2.png
++ I SetBG
+#+ I Test (Init, f $[FVWM_USERDIR]/.BGdefault) \
+#    Exec exec fvwm-root $[FVWM_USERDIR]/.BGdefault
+#+ I TestRc (NoMatch) Exec exec fvwm-root \
+#    $[FVWM_DATADIR]/default-config/images/background/bg2.png
 + I Test (Init) Module FvwmBanner
 + I Module FvwmButtons RightPanel
 + I Module FvwmEvent EventNewDesk
@@ -67,15 +68,16 @@ AddToFunc   ViewManPage
 # like display, feh, etc.
 DestroyFunc SetBG
 AddToFunc   SetBG
-+ I Test (f $[FVWM_USERDIR]/images/background/$0) \
-    Exec exec fvwm-root $[FVWM_USERDIR]/images/background/$0
-+ I TestRc (Match) Exec exec ln -fs images/background/$0 \
-    $[FVWM_USERDIR]/.BGdefault
-+ I TestRc (Match) Break
-+ I Test (!f $[FVWM_DATADIR]/default-config/images/background/$0) Break
-+ I Exec exec fvwm-root $[FVWM_DATADIR]/default-config/images/background/$0
-+ I Exec exec ln -fs $[FVWM_DATADIR]/default-config/images/background/$0 \
-    $[FVWM_USERDIR]/.BGdefault
++ I Exec exec feh --randomize --no-fehbg --bg-fill /home/robi/Pictures/Wallpapers/*
+#+ I Test (f $[FVWM_USERDIR]/images/background/$0) \
+#    Exec exec fvwm-root $[FVWM_USERDIR]/images/background/$0
+#+ I TestRc (Match) Exec exec ln -fs images/background/$0 \
+#    $[FVWM_USERDIR]/.BGdefault
+#+ I TestRc (Match) Break
+#+ I Test (!f $[FVWM_DATADIR]/default-config/images/background/$0) Break
+#+ I Exec exec fvwm-root $[FVWM_DATADIR]/default-config/images/background/$0
+#+ I Exec exec ln -fs $[FVWM_DATADIR]/default-config/images/background/$0 \
+#    $[FVWM_USERDIR]/.BGdefault
 
 
 # Function: IconManClick
@@ -127,6 +129,14 @@ AddToFunc FullScreen
 + I Current Maximize ewmhiwa
 
 
+DestroyFunc WindowListFunc
+AddToFunc WindowListFunc
++ I Iconify off
++ I FlipFocus
++ I Raise
++ I WarpToWindow 50 50
+
+
 #############
 # 2: Styles #
 #############
@@ -157,7 +167,7 @@ Style * EdgeMoveDelay 350, EdgeMoveResistance 350
 # EwmhBaseStruts [left] [right] [top] [bottom]
 # Reserves space along the edge(s) of the Screen that will not
 # be covered when maximizing or placing windows.
-EwmhBaseStruts 0 120 0 0
+EwmhBaseStruts 0 140 0 0
 
 # This sets the ClickTime and MoveThreshold used to determine
 # Double Clicks, Hold and Move for the mouse.
@@ -247,7 +257,7 @@ Colorset 14 fg #555555, bg #003c3c, hi #aaaaaa, sh #999999, Plain, NoShape
 #######
 # 4: Menus
 ###########
-MenuStyle * MenuColorset 5, ActiveColorset 6, GreyedColorset 7, TitleColorset 8
+MenuStyle * MenuColorset 0, ActiveColorset 12, GreyedColorset 7, TitleColorset 8
 MenuStyle * Hilight3DOff, HilightBack, HilightTitleBack, SeparatorsLong
 MenuStyle * TrianglesSolid, TrianglesUseFore
 MenuStyle * ItemFormat "%|%3.1i%5.3l%5.3>%|"
@@ -275,10 +285,6 @@ AddToMenu   MenuFvwmRoot "Fvwm" Title
 PipeRead "fvwm-menu-desktop -e"
 
 # Programs Menu
-#
-# This test for some common programs and adds them to the menu.
-# When adding programs you don't need to use the Test (x foo)
-# lines as this is only to help make this menu portable.
 DestroyMenu MenuPrograms
 AddToMenu   MenuPrograms "Programs" Title
 Test (x chromium)      + "Chromium" Exec exec chromium
@@ -461,10 +467,20 @@ Silent Key 8 W MS MovetoDesk 0 7
 Silent Key 9 W MS MovetoDesk 0 8
 Silent Key 0 W MS MovetoDesk 0 9
 
-Silent Key h A M CursorMove -100    0
-Silent Key l A M CursorMove  100    0
-Silent Key j A M CursorMove    0  100
-Silent Key k A M CursorMove    0 -100
+Silent Key h A MSC CursorMove -5  0
+Silent Key l A MSC CursorMove +5  0
+Silent Key j A MSC CursorMove  0 +5
+Silent Key k A MSC CursorMove  0 -5
+
+Silent Key h A M GoToPage -1p +0p
+Silent Key l A M GoToPage +1p +0p
+Silent Key j A M GoToPage +0p +1p
+Silent Key k A M GoToPage +0p -1p
+
+Silent Key h A C Move w-5   keep
+Silent Key l A C Move w+5   keep
+Silent Key j A C Move keep  w+5
+Silent Key k A C Move keep  w-5
 
 Silent Key h W MS MoveToPage wrapx wrapy -1p  0p
 Silent Key l W MS MoveToPage wrapx wrapy +1p  0p

@@ -6,9 +6,9 @@ source "$XDG_CONFIG_HOME/zsh/zstyles.zsh"
 ###}}}
 
 PROMPT='%f'
-PROMPT+='%F{green}%B%n'                 # username
-PROMPT+='%(?.%F{green}@.%F{black}@)%f'  # @
-PROMPT+='%F{green}%M%b%f:'              # hostname
+PROMPT+='%F{red}%B%n'                 # username
+PROMPT+='%(?.%F{red}@.%F{black}@)%f'  # @
+PROMPT+='%F{red}%M%b%f:'              # hostname
 PROMPT+='%F{blue}%2~%f %# '             # pwd
 
 # TODO mv histfile

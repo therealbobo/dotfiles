@@ -14,6 +14,7 @@ InfoStoreAdd terminal /usr/bin/alacritty
 Read fvwm.funcs
 Read fvwm.styles
 Read fvwm.colors
+Read fvwm.menus
 Read fvwm.keys
 Read fvwm.decor
 Read fvwm.modules

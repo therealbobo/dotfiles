@@ -11,12 +11,12 @@ AddToFunc   StartFunction
 #+ I TestRc (NoMatch) Exec exec fvwm-root \
 #    $[FVWM_DATADIR]/default-config/images/background/bg2.png
 + I Test (Init) Module FvwmBanner
-+ I Test (Init) Module nm-applet
-+ I Test (Init) Module cbatticon
-+ I Test (Init) Module udiskie -t
-+ I Test (Init) Module libinput-gestures-setup start
-+ I Test (Init) Module pulseaudio -D
-+ I Test (Init) Module pasystray
++ I Test (Init) Exec exec nm-applet
++ I Test (Init) Exec exec cbatticon
++ I Test (Init) Exec exec udiskie -t
++ I Test (Init) Exec exec libinput-gestures-setup start
++ I Test (Init) Exec exec pulseaudio -D
++ I Test (Init) Exec exec pasystray
 + I Module FvwmButtons RightPanel
 + I Module FvwmEvent EventNewDesk
 + I Test (Init, f $[FVWM_USERDIR]/.BGdefault) \

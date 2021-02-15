@@ -1,0 +1,114 @@
+# vim:ft=fvwm
+###########
+# 1: Functions
+###########
+
+DestroyFunc StartFunction
+AddToFunc   StartFunction
++ I SetBG
+#+ I Test (Init, f $[FVWM_USERDIR]/.BGdefault) \
+#    Exec exec fvwm-root $[FVWM_USERDIR]/.BGdefault
+#+ I TestRc (NoMatch) Exec exec fvwm-root \
+#    $[FVWM_DATADIR]/default-config/images/background/bg2.png
++ I Test (Init) Module FvwmBanner
++ I Test (Init) Module nm-applet
++ I Test (Init) Module cbatticon
++ I Test (Init) Module udiskie -t
++ I Test (Init) Module libinput-gestures-setup start
++ I Test (Init) Module pulseaudio -D
++ I Test (Init) Module pasystray
++ I Module FvwmButtons RightPanel
++ I Module FvwmEvent EventNewDesk
++ I Test (Init, f $[FVWM_USERDIR]/.BGdefault) \
+    Exec exec fvwm-root $[FVWM_USERDIR]/.BGdefault
++ I TestRc (NoMatch) Exec exec fvwm-root \
+    $[FVWM_DATADIR]/default-config/images/background/bg2.png
+
+# Mouse Bindings Functions
+DestroyFunc RaiseMoveX
+AddToFunc RaiseMoveX
++ I Raise
++ M $0
++ D $1
+
+DestroyFunc RaiseMove
+AddToFunc RaiseMove
++ I Raise
++ M $0
+
+DestroyFunc MoveToCurrent
+AddToFunc MoveToCurrent
++ I ThisWindow MoveToPage
++ I ThisWindow MoveToDesk
+
+DestroyFunc ViewManPage
+AddToFunc   ViewManPage
++ I Exec exec $[infostore.terminal] -t "Manual Page - $0" -e man "$0"
+
+DestroyFunc SetBG
+AddToFunc   SetBG
++ I Exec exec feh --randomize --no-fehbg --bg-fill /home/robi/Pictures/Wallpapers/*
+
+# Function: IconManClick
+#
+# This function is run from FvwmIconMan when the button is clicked.
+DestroyFunc IconManClick
+AddToFunc   IconManClick
++ I ThisWindow (Raised, !Shaded, !Iconic, CurrentPage) Iconify
++ I TestRc (Match) Break
++ I ThisWindow WindowShade off
++ I ThisWindow Iconify off
++ I ThisWindow Raise
++ I ThisWindow (AcceptsFocus) FlipFocus
+
+# Function: ChangeDesk
+#
+# This function is called by FvwmEvent every time the Desk is changed.
+DestroyFunc ChangeDesk
+AddToFunc   ChangeDesk
++ I SendToModule FvwmButtons ChangeButton desk0  Colorset 10
++ I SendToModule FvwmButtons ChangeButton desk1  Colorset 10
++ I SendToModule FvwmButtons ChangeButton desk2  Colorset 10
++ I SendToModule FvwmButtons ChangeButton desk3  Colorset 10
++ I SendToModule FvwmButtons ChangeButton desk4  Colorset 10
++ I SendToModule FvwmButtons ChangeButton desk5  Colorset 10
++ I SendToModule FvwmButtons ChangeButton desk6  Colorset 10
++ I SendToModule FvwmButtons ChangeButton desk7  Colorset 10
++ I SendToModule FvwmButtons ChangeButton desk8  Colorset 10
++ I SendToModule FvwmButtons ChangeButton desk9  Colorset 10
++ I SendToModule FvwmButtons ChangeButton desk$0 Colorset 11
+
+DestroyFunc FullScreen
+AddToFunc   FullScreen
++ I ThisWindow (Maximized) WindowStyle Borders
++ I TestRc (NoMatch) WindowStyle !Borders
++ I ThisWindow (Maximized) WindowStyle Title
++ I TestRc (NoMatch) WindowStyle !Title
++ I UpdateStyles
++ I RefreshWindow
++ I ThisWindow (Maximizable) Maximize ewmhiwa
+
+DestroyFunc ToggleTitle
+AddToFunc   ToggleTitle
++ I ThisWindow (State 1) WindowStyle Title
++ I TestRc (Match) State 1 False
++ I TestRc (Match) Break
++ I WindowStyle !Title
++ I State 1 True
+
+DestroyFunc ToggleBorders
+AddToFunc   ToggleBorders
++ I ThisWindow (State 2) WindowStyle Borders
++ I TestRc (Match) State 2 False
++ I TestRc (Match) Break
++ I WindowStyle !Borders
++ I State 2 True
+
+DestroyFunc WindowListFunc
+AddToFunc WindowListFunc
++ I Iconify off
++ I FlipFocus
++ I Raise
++ I WarpToWindow 50 50
+
+

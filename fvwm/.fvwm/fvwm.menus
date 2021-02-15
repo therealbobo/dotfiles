@@ -1,0 +1,167 @@
+# vim:ft=fvwm
+#######
+# 4: Menus
+###########
+MenuStyle * MenuColorset 0, ActiveColorset 12, GreyedColorset 7, TitleColorset 8
+MenuStyle * Hilight3DOff, HilightBack, HilightTitleBack, SeparatorsLong
+MenuStyle * TrianglesSolid, TrianglesUseFore
+MenuStyle * ItemFormat "%|%3.1i%5.3l%5.3>%|"
+MenuStyle * Font "xft:Sans:Bold:size=8:antialias=True"
+
+# Root Menu
+#
+# The root menu will PopUp with a click in the root
+# window or using alt-f1 (or menu).
+DestroyMenu MenuFvwmRoot
+AddToMenu   MenuFvwmRoot "Fvwm" Title
++ "&Programs%icons/programs.png%" Popup MenuPrograms
++ "&Term%icons/terminal.png%" Exec exec $[infostore.terminal]
++ "" Nop
++ "Fvwm&Console%icons/terminal.png%" Module FvwmConsole -terminal xterm -bg black -fg green
++ "&Wallpapers%icons/wallpaper.png%" Popup BGMenu
++ "M&an Pages%icons/help.png%" Popup MenuFvwmManPages
++ "Copy Config%icons/conf.png%" FvwmScript FvwmScript-ConfirmCopyConfig
++ "" Nop
++ "Re&fresh%icons/refresh.png%" Refresh
++ "&Restart%icons/restart.png%" Restart
++ "&Quit%icons/quit.png%" Module FvwmScript FvwmScript-ConfirmQuit
+
+# Generate XDGMenu
+PipeRead "fvwm-menu-desktop -e"
+
+# Programs Menu
+DestroyMenu MenuPrograms
+AddToMenu   MenuPrograms "Programs" Title
+Test (x chromium)      + "Chromium" Exec exec chromium
+Test (x firefox)       + "Firefox"  Exec exec firefox
+Test (x google-chrome) + "Chrome"   Exec exec google-chrome
+Test (x gvim)          + "gVim"     Exec exec gvim
+Test (x vim)           + "Vim"      Exec exec alacritty -e vim
+Test (x xemacs)        + "Emacs"    Exec exec emacs
+Test (x gimp)          + "Gimp"     Exec exec gimp
+Test (x mpv)           + "mpv"      Exec exec mpv
+Test (x termite)       + "Termite"  Exec exec termite
+Test (x alacritty)     + "Termite"  Exec exec alacritty
+
+# Background Menu
+#
+# Backgrounds are located in ~/.fvwm/images/background/
+# Menu icons are located in ~/.fvwm/images/bgicons/
+DestroyMenu BGMenu
+AddToMenu   BGMenu "Wallpapers" Title
++ "Floral%bgicons/bg1.png%"  SetBG bg1.png
++ "Circles%bgicons/bg2.png%" SetBG bg2.png
++ "Space%bgicons/bg3.png%"   SetBG bg3.png
+
+# Window Operations Menus
+DestroyMenu MenuWindowOps
+AddToMenu   MenuWindowOps
++ "Move"      Move
++ "Resize"    Resize
++ "Iconify"   Iconify
++ "Maximize"  Maximize
++ "Shade"     WindowShade
++ "Stick"     Stick
++ ""          Nop
++ "Close"     Close
++ "More..."   Menu MenuWindowOpsLong This 0 0
+
+DestroyMenu MenuWindowOpsLong
+AddToMenu   MenuWindowOpsLong
++ "Move"                Move
++ "Resize"              Resize
++ "(De)Iconify"         Iconify
++ "(Un)Maximize"        Maximize
++ "(Un)FullScreen"      FullScreen
++ "(Un)Shade"           WindowShade
++ "(Un)Sticky"		    Stick
++ "(No)TitleBar"	    Pick (CirculateHit) ToggleTitle
++ "Send To"             Popup MenuSendTo
++ ""                    Nop
++ "Close"               Close
++ "Destroy"             Destroy
++ ""                    Nop
++ "Raise"		        Raise
++ "Lower"		        Lower
++ ""                    Nop
++ "StaysOnTop"          Pick (CirculateHit) Layer 0 6
++ "StaysPut"            Pick (CirculateHit) Layer 0 4
++ "StaysOnBottom"       Pick (CirculateHit) Layer 0 2
++ ""                    Nop
++ "Identify"            Module FvwmIdent
+
+DestroyMenu MenuIconOps
+AddToMenu   MenuIconOps
++ "(De)Iconify"         Iconify
++ "(Un)Maximize"        Maximize
++ "(Un)Shade"           WindowShade
++ "(Un)Sticky"		    Stick
++ "(No)TitleBar"	    Pick (CirculateHit) ToggleTitle
++ "Send To"             Popup MenuSendTo
++ ""                    Nop
++ "Close"               Close
++ "Destroy"             Destroy
++ ""                    Nop
++ "Raise"		        Raise
++ "Lower"		        Lower
++ ""                    Nop
++ "StaysOnTop"          Pick (CirculateHit) Layer 0 6
++ "StaysPut"            Pick (CirculateHit) Layer 0 4
++ "StaysOnBottom"       Pick (CirculateHit) Layer 0 2
++ ""                    Nop
++ "Identify"            Module FvwmIdent
+
+DestroyMenu MenuSendTo
+AddToMenu MenuSendTo
++ "Current" MoveToCurrent
++ "Page"    PopUp MenuSendToPage
++ "Desk"    PopUp MenuSendToDesk
+
+DestroyMenu MenuSendToDesk
+AddToMenu   MenuSendToDesk
++ "Desk 0"	MoveToDesk 0 0
++ "Desk 1"	MoveToDesk 0 1
++ "Desk 2"	MoveToDesk 0 2
++ "Desk 3"	MoveToDesk 0 3
++ "Desk 4"	MoveToDesk 0 4
++ "Desk 5"	MoveToDesk 0 5
++ "Desk 6"	MoveToDesk 0 6
++ "Desk 7"	MoveToDesk 0 7
++ "Desk 8"	MoveToDesk 0 8
++ "Desk 9"	MoveToDesk 0 9
+
+DestroyMenu MenuSendToPage
+AddToMenu   MenuSendToPage
++ "Page (0,0)"	MoveToPage 0 0
++ "Page (0,1)"	MoveToPage 0 1
++ "Page (1,0)"	MoveToPage 1 0
++ "Page (1,1)"	MoveToPage 1 1
+
+
+# Fvwm Man Pages (Help) Menu
+DestroyMenu MenuFvwmManPages
+AddToMenu   MenuFvwmManPages "Help" Title
++ "fvwm"                ViewManPage fvwm
++ "FvwmAnimate"         ViewManPage FvwmAnimate
++ "FvwmAuto"            ViewManPage FvwmAuto
++ "FvwmBacker"          ViewManPage FvwmBacker
++ "FvwmBanner"          ViewManPage FvwmBanner
++ "FvwmButtons"         ViewManPage FvwmButtons
++ "FvwmCommand"         ViewManPage FvwmCommand
++ "FvwmConsole"         ViewManPage FvwmConsole
++ "FvwmEvent"           ViewManPage FvwmEvent
++ "FvwmForm"            ViewManPage FvwmForm
++ "FvwmIconMan"         ViewManPage FvwmIconMan
++ "FvwmIdent"           ViewManPage FvwmIdent
++ "FvwmPager"           ViewManPage FvwmPager
++ "FvwmPerl"            ViewManPage FvwmPerl
++ "FvwmProxy"           ViewManPage FvwmProxy
++ "FvwmRearrange"       ViewManPage FvwmRearrange
++ "FvwmScript"          ViewManPage FvwmScript
++ ""                    Nop
++ "fvwm-root"	        ViewManPage fvwm-root
++ "fvwm-menu-desktop"   ViewManPage fvwm-menu-desktop
++ "fvwm-menu-directory" ViewManPage fvwm-menu-directory
++ "fvwm-menu-headlines" ViewManPage fvwm-menu-headlines
++ "fvwm-menu-xlock"     ViewManPage fvwm-menu-xlock
++ "fvwm-config"         ViewManPage fvwm-config

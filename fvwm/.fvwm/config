@@ -23,6 +23,12 @@ AddToFunc   StartFunction
 #+ I TestRc (NoMatch) Exec exec fvwm-root \
 #    $[FVWM_DATADIR]/default-config/images/background/bg2.png
 + I Test (Init) Module FvwmBanner
++ I Test (Init) Module nm-applet
++ I Test (Init) Module cbatticon
++ I Test (Init) Module udiskie -t
++ I Test (Init) Module libinput-gestures-setup start
++ I Test (Init) Module pulseaudio -D
++ I Test (Init) Module pasystray
 + I Module FvwmButtons RightPanel
 + I Module FvwmEvent EventNewDesk
 + I Test (Init, f $[FVWM_USERDIR]/.BGdefault) \
@@ -30,14 +36,6 @@ AddToFunc   StartFunction
 + I TestRc (NoMatch) Exec exec fvwm-root \
     $[FVWM_DATADIR]/default-config/images/background/bg2.png
 
-DestroyFunc InitFunction
-AddToFunc   InitFunction
-+ I Exec exec nm-applet
-+ I Exec exec cbatticon
-+ I Exec exec udiskie -t
-+ I Exec exec libinput-gestures-setup start
-+ I Exec exec pulseaudio -D
-+ I Exec exec pasystray
 
 # Mouse Bindings Functions
 DestroyFunc RaiseMoveX
@@ -46,39 +44,27 @@ AddToFunc RaiseMoveX
 + M $0
 + D $1
 
+
 DestroyFunc RaiseMove
 AddToFunc RaiseMove
 + I Raise
 + M $0
+
 
 DestroyFunc MoveToCurrent
 AddToFunc MoveToCurrent
 + I ThisWindow MoveToPage
 + I ThisWindow MoveToDesk
 
+
 DestroyFunc ViewManPage
 AddToFunc   ViewManPage
 + I Exec exec $[infostore.terminal] -t "Manual Page - $0" -e man "$0"
 
-# Function: SetBG $0
-#
-# SetBG is used with the background menu to set the background
-# image and configure it to be loaded the next time fvwm is run.
-# Note, fvwm-root can't use .jpeg or resize images. Use something
-# like display, feh, etc.
+
 DestroyFunc SetBG
 AddToFunc   SetBG
 + I Exec exec feh --randomize --no-fehbg --bg-fill /home/robi/Pictures/Wallpapers/*
-#+ I Test (f $[FVWM_USERDIR]/images/background/$0) \
-#    Exec exec fvwm-root $[FVWM_USERDIR]/images/background/$0
-#+ I TestRc (Match) Exec exec ln -fs images/background/$0 \
-#    $[FVWM_USERDIR]/.BGdefault
-#+ I TestRc (Match) Break
-#+ I Test (!f $[FVWM_DATADIR]/default-config/images/background/$0) Break
-#+ I Exec exec fvwm-root $[FVWM_DATADIR]/default-config/images/background/$0
-#+ I Exec exec ln -fs $[FVWM_DATADIR]/default-config/images/background/$0 \
-#    $[FVWM_USERDIR]/.BGdefault
-
 
 # Function: IconManClick
 #
@@ -92,9 +78,33 @@ AddToFunc   IconManClick
 + I ThisWindow Raise
 + I ThisWindow (AcceptsFocus) FlipFocus
 
-# Function: ToggleTitle
+# Function: ChangeDesk
 #
-# This function will toggle if fvwm shows the TitleBar.
+# This function is called by FvwmEvent every time the Desk is changed.
+DestroyFunc ChangeDesk
+AddToFunc   ChangeDesk
++ I SendToModule FvwmButtons ChangeButton desk0  Colorset 10
++ I SendToModule FvwmButtons ChangeButton desk1  Colorset 10
++ I SendToModule FvwmButtons ChangeButton desk2  Colorset 10
++ I SendToModule FvwmButtons ChangeButton desk3  Colorset 10
++ I SendToModule FvwmButtons ChangeButton desk4  Colorset 10
++ I SendToModule FvwmButtons ChangeButton desk5  Colorset 10
++ I SendToModule FvwmButtons ChangeButton desk6  Colorset 10
++ I SendToModule FvwmButtons ChangeButton desk7  Colorset 10
++ I SendToModule FvwmButtons ChangeButton desk8  Colorset 10
++ I SendToModule FvwmButtons ChangeButton desk9  Colorset 10
++ I SendToModule FvwmButtons ChangeButton desk$0 Colorset 11
+
+DestroyFunc FullScreen
+AddToFunc   FullScreen
++ I ThisWindow (Maximized) WindowStyle Borders
++ I TestRc (NoMatch) WindowStyle !Borders
++ I ThisWindow (Maximized) WindowStyle Title
++ I TestRc (NoMatch) WindowStyle !Title
++ I UpdateStyles
++ I RefreshWindow
++ I ThisWindow (Maximizable) Maximize ewmhiwa
+
 DestroyFunc ToggleTitle
 AddToFunc   ToggleTitle
 + I ThisWindow (State 1) WindowStyle Title
@@ -103,31 +113,13 @@ AddToFunc   ToggleTitle
 + I WindowStyle !Title
 + I State 1 True
 
-# Function: ChangeDesk
-#
-# This function is called by FvwmEvent every time the Desk is changed.
-DestroyFunc ChangeDesk
-AddToFunc   ChangeDesk
-+ I SendToModule FvwmButtons ChangeButton desk0 Colorset 10
-+ I SendToModule FvwmButtons ChangeButton desk1 Colorset 10
-+ I SendToModule FvwmButtons ChangeButton desk2 Colorset 10
-+ I SendToModule FvwmButtons ChangeButton desk3 Colorset 10
-+ I SendToModule FvwmButtons ChangeButton desk4 Colorset 10
-+ I SendToModule FvwmButtons ChangeButton desk5 Colorset 10
-+ I SendToModule FvwmButtons ChangeButton desk6 Colorset 10
-+ I SendToModule FvwmButtons ChangeButton desk7 Colorset 10
-+ I SendToModule FvwmButtons ChangeButton desk8 Colorset 10
-+ I SendToModule FvwmButtons ChangeButton desk9 Colorset 10
-+ I SendToModule FvwmButtons ChangeButton desk$0 Colorset 11
-
-
-DestroyFunc FullScreen
-AddToFunc FullScreen
-+ I Current ToggleTitle
-+ I Current wait
-+ I Current UpdateStyles
-+ I Current Maximize ewmhiwa
-
+DestroyFunc ToggleBorders
+AddToFunc   ToggleBorders
++ I ThisWindow (State 2) WindowStyle Borders
++ I TestRc (Match) State 2 False
++ I TestRc (Match) Break
++ I WindowStyle !Borders
++ I State 2 True
 
 DestroyFunc WindowListFunc
 AddToFunc WindowListFunc

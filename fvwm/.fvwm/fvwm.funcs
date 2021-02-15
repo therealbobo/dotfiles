@@ -66,16 +66,16 @@ AddToFunc   IconManClick
 # This function is called by FvwmEvent every time the Desk is changed.
 DestroyFunc ChangeDesk
 AddToFunc   ChangeDesk
-+ I SendToModule FvwmButtons ChangeButton desk0  Colorset 10
-+ I SendToModule FvwmButtons ChangeButton desk1  Colorset 10
-+ I SendToModule FvwmButtons ChangeButton desk2  Colorset 10
-+ I SendToModule FvwmButtons ChangeButton desk3  Colorset 10
-+ I SendToModule FvwmButtons ChangeButton desk4  Colorset 10
-+ I SendToModule FvwmButtons ChangeButton desk5  Colorset 10
-+ I SendToModule FvwmButtons ChangeButton desk6  Colorset 10
-+ I SendToModule FvwmButtons ChangeButton desk7  Colorset 10
-+ I SendToModule FvwmButtons ChangeButton desk8  Colorset 10
-+ I SendToModule FvwmButtons ChangeButton desk9  Colorset 10
++ I SendToModule FvwmButtons ChangeButton desk0 Colorset 10
++ I SendToModule FvwmButtons ChangeButton desk1 Colorset 10
++ I SendToModule FvwmButtons ChangeButton desk2 Colorset 10
++ I SendToModule FvwmButtons ChangeButton desk3 Colorset 10
++ I SendToModule FvwmButtons ChangeButton desk4 Colorset 10
++ I SendToModule FvwmButtons ChangeButton desk5 Colorset 10
++ I SendToModule FvwmButtons ChangeButton desk6 Colorset 10
++ I SendToModule FvwmButtons ChangeButton desk7 Colorset 10
++ I SendToModule FvwmButtons ChangeButton desk8 Colorset 10
++ I SendToModule FvwmButtons ChangeButton desk9 Colorset 10
 + I SendToModule FvwmButtons ChangeButton desk$0 Colorset 11
 
 DestroyFunc FullScreen

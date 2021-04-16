@@ -14,13 +14,14 @@ Plug 'bling/vim-bufferline'
 Plug 'lervag/vimtex', {'for': 'tex'}
 Plug 'fatih/vim-go', {'for': 'go'}
 Plug 'SirVer/ultisnips'
-Plug 'vim-scripts/LargeFile'
+Plug 'tpope/vim-surround'
 call plug#end()
 
 " Vim settings
 "packloadall
 filetype plugin indent on
 syntax on
+"set noshowmode
 set autoindent
 set smartindent
 set tabstop=4
@@ -39,7 +40,6 @@ set clipboard=unnamedplus
 set encoding=UTF-8
 set mouse=a
 set hls
-"set list lcs=tab:\|\ 
 
 
 "inoremaps
@@ -111,6 +111,3 @@ let g:go_highlight_extra_types       = 1
 let g:go_highlight_functions_calls   = 1
 let g:go_highlight_build_constraints = 1
 let g:go_gopls_enabled = 0
-
-"largefiles
-let g:LargeFile = 10

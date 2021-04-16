@@ -41,12 +41,21 @@ bindkey '^R' history-incremental-search-backward
 source $ZDOTDIR/plugins/sudo.zsh
 source $ZDOTDIR/plugins/fzf.zsh
 
+# edit command commands in vim
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
+
 # git support
 autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info )
 setopt prompt_subst
 RPROMPT=\$vcs_info_msg_0_
+
+# window title
+precmd() { print -Pn "\e]0;%~\a" }
+preexec() { echo -en "\e]0;${1}\a" }
 
 # autocompletion
 autoload -Uz compinit

@@ -4,11 +4,13 @@
 (toggle-scroll-bar -1)
 (tool-bar-mode     -1)
 (global-display-line-numbers-mode)
-;(setq display-line-numbers 'relative)
 (setq display-line-numbers-type 'relative) 
 
 
-(set-frame-font "DejaVu Sans Mono-14" t)
+(set-frame-font "DejaVu Sans Mono-14" t nil)
+;; ??
+(transient-mark-mode 1)
+
 
 ;; basic imports
 (require 'cl-lib)
@@ -21,76 +23,73 @@
 		("gnu" . "http://elpa.gnu.org/packages/")
 ))
 
-(defvar my-packages
-  '(
-	auctex
-	evil
-	magit
-	markdown-mode
-	org
-	solarized-theme
-	undo-tree
-	volatile-highlights
-	vterm
-	yaml-mode
-	)
-  "A list of packages to ensure are installed at launch.")
-
-(defun install-my-packages()
-  (cl-loop for p in my-packages
-        when (not (package-installed-p p))
-			do (cl-return nil)
-        finally (cl-return t)))
-
-(unless (install-my-packages)
+(when (not (package-installed-p 'use-package))
   (package-refresh-contents)
-  (dolist (p my-packages)
-    (when (not (package-installed-p p))
-      (package-install p))))
-
+  (package-install 'use-package))
 
 (package-initialize)
 
+(use-package evil
+  :ensure t
+  :config
+  (evil-mode 1)
+	     )
 
-
-;; enable evil
-(require 'evil)
-(evil-mode t)
-
-;; enable solarized theme
-(require 'solarized-theme)
-(setq custom-safe-themes t)
-(setq solarized-use-variable-pitch nil
-      solarized-scale-org-headlines nil)
-(load-theme 'solarized-dark t)
-(add-hook 'after-init-hook (lambda () (load-theme 'solarized-dark)))
-
-;; ??
-(transient-mark-mode 1)
+(use-package solarized-theme
+  :ensure t
+  :init
+	(setq custom-safe-themes t)
+	(setq solarized-use-variable-pitch nil
+		  solarized-scale-org-headlines nil)
+  (load-theme 'solarized-dark t)
+  )
 
 ;; org mode config
-(require 'org)
-(setq org-tags-column -70)
-(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+(use-package org
+  :ensure t
+  :init
+  (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+  :config
+  (setq org-tags-column -70)
+  )
 
-;; tex mode config
-;;(add-to-list 'auto-mode-alist '("\\.tex$" . auto-fill-mode))
+(use-package volatile-highlights
+  :ensure t
+  :config
+  (volatile-highlights-mode t)
+  (vhl/define-extension 'evil 'evil-paste-after 'evil-paste-before
+			'evil-paste-pop 'evil-move)
+  (vhl/install-extension 'evil)
+  )
 
-(require 'volatile-highlights)
-(volatile-highlights-mode t)
-(vhl/define-extension 'evil 'evil-paste-after 'evil-paste-before
-                      'evil-paste-pop 'evil-move)
-(vhl/install-extension 'evil)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(undo-tree yari yaml-mode volatile-highlights solarized-theme org magit evil auctex)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+(use-package auctex
+  :defer t
+  :ensure t
+  )
+
+(use-package magit
+  :ensure t
+  )
+
+(use-package markdown-mode
+  :ensure t
+  )
+
+(use-package undo-tree
+  :ensure t
+  )
+
+(use-package vterm
+  :ensure t
+  )
+
+(use-package yaml-mode
+  :ensure t
+  )
+
+(defun edit-config ()
+   "Edit your init.el on fly."
+   ;; body
+   (find-file "~/.config/emacs/init.el")
+   (interactive)
+   )

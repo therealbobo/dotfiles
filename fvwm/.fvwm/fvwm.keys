@@ -54,10 +54,10 @@ Silent Key l A M GoToPage +1p +0p
 Silent Key j A M GoToPage +0p +1p
 Silent Key k A M GoToPage +0p -1p
 
-Silent Key h A SC Move w-5   keep Warp
-Silent Key l A SC Move w+5   keep Warp
-Silent Key j A SC Move keep  w+5  Warp
-Silent Key k A SC Move keep  w-5  Warp
+Silent Key h A SC MoveWithWarp w-5   keep
+Silent Key l A SC MoveWithWarp w+5   keep
+Silent Key j A SC MoveWithWarp keep  w+5
+Silent Key k A SC MoveWithWarp keep  w-5
 
 Silent Key h W MSC MoveToPage wrapx wrapy -1p  0p
 Silent Key l W MSC MoveToPage wrapx wrapy +1p  0p

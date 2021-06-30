@@ -11,6 +11,8 @@
 ;; ??
 (transient-mark-mode 1)
 
+(setq custom-file (concat user-emacs-directory "custom.el"))
+(load custom-file 'noerror)
 
 ;; basic imports
 (require 'cl-lib)
@@ -31,9 +33,25 @@
 
 (use-package evil
   :ensure t
+  :init
+  (setq evil-want-keybinding nil)
   :config
   (evil-mode 1)
-	     )
+  )
+
+(use-package evil-collection
+  :after evil
+  :ensure t
+  :config
+  (evil-collection-init)
+  )
+
+(use-package recentf
+  :config
+  (setq recentf-max-menu-items 25)
+  (setq recentf-max-saved-items 25)
+  (recentf-mode 1)
+  )
 
 (use-package solarized-theme
   :ensure t
@@ -77,6 +95,8 @@
 
 (use-package undo-tree
   :ensure t
+  :config
+  (global-undo-tree-mode 1)
   )
 
 (use-package vterm

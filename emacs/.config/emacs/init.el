@@ -69,6 +69,23 @@
   (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
   :config
   (setq org-tags-column -70)
+  (setq org-todo-keyword-faces
+	'(("TODO"  . (:foreground "red" :weight bold))
+	  ("NEXT"  . (:foreground "red" :weight bold))
+	  ("DONE"  . (:foreground "forest green" :weight bold))
+	  ("WAITING"  . (:foreground "orange" :weight bold))
+	  ("CANCELLED"  . (:foreground "forest green" :weight bold))
+	  ("SOMEDAY"  . (:foreground "orange" :weight bold))
+	  ("OPEN"  . (:foreground "red" :weight bold))
+	  ("CLOSED"  . (:foreground "forest green" :weight bold))
+	  ("ONGOING"  . (:foreground "orange" :weight bold))))
+  (setq org-todo-keywords
+	'((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d!/!)")
+	  (sequence "WAITING(w@/!)" "|" "CANCELLED(c!/!)")
+	  (sequence "SOMEDAY(s!/!)" "|")
+	  (sequence "OPEN(O!)" "|" "CLOSED(C!)")
+	  (sequence "ONGOING(o)" "|")))
+  (setq org-startup-with-inline-images t)
   )
 
 (use-package volatile-highlights
@@ -113,3 +130,16 @@
    (find-file "~/.config/emacs/init.el")
    (interactive)
    )
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(yari yaml-mode vterm volatile-highlights use-package undo-tree solarized-theme org markdown-mode magit evil auctex)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

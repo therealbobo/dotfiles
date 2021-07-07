@@ -123,9 +123,24 @@
   :ensure t
   )
 
+(use-package transpose-frame
+  :ensure t
+  )
+
 (use-package vterm
   :ensure t
   )
+
+(use-package pdf-tools
+   :ensure t
+   :mode (("\\.pdf\\'" . pdf-view-mode))
+   :config
+   (pdf-tools-install :no-query))
+
+(add-hook 'pdf-view-mode-hook (lambda() (linum-mode -1)))
+
+(add-to-list 'org-file-apps '("\\.pdf\\'" . emacs))
+
 
 (defun edit-config ()
    "Edit your init.el on fly."

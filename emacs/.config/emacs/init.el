@@ -1,13 +1,16 @@
 ;; -*- mode: elisp -*-
 
-;(menu-bar-mode     -3)
-(toggle-scroll-bar -1)
+;; (menu-bar-mode     -3)
+;;(toggle-scroll-bar -1)
 (tool-bar-mode     -1)
 (global-display-line-numbers-mode)
 (setq display-line-numbers-type 'relative) 
 
+;; (set-frame-font "DejaVu Sans Mono-14" t nil)
+;;(add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-14"))
+(add-to-list 'default-frame-alist '(font . "Roboto Mono-14"))
+(add-to-list 'default-frame-alist '(vertical-scroll-bars . nil))
 
-(set-frame-font "DejaVu Sans Mono-14" t nil)
 ;; ??
 (transient-mark-mode 1)
 
@@ -116,11 +119,11 @@
   (global-undo-tree-mode 1)
   )
 
-(use-package vterm
+(use-package yaml-mode
   :ensure t
   )
 
-(use-package yaml-mode
+(use-package vterm
   :ensure t
   )
 
@@ -130,16 +133,3 @@
    (find-file "~/.config/emacs/init.el")
    (interactive)
    )
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(yari yaml-mode vterm volatile-highlights use-package undo-tree solarized-theme org markdown-mode magit evil auctex)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )

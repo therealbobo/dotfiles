@@ -120,9 +120,24 @@
   :ensure t
   )
 
+(use-package transpose-frame
+  :ensure t
+  )
+
 (use-package yaml-mode
   :ensure t
   )
+
+(use-package pdf-tools
+   :ensure t
+   :mode (("\\.pdf\\'" . pdf-view-mode))
+   :config
+   (pdf-tools-install :no-query))
+
+(add-hook 'pdf-view-mode-hook (lambda() (linum-mode -1)))
+
+(add-to-list 'org-file-apps '("\\.pdf\\'" . emacs))
+
 
 (defun edit-config ()
    "Edit your init.el on fly."
@@ -130,16 +145,3 @@
    (find-file "~/.config/emacs/init.el")
    (interactive)
    )
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(yari yaml-mode vterm volatile-highlights use-package undo-tree solarized-theme org markdown-mode magit evil auctex)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )

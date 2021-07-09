@@ -3,16 +3,18 @@
 ;; (menu-bar-mode     -3)
 ;;(toggle-scroll-bar -1)
 (tool-bar-mode     -1)
-(global-display-line-numbers-mode)
-(setq display-line-numbers-type 'relative) 
+;;(global-display-line-numbers-mode)
+;;(setq display-line-numbers-type 'relative) 
 
 ;; (set-frame-font "DejaVu Sans Mono-14" t nil)
 ;;(add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-14"))
 (add-to-list 'default-frame-alist '(font . "Roboto Mono-14"))
 (add-to-list 'default-frame-alist '(vertical-scroll-bars . nil))
 
-;; ??
 (transient-mark-mode 1)
+
+(global-linum-mode 1)
+(setq linum-format 'dynamic)
 
 (setq custom-file (concat user-emacs-directory "custom.el"))
 (load custom-file 'noerror)
@@ -33,6 +35,10 @@
   (package-install 'use-package))
 
 (package-initialize)
+
+;;(use-package straight
+;;  :ensure t
+;;  )
 
 (use-package evil
   :ensure t
@@ -56,13 +62,13 @@
   (recentf-mode 1)
   )
 
-(use-package solarized-theme
+(use-package nord-theme
   :ensure t
   :init
 	(setq custom-safe-themes t)
 	(setq solarized-use-variable-pitch nil
 		  solarized-scale-org-headlines nil)
-  (load-theme 'solarized-dark t)
+  (load-theme 'nord t)
   )
 
 ;; org mode config

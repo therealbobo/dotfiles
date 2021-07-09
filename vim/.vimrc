@@ -22,12 +22,14 @@ call plug#end()
 filetype plugin indent on
 syntax on
 "set noshowmode
+set virtualedit=all
 set autoindent
 set smartindent
+set smartcase
+set showmatch
 set tabstop=4
 set shiftwidth=4
 set number relativenumber
-set showmatch
 set backspace=indent,eol,start
 set path+=**
 set background=dark
@@ -40,7 +42,8 @@ set clipboard=unnamedplus
 set encoding=UTF-8
 set mouse=a
 set hls
-
+" fancy cmdline completion
+set wildmenu
 
 "inoremaps
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u

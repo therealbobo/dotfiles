@@ -10,10 +10,10 @@ alias rgrep='grep -rain'
 
 
 # pwn
-alias gdb='gdb -q -nh -x "$XDG_CONFIG_HOME"/gdb/init'
+alias gdb='gdb -q' #-nh -x "$XDG_CONFIG_HOME"/gdb/init'
 alias peda='gdb -q -nh -x "$XDG_CONFIG_HOME"/gdb/initpeda'
 alias gef='gdb -q -nh -x "$XDG_CONFIG_HOME"/gdb/initgef'
-alias disable_randomization='echo 0 |sudo tee /proc/sys/kernel/randomize_va_space'
+alias disable_randomization='echo 0 | sudo tee /proc/sys/kernel/randomize_va_space'
 alias r2help="r2 -q -c '?*~...' -"
 
 
@@ -46,3 +46,5 @@ alias scluf='systemctl list-unit-files'
 alias sclt='systemctl list-timers'
 alias scc='systemctl cat'
 alias scie='systemctl is-enabled'
+
+alias em='emacsclient -c & disown'

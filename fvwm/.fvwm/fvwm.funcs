@@ -15,10 +15,9 @@ AddToFunc   StartFunction
 + I Test (Init) Exec exec cbatticon
 + I Test (Init) Exec exec udiskie -t
 + I Test (Init) Exec exec libinput-gestures-setup start
-+ I Test (Init) Exec exec pulseaudio -D
 + I Test (Init) Exec exec pasystray
 + I Test (Init) Exec exec redshift-gtk
-+ I Test (Init) Exec exec emacs --no-splash ~/todo.org
+#+ I Test (Init) Exec exec emacs --no-splash ~/Documents/org/todo.org
 + I Module FvwmButtons RightPanel
 + I Module FvwmEvent EventNewDesk
 + I Test (Init, f $[FVWM_USERDIR]/.BGdefault) \

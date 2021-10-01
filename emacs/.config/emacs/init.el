@@ -28,7 +28,7 @@
 	  '(("melpa" . "https://melpa.org/packages/")
 		("org" . "http://orgmode.org/elpa/")
 		("gnu" . "http://elpa.gnu.org/packages/")
-))
+		))
 
 (when (not (package-installed-p 'use-package))
   (package-refresh-contents)
@@ -68,6 +68,7 @@
 	(setq custom-safe-themes t)
 	(setq solarized-use-variable-pitch nil
 		  solarized-scale-org-headlines nil)
+  :config
   (load-theme 'nord t)
   )
 
@@ -135,6 +136,17 @@
 
 (use-package vterm
   :ensure t
+  )
+
+(use-package elfeed
+  :ensure t
+  :init
+  (load "~/.config/emacs/elfeed") ;; load rss from another file
+  :config
+  (setq shr-width 80) ;; 80 columns in elfeed-show
+  (setq-default elfeed-search-filter "@2-days-ago +unread")
+  (setq-default elfeed-search-title-max-width 100)
+  (setq-default elfeed-search-title-min-width 100)
   )
 
 (use-package pdf-tools

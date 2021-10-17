@@ -13,8 +13,11 @@
 
 (transient-mark-mode 1)
 
-(global-linum-mode 1)
-(setq linum-format 'dynamic)
+;;(global-linum-mode 1)
+;;(setq linum-format 'dynamic)
+
+;;(when (version<= "26.0.50" emacs-version )
+;;  (global-display-line-numbers-mode))
 
 (setq custom-file (concat user-emacs-directory "custom.el"))
 (load custom-file 'noerror)
@@ -28,7 +31,7 @@
 	  '(("melpa" . "https://melpa.org/packages/")
 		("org" . "http://orgmode.org/elpa/")
 		("gnu" . "http://elpa.gnu.org/packages/")
-))
+		))
 
 (when (not (package-installed-p 'use-package))
   (package-refresh-contents)
@@ -68,7 +71,12 @@
 	(setq custom-safe-themes t)
 	(setq solarized-use-variable-pitch nil
 		  solarized-scale-org-headlines nil)
-  (load-theme 'nord t)
+  :config
+  (if (daemonp) 
+	(add-hook 'after-make-frame-functions 
+			  (lambda (frame) 
+				(with-selected-frame frame (load-theme 'nord t)))) 
+	(load-theme 'nord t))
   )
 
 ;; org mode config
@@ -135,6 +143,19 @@
 
 (use-package vterm
   :ensure t
+  :init
+  (vterm-send-string "source ~/.config/zsh/.zshrc")
+  )
+
+(use-package elfeed
+  :ensure t
+  :init
+  (load "~/.config/emacs/elfeed") ;; load rss from another file
+  :config
+  (setq shr-width 80) ;; 80 columns in elfeed-show
+  (setq-default elfeed-search-filter "@2-days-ago +unread")
+  (setq-default elfeed-search-title-max-width 100)
+  (setq-default elfeed-search-title-min-width 100)
   )
 
 (use-package pdf-tools
@@ -143,10 +164,15 @@
    :config
    (pdf-tools-install :no-query))
 
+(use-package ace-jump-mode
+  :ensure t
+  :config
+  (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+  )
+
 (add-hook 'pdf-view-mode-hook (lambda() (linum-mode -1)))
 
 (add-to-list 'org-file-apps '("\\.pdf\\'" . emacs))
-
 
 (defun edit-config ()
    "Edit your init.el on fly."

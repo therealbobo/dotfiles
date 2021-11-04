@@ -3,8 +3,6 @@
 ;; (menu-bar-mode     -3)
 ;;(toggle-scroll-bar -1)
 (tool-bar-mode     -1)
-;;(global-display-line-numbers-mode)
-;;(setq display-line-numbers-type 'relative) 
 
 ;; (set-frame-font "DejaVu Sans Mono-14" t nil)
 ;;(add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-14"))
@@ -13,11 +11,7 @@
 
 (transient-mark-mode 1)
 
-;;(global-linum-mode 1)
-;;(setq linum-format 'dynamic)
-
-;;(when (version<= "26.0.50" emacs-version )
-;;  (global-display-line-numbers-mode))
+(setq frame-title-format '(buffer-file-name "Emacs: %b (%f)" "Emacs: %b"))
 
 (setq custom-file (concat user-emacs-directory "custom.el"))
 (load custom-file 'noerror)
@@ -141,10 +135,14 @@
   :ensure t
   )
 
+(defun my/source-zshrc ()
+  (interactive)
+  (vterm-send-string "source ~/.zprofile\nsource ~/.config/zsh/.zshrc\nclear\n"))
+
 (use-package vterm
   :ensure t
   :init
-  (vterm-send-string "source ~/.config/zsh/.zshrc")
+  (add-hook 'vterm-mode-hook #'my/source-zshrc )
   )
 
 (use-package elfeed

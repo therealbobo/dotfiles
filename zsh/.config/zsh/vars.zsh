@@ -1,6 +1,5 @@
 
 ### VARS ###{{{
-export ZSH="$HOME/.local/share/oh-my-zsh"
 export ZSH_COMPDUMP="$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
 export KEYTIMEOUT=1
 export TERM=xterm-256color
@@ -32,13 +31,10 @@ export VAGRANT_ALIAS_FILE="$XDG_DATA_HOME"/vagrant/aliases
 # z TODO broken
 export _Z_DATA="$XDG_DATA_HOME/z"
 
-# mplayer
-export MPLAYER_HOME="$XDG_CONFIG_HOME"/mplayer
-
 # weechat
 export WEECHAT_HOME="$XDG_CONFIG_HOME"/weechat
 
-# weechat
+# gnupg
 export GNUPGHOME="$XDG_CONFIG_HOME"/gnupg
 
 export _JAVA_AWT_WM_NONREPARENTING=1

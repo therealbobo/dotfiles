@@ -86,10 +86,3 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$USER_BIN:$USER_SCRIPTS:$npm_config_prefix/bin
 ###}}}
 
-
-#[[ -f ~/.zshrc ]] && . ~/.zshrc
-
-if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
-  startx -- -keeptty >/tmp/xorg.log 2>&1
-fi
-

@@ -9,7 +9,7 @@
 #
 #################################
 
-InfoStoreAdd terminal /usr/bin/alacritty
+InfoStoreAdd terminal alacritty
 
 Read fvwm.funcs
 Read fvwm.styles

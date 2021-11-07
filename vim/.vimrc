@@ -41,6 +41,7 @@ set clipboard=unnamedplus
 set encoding=UTF-8
 set mouse=a
 set hls
+set incsearch
 " fancy cmdline completion
 set wildmenu
 

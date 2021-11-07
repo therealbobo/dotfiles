@@ -11,13 +11,24 @@ AddToFunc   StartFunction
 #+ I TestRc (NoMatch) Exec exec fvwm-root \
 #    $[FVWM_DATADIR]/default-config/images/background/bg2.png
 + I Test (Init) Module FvwmBanner
-+ I Test (Init) Exec exec nm-applet
-+ I Test (Init) Exec exec cbatticon
-+ I Test (Init) Exec exec udiskie -t
-+ I Test (Init) Exec exec libinput-gestures-setup start
-+ I Test (Init) Exec exec pasystray
-+ I Test (Init) Exec exec redshift-gtk
-#+ I Test (Init) Exec exec emacs --no-splash ~/Documents/org/todo.org
++ I Test (Init, X nm-applet) \
+	Exec exec nm-applet
++ I Test (Init, X cbatticon) \
+	Exec exec cbatticon
++ I Test (Init, X udiskie) \
+	Exec exec udiskie -t
++ I Test (Init, X libinput-gestures-setup) \
+	Exec exec libinput-gestures-setup start
++ I Test (Init, X pulseaudio) \
+	Exec exec pulseaudio -D
++ I Test (Init, X pasystray) \
+	Exec exec pasystray
++ I Test (Init, X redshift-gtk) \
+	Exec exec redshift-gtk
++ I Test (Init, X emacs) \
+	Exec exec emacs --daemon
++ I Test (Init, X picom) \
+	Exec exec picom -b
 + I Module FvwmButtons RightPanel
 + I Module FvwmEvent EventNewDesk
 + I Test (Init, f $[FVWM_USERDIR]/.BGdefault) \
@@ -116,3 +127,9 @@ DestroyFunc MoveWithWarp
 AddToFunc MoveWithWarp
 + I Move $0 $1
 + I WarpToWindow 50 50
+
+
+DestroyFunc SetOnTop
+AddToFunc SetOnTop
++ I WindowStyle StaysOnTop
++ I UpdateStyles

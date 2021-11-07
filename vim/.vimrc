@@ -11,7 +11,6 @@ endif
 call plug#begin('~/.local/share/vim/plugged')
 Plug 'SirVer/ultisnips'
 Plug 'bling/vim-bufferline'
-Plug 'fatih/vim-go', {'for': 'go'}
 Plug 'itchyny/lightline.vim'
 Plug 'lervag/vimtex', {'for': 'tex'}
 Plug 'tpope/vim-surround'
@@ -102,14 +101,3 @@ let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 let g:UltiSnipsSnippetDirectories=[$XDG_DATA_HOME . "/vim/ultisnips"]
-
-"go
-let g:go_highlight_types     = 1 
-let g:go_highlight_fields    = 1 
-let g:go_highlight_structs   = 1 
-let g:go_highlight_methods   = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_extra_types       = 1 
-let g:go_highlight_functions_calls   = 1
-let g:go_highlight_build_constraints = 1

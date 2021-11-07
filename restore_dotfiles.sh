@@ -3,7 +3,7 @@
 ! command -v stow 1>/dev/null && echo '[!] Please install stow!' && exit 1
 
 echo "[-] Start stowing"
-find ./* -maxdepth 0 -type d -exec stow -v 1 -R -t ~ {} \; 2>&1 | grep 'WARNING! unstowing' -A1
+find * -maxdepth 0 -type d -exec stow -v 1 -R -t ~ {} \; 2>&1 | grep 'WARNING! unstowing' -A1
 echo "[+] Done stowing"
 
 

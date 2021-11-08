@@ -64,19 +64,14 @@ Silent Key l W MSC MoveToPage wrapx wrapy +1p  0p
 Silent Key j W MSC MoveToPage wrapx wrapy  0p -1p
 Silent Key k W MSC MoveToPage wrapx wrapy  0p +1p
 
-Silent Key h W MC Resize w-10 keep
-Silent Key k W MC Resize keep w-10
-Silent Key l W MC Resize w+10 keep
-Silent Key j W MC Resize keep w+10
+Silent Key h W MC ResizeWithWarp w-10 keep
+Silent Key k W MC ResizeWithWarp keep w-10
+Silent Key l W MC ResizeWithWarp w+10 keep
+Silent Key j W MC ResizeWithWarp keep w+10
 Silent Key m W M  Maximize
 Silent Key f W M  FullScreen
 Silent Key q W MS Close
 Silent Key k W MS Destroy
-
-#Silent Key Left  W M  Move +5  0
-#Silent Key Right W M  Move -5  0
-#Silent Key Up    W M  Move  0 -5
-#Silent Key Down  W M  Move  0 +5
 
 Silent Key Super_L A A   Exec exec $[infostore.terminal]
 Silent Key Super_L A C   Exec exec /home/robi/.local/scripts/alacritty_cwd.sh
@@ -102,7 +97,6 @@ Silent Key F4                     A  N  Exec exec playerctl play-pause
 Silent Key F5                     A  N  Exec exec playerctl position 5+
 Silent Key F3                     A  N  Exec exec playerctl position 5-
 
-#Silent Key Print                  A  N  Exec exec /home/robi/.local/scripts/screenshot.sh
 Silent Key Print                  A  N  Exec exec flameshot gui
 	
 # Window Buttons: [1 3 5 7 9  TTTTT  0 8 6 4 2]

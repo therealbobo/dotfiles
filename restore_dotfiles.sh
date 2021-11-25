@@ -19,14 +19,15 @@ if [ -z "$XDG_CACHE_HOME" ]; then
 	read -r XDG_CACHE_HOME
 fi
 
-mkdir -p "$XDG_DATA_HOME"/vim
-mkdir -p "$XDG_CACHE_HOME"/vim
+mkdir -p "$XDG_CACHE_HOME"/vim       \
+		 "$XDG_DATA_HOME"/vim        \
+		 "$XDG_DATA_HOME"/vim/spell  \
+		 "$XDG_DATA_HOME"/vim/after  \
+		 "$XDG_DATA_HOME"/vim/pack
+
 [ ! -f "$XDG_CACHE_HOME"/vim/viminfo ] && touch "$XDG_CACHE_HOME"/vim/viminfo
 
 # Install spell and snippests
-mkdir -p "$XDG_DATA_HOME"/vim/spell
-mkdir -p "$XDG_DATA_HOME"/vim/after
-mkdir -p "$XDG_DATA_HOME"/vim/pack
 wget http://ftp.vim.org/pub/vim/runtime/spell/it.utf-8.spl -O "$XDG_DATA_HOME/vim/spell/it.utf-8.spl"
 
 echo '[+] Done settinging up vim'

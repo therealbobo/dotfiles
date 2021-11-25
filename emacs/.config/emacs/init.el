@@ -240,10 +240,13 @@
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
   )
 
+(use-package company
+  :ensure t
+  )
+
 (use-package telega
   :ensure t
   :init
-  (telega-notifications-mode 1)
   (setq telega-use-images t
 	telega-emoji-font-family "Noto Color Emoji"
 	telega-emoji-use-images "Noto Color Emoji"
@@ -251,7 +254,9 @@
 	telega-root-show-avatars t
 	telega-temp-dir "/tmp/telega"
 	telega-directory (expand-file-name "~/.local/share/telega")
+	telega-database-directory (expand-file-name "~/.local/share/telega")
 	)
+  (telega-notifications-mode 1)
   :commands (telega)
   :defer t
   )
@@ -269,6 +274,13 @@
   :config
   (setq helm-split-window-in-side-p t)
   (helm-mode 1)
+  )
+
+(use-package dashboard
+  :ensure t
+  :config
+  (dashboard-setup-startup-hook)
+  (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
   )
 
 (add-to-list 'org-file-apps '("\\.pdf\\'" . emacs))

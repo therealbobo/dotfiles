@@ -72,7 +72,8 @@
 (use-package evil
   :ensure t
   :init
-  (setq evil-want-keybinding nil)
+  (setq evil-want-keybinding nil
+	evil-want-C-u-scroll t)
   :config
   (evil-mode 1)
   )
@@ -107,30 +108,35 @@
   )
 
 (use-package org
+  :pin gnu
   :ensure t
   :init
   (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
   :config
-  (setq org-tags-column -70
-	org-todo-keyword-faces
-	'(("TODO"  . (:foreground "red" :weight bold))
-	  ("NEXT"  . (:foreground "red" :weight bold))
-	  ("DONE"  . (:foreground "forest green" :weight bold))
-	  ("WAITING"  . (:foreground "orange" :weight bold))
-	  ("CANCELLED"  . (:foreground "forest green" :weight bold))
-	  ("SOMEDAY"  . (:foreground "orange" :weight bold))
-	  ("OPEN"  . (:foreground "red" :weight bold))
-	  ("CLOSED"  . (:foreground "forest green" :weight bold))
-	  ("ONGOING"  . (:foreground "orange" :weight bold)))
-	org-todo-keywords
-	'((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d!/!)")
-	  (sequence "WAITING(w@/!)" "|" "CANCELLED(c!/!)")
-	  (sequence "SOMEDAY(s!/!)" "|")
-	  (sequence "OPEN(O!)" "|" "CLOSED(C!)")
-	  (sequence "ONGOING(o)" "|")
-	  org-startup-with-inline-images t
-	  )
+  (setq org-format-latex-options
+	(plist-put org-format-latex-options :scale 2.0)
 	)
+
+  ;;(setq org-tags-column -70
+  ;;	org-todo-keyword-faces
+  ;;	'(("TODO"  . (:foreground "red" :weight bold))
+  ;;	  ("NEXT"  . (:foreground "red" :weight bold))
+  ;;	  ("DONE"  . (:foreground "forest green" :weight bold))
+  ;;	  ("WAITING"  . (:foreground "orange" :weight bold))
+  ;;	  ("CANCELLED"  . (:foreground "forest green" :weight bold))
+  ;;	  ("SOMEDAY"  . (:foreground "orange" :weight bold))
+  ;;	  ("OPEN"  . (:foreground "red" :weight bold))
+  ;;	  ("CLOSED"  . (:foreground "forest green" :weight bold))
+  ;;	  ("ONGOING"  . (:foreground "orange" :weight bold)))
+  ;;	org-todo-keywords
+  ;;	'((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d!/!)")
+  ;;	  (sequence "WAITING(w@/!)" "|" "CANCELLED(c!/!)")
+  ;;	  (sequence "SOMEDAY(s!/!)" "|")
+  ;;	  (sequence "OPEN(O!)" "|" "CLOSED(C!)")
+  ;;	  (sequence "ONGOING(o)" "|")
+  ;;	  org-startup-with-inline-images t
+  ;;	  )
+  ;;	)
   )
 
 (use-package volatile-highlights
@@ -257,6 +263,7 @@
 	telega-database-directory (expand-file-name "~/.local/share/telega")
 	)
   (telega-notifications-mode 1)
+  (define-key global-map (kbd "C-x t g") 'telega)
   :commands (telega)
   :defer t
   )
@@ -281,6 +288,14 @@
   :config
   (dashboard-setup-startup-hook)
   (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
+  )
+
+(use-package ace-window
+  :ensure t
+  :config
+  (define-key global-map (kbd "M-o") 'ace-window)
+  (define-key global-map (kbd "M-s") 'ace-swap-window)
+  (setq aw-keys '(?h ?j ?k ?l ?a ?s ?d ?f ?g))
   )
 
 (add-to-list 'org-file-apps '("\\.pdf\\'" . emacs))

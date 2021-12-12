@@ -3,7 +3,6 @@ configuration {
 	ssh-client: "ssh";
 	ssh-command: "{terminal} -e "{ssh-client} {host}"";
 	case-sensitive: false;
-	theme: "/usr/share/rofi/themes/Arc-Dark.rasi";
 	kb-remove-char-back: "BackSpace";
 	kb-remove-to-eol: "Control+Shift+e";
 	kb-accept-entry: "Control+m,Return,KP_Enter";
@@ -12,3 +11,4 @@ configuration {
 	kb-row-up: "Up,Control+k,Shift+Tab,Shift+ISO_Left_Tab";
 	kb-row-down: "Down,Control+j";
 }
+@theme "/usr/share/rofi/themes/Arc-Dark.rasi"

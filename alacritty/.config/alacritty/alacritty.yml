@@ -1,7 +1,11 @@
 window:
   dynamic_title: true
+  opacity: 0.9
 
 custom_cursor_colors: true
+
+key_bindings:
+  - { key: Return,   mods: Control|Shift, action: SpawnNewInstance }
 
 colors:
   primary:

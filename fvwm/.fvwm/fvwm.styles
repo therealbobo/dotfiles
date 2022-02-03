@@ -13,7 +13,7 @@ DesktopName 6 Desk6
 DesktopName 7 Desk7
 DesktopName 8 Desk8
 DesktopName 9 Desk9
-DesktopSize 2x2
+DesktopSize 3x2
 
 # EdgeScroll will move the view port between the Pages when the mouse
 # moves to the edge of the screen. This set the amount of distance to
@@ -55,6 +55,7 @@ Style * ResizeOpaque, SnapAttraction 15 SameType ScreenAll, SnapGrid
 Style * DecorateTransient, StackTransientParent
 #Style * !FPGrabFocusTransient, FPReleaseFocusTransient
 Style * FPGrabFocus
+Style * Lenience
 
 # WindowShade
 Style * WindowShadeScrolls, WindowShadeSteps 10

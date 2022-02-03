@@ -30,8 +30,8 @@ RedefineFunc StartFunction
 	Exec exec gammastep-indicator  
 + I Test (Init, X emacs) \
 	Exec exec emacs --daemon
-+ I Test (Init, X picom) \
-	Exec exec picom -b
++ I Test (Init, X xcompmgr) \
+	Exec exec xcompmgr
 + I Module FvwmButtons RightPanel
 + I Module FvwmEvent EventNewDesk
 + I Test (Init, f $[FVWM_USERDIR]/.BGdefault) \

@@ -298,4 +298,31 @@
   (setq aw-keys '(?h ?j ?k ?l ?a ?s ?d ?f ?g))
   )
 
+(use-package latex-math-preview
+  :ensure t
+  :config
+  (setq latex-math-preview-command-path-alist
+	'((latex . "/usr/bin/latex") (dvipng . "/usr/bin/dvipng") (dvips . "/usr/bin/dvips")))
+  (setq latex-math-preview-image-foreground-color "#FFFFFF")
+  (setq latex-math-preview-cache-directory-for-insertion
+		   "/tmp/latex-math-preview-cache")
+  )
+
+(use-package org-roam
+  :ensure t
+  :init
+  (setq org-roam-v2-ack t)
+  :custom
+  (org-roam-directory (file-truename "~/Documents/roam"))
+  :bind (("C-c n l" . org-roam-buffer-toggle)
+         ("C-c n f" . org-roam-node-find)
+         ("C-c n i" . org-roam-node-insert)
+         ("C-c n g" . org-roam-graph)
+         ("C-c n c" . org-roam-capture)
+         ;; Dailies
+         ("C-c n j" . org-roam-dailies-capture-today))
+  :config
+  (org-roam-setup)
+  (require 'org-roam-protocol))
+
 (add-to-list 'org-file-apps '("\\.pdf\\'" . emacs))

@@ -76,9 +76,15 @@ Silent Key k W MS Destroy
 Silent Key Super_L A A   Exec exec $[infostore.terminal]
 Silent Key Super_L A C   Exec exec /home/robi/.local/scripts/alacritty_cwd.sh
 Silent Key Super_L A S   Exec exec rofi -modi drun -show drun -show-icons -icons-theme hicolor
+Silent Key e       A MS  Exec exec rofi -modi emoji -show emoji
 Silent Key z       A M   Exec exec brave
 Silent Key z       A MS  Exec exec brave --incognito
 Silent Key e       A M   Exec exec emacsclient -cn
+
+# Dunst Keys
+Silent Key period A SC  Exec exec dunstctl context
+#Silent Key comma  A SC  Exec exec dunstctl history-pop
+Silent Key grave  A C   Exec exec dunstctl history-pop
 
 # Multimedia Keys
 Silent Key XF86AudioRaiseVolume   A  N  Exec exec pactl set-sink-volume @DEFAULT_SINK@ +5%
@@ -94,9 +100,6 @@ Silent Key XF86MonBrightnessUp    A  N  Exec exec xbacklight -inc 1
 Silent Key XF86MonBrightnessDown  A  N  Exec exec xbacklight -dec 1
 Silent Key XF86MonBrightnessUp    A  S  Exec exec xbacklight -inc 5
 Silent Key XF86MonBrightnessDown  A  S  Exec exec xbacklight -dec 5
-Silent Key F4                     A  N  Exec exec playerctl play-pause
-Silent Key F5                     A  N  Exec exec playerctl position 5+
-Silent Key F3                     A  N  Exec exec playerctl position 5-
 
 Silent Key Print                  A  N  Exec exec flameshot gui
 	

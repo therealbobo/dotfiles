@@ -30,14 +30,16 @@ RedefineFunc StartFunction
 	Exec exec gammastep-indicator  
 + I Test (Init, X emacs) \
 	Exec exec emacs --daemon
-+ I Test (Init, X xcompmgr) \
-	Exec exec xcompmgr
++ I Test (Init, X picom) \
+	Exec exec picom -b
 + I Module FvwmButtons RightPanel
 + I Module FvwmEvent EventNewDesk
 + I Test (Init, f $[FVWM_USERDIR]/.BGdefault) \
     Exec exec fvwm-root $[FVWM_USERDIR]/.BGdefault
 + I TestRc (NoMatch) Exec exec fvwm-root \
     $[FVWM_DATADIR]/default-config/images/background/bg2.png
+#+ I Test (Init, X xcompmgr) \
+#	Exec exec xcompmgr
 
 # Mouse Bindings Functions
 RedefineFunc RaiseMoveX
@@ -127,4 +129,3 @@ RedefineFunc ResizeWithWarp
 RedefineFunc SetOnTop
 + I WindowStyle StaysOnTop
 + I UpdateStyles
-

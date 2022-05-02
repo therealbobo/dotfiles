@@ -89,6 +89,8 @@ AddToMenu   MenuWindowOpsLong
 + "StaysPut"            Pick (CirculateHit) Layer 0 4
 + "StaysOnBottom"       Pick (CirculateHit) Layer 0 2
 + ""                    Nop
++ "&Rearrange/Scroll%mini.windows.xpm%" Popup WinRearrange
++ ""                    Nop
 + "Identify"            Module FvwmIdent
 
 DestroyMenu MenuIconOps
@@ -166,3 +168,16 @@ AddToMenu   MenuFvwmManPages "Help" Title
 + "fvwm-menu-headlines" ViewManPage fvwm-menu-headlines
 + "fvwm-menu-xlock"     ViewManPage fvwm-menu-xlock
 + "fvwm-config"         ViewManPage fvwm-config
+
+# WinRearrange 
+DestroyMenu WinRearrange
+AddToMenu   WinRearrange
++ "&Cascade%mini.windows.xpm%" FvwmRearrange -cascade -m 3 3 -incx 2
++ "Tile &horizontally%mini.windows.xpm%" FvwmRearrange -tile -h -m 2 2 98 98
++ "Tile &vertically%mini.windows.xpm%" FvwmRearrange -tile -m 2 2 98 98
++ "" Nop
++ "&ScrollBar (1/2 app)%mini.window.xpm%"  Module FvwmScroll 2 2
++ "%mini.window.xpm%&Scroll&Bar (75%% scr)" Module FvwmScroll 75p 75p
++ "" Nop
++ "&Arrange Icons%mini.icons.xpm%" All (CurrentDesk Iconic) RecaptureWindow
++ "&Refresh Screen%mini.ray.xpm%" Refresh

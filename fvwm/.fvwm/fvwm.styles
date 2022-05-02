@@ -76,3 +76,6 @@ Style RightPanel !Title, !Borders, !Handles, Sticky, \
                  WindowListSkip, NeverFocus
 Style ConfirmQuit !Title, PositionPlacement Center, WindowListSkip, Layer 6
 Style FvwmIdent WindowListSkip
+
+# workarounds
+Style "jetbrains-studio" Lenience

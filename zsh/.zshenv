@@ -1,5 +1,3 @@
-
-
 ### XDG-CONFIGS ###{{{
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
@@ -78,11 +76,10 @@ export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME"/jupyter
 # qt
 export QT_SCALE_FACTOR_ROUNDING_POLICY=Round
 
-###}}}
-
+# nnn
+export NNN_PLUG='z:autojump;d:dragdrop'
 
 ### PATH CONFIG ###{{{
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$USER_BIN:$USER_SCRIPTS:$npm_config_prefix/bin
 ###}}}
-

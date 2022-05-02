@@ -59,7 +59,6 @@
 ;; setup sources
 (setq package-archives
       '(("melpa" . "https://melpa.org/packages/")
-	("org" . "http://orgmode.org/elpa/")
 	("gnu" . "http://elpa.gnu.org/packages/")
 	))
 
@@ -312,6 +311,7 @@
   :ensure t
   :init
   (setq org-roam-v2-ack t)
+  (make-directory "~/Documents/roam" t)
   :custom
   (org-roam-directory (file-truename "~/Documents/roam"))
   :bind (("C-c n l" . org-roam-buffer-toggle)

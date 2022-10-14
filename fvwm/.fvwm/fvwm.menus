@@ -173,8 +173,8 @@ AddToMenu   MenuFvwmManPages "Help" Title
 DestroyMenu WinRearrange
 AddToMenu   WinRearrange
 + "&Cascade%mini.windows.xpm%" FvwmRearrange -cascade -m 3 3 -incx 2
-+ "Tile &horizontally%mini.windows.xpm%" FvwmRearrange -tile -h -m 2 2 98 98
-+ "Tile &vertically%mini.windows.xpm%" FvwmRearrange -tile -m 2 2 98 98
++ "Tile &horizontally%mini.windows.xpm%" FvwmRearrange -tile -h -m 0 0 93 0
++ "Tile &vertically%mini.windows.xpm%" FvwmRearrange -tile -m 0 0 93 0
 + "" Nop
 + "&ScrollBar (1/2 app)%mini.window.xpm%"  Module FvwmScroll 2 2
 + "%mini.window.xpm%&Scroll&Bar (75%% scr)" Module FvwmScroll 75p 75p

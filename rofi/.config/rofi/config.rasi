@@ -1,7 +1,7 @@
 configuration {
-	terminal: "alacritty";
+	terminal: "/usr/bin/alacritty";
 	ssh-client: "ssh";
-	ssh-command: "{terminal} -e "{ssh-client} {host}"";
+	ssh-command: "{terminal} -e {ssh-client} {host}";
 	case-sensitive: false;
 	kb-remove-char-back: "BackSpace";
 	kb-remove-to-eol: "Control+Shift+e";

@@ -11,6 +11,9 @@ PROMPT+='%(?.%F{red}@.%F{black}@)%f'  # @
 PROMPT+='%F{red}%M%b%f:'              # hostname
 PROMPT+='%F{blue}%2~%f %# '             # pwd
 
+command -v starship 1>/dev/null && \
+	eval "$(starship init zsh)"
+
 # TODO mv histfile
 [ ! -f "$XDG_DATA_HOME"/zsh/histfile ] && touch "$XDG_DATA_HOME"/zsh/histfile
 HISTFILE="$XDG_DATA_HOME"/zsh/histfile

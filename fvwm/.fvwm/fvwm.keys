@@ -69,6 +69,7 @@ Silent Key k W MC ResizeWithWarp keep w-10
 Silent Key l W MC ResizeWithWarp w+10 keep
 Silent Key j W MC ResizeWithWarp keep w+10
 Silent Key m W M  Maximize
+Silent Key v W M  FvwmRearrange -tile -m 0 0 93 0
 Silent Key f W M  FullScreen
 Silent Key q W MS Close
 Silent Key k W MS Destroy
@@ -77,6 +78,7 @@ Silent Key Super_L A A   Exec exec $[infostore.terminal]
 Silent Key Super_L A C   Exec exec /home/robi/.local/scripts/alacritty_cwd.sh
 Silent Key Super_L A S   Exec exec rofi -modi drun -show drun -show-icons -icons-theme hicolor
 Silent Key e       A MS  Exec exec rofi -modi emoji -show emoji
+Silent Key s       A M   Exec exec rofi -modi emoji -show ssh
 Silent Key z       A M   Exec exec brave
 Silent Key z       A MS  Exec exec brave --incognito
 Silent Key e       A M   Exec exec emacsclient -cn

@@ -115,27 +115,6 @@
   (setq org-format-latex-options
 	(plist-put org-format-latex-options :scale 2.0)
 	)
-
-  ;;(setq org-tags-column -70
-  ;;	org-todo-keyword-faces
-  ;;	'(("TODO"  . (:foreground "red" :weight bold))
-  ;;	  ("NEXT"  . (:foreground "red" :weight bold))
-  ;;	  ("DONE"  . (:foreground "forest green" :weight bold))
-  ;;	  ("WAITING"  . (:foreground "orange" :weight bold))
-  ;;	  ("CANCELLED"  . (:foreground "forest green" :weight bold))
-  ;;	  ("SOMEDAY"  . (:foreground "orange" :weight bold))
-  ;;	  ("OPEN"  . (:foreground "red" :weight bold))
-  ;;	  ("CLOSED"  . (:foreground "forest green" :weight bold))
-  ;;	  ("ONGOING"  . (:foreground "orange" :weight bold)))
-  ;;	org-todo-keywords
-  ;;	'((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d!/!)")
-  ;;	  (sequence "WAITING(w@/!)" "|" "CANCELLED(c!/!)")
-  ;;	  (sequence "SOMEDAY(s!/!)" "|")
-  ;;	  (sequence "OPEN(O!)" "|" "CLOSED(C!)")
-  ;;	  (sequence "ONGOING(o)" "|")
-  ;;	  org-startup-with-inline-images t
-  ;;	  )
-  ;;	)
   )
 
 (use-package volatile-highlights
@@ -145,11 +124,6 @@
   (vhl/define-extension 'evil 'evil-paste-after 'evil-paste-before
 			'evil-paste-pop 'evil-move)
   (vhl/install-extension 'evil)
-  )
-
-(use-package auctex
-  :defer t
-  :ensure t
   )
 
 (use-package magit
@@ -174,31 +148,6 @@
   :ensure t
   )
 
-(use-package vterm
-  :ensure t
-  :init
-  ;;(add-hook 'vterm-mode-hook #'my/source-zshrc )
-  )
-
-(use-package elfeed
-  :ensure t
-  :init
-  (when (file-exists-p "~/.config/emacs/elfeed")
-    (load "~/.config/emacs/elfeed") ;; load rss from another file
-    )
-  :config
-  (setq shr-width 80) ;; 80 columns in elfeed-show
-  (setq-default elfeed-search-filter "@2-days-ago +unread")
-  (setq-default elfeed-search-title-max-width 100)
-  (setq-default elfeed-search-title-min-width 100)
-  )
-
-(use-package pdf-tools
-  :ensure t
-  :mode (("\\.pdf\\'" . pdf-view-mode))
-  :config
-  (pdf-tools-install :no-query))
-
 (use-package ace-jump-mode
   :ensure t
   :config
@@ -206,10 +155,6 @@
   )
 
 (use-package epresent
-  :ensure t
-  )
-
-(use-package all-the-icons
   :ensure t
   )
 
@@ -249,24 +194,6 @@
   :ensure t
   )
 
-(use-package telega
-  :ensure t
-  :init
-  (setq telega-use-images t
-	telega-emoji-font-family "Noto Color Emoji"
-	telega-emoji-use-images "Noto Color Emoji"
-	telega-user-show-avatars t
-	telega-root-show-avatars t
-	telega-temp-dir "/tmp/telega"
-	telega-directory (expand-file-name "~/.local/share/telega")
-	telega-database-directory (expand-file-name "~/.local/share/telega")
-	)
-  (telega-notifications-mode 1)
-  (define-key global-map (kbd "C-x t g") 'telega)
-  :commands (telega)
-  :defer t
-  )
-
 (use-package helm
   :ensure t
   :demand
@@ -297,32 +224,54 @@
   (setq aw-keys '(?h ?j ?k ?l ?a ?s ?d ?f ?g))
   )
 
-(use-package latex-math-preview
+(use-package go-mode
   :ensure t
+  :mode "\\.go\\'"
   :config
-  (setq latex-math-preview-command-path-alist
-	'((latex . "/usr/bin/latex") (dvipng . "/usr/bin/dvipng") (dvips . "/usr/bin/dvips")))
-  (setq latex-math-preview-image-foreground-color "#FFFFFF")
-  (setq latex-math-preview-cache-directory-for-insertion
-		   "/tmp/latex-math-preview-cache")
-  )
+  (defun my/go-mode-setup ()
+    "Basic Go mode setup."
+  (add-hook 'before-save-hook #'lsp-format-buffer t t)
+  (add-hook 'before-save-hook #'lsp-organize-imports t t))
+  (add-hook 'go-mode-hook #'my/go-mode-setup))
 
-(use-package org-roam
+(use-package lsp-mode
   :ensure t
-  :init
-  (setq org-roam-v2-ack t)
-  (make-directory "~/Documents/roam" t)
-  :custom
-  (org-roam-directory (file-truename "~/Documents/roam"))
-  :bind (("C-c n l" . org-roam-buffer-toggle)
-         ("C-c n f" . org-roam-node-find)
-         ("C-c n i" . org-roam-node-insert)
-         ("C-c n g" . org-roam-graph)
-         ("C-c n c" . org-roam-capture)
-         ;; Dailies
-         ("C-c n j" . org-roam-dailies-capture-today))
+  :commands (lsp lsp-mode lsp-deferred)
+  :hook ((rust-mode python-mode go-mode) . lsp-deferred)
   :config
-  (org-roam-setup)
-  (require 'org-roam-protocol))
+  (setq lsp-prefer-flymake nil
+        lsp-enable-indentation nil
+        lsp-enable-on-type-formatting nil
+        lsp-rust-server 'rust-analyzer)
+  ;; for filling args placeholders upon function completion candidate selection
+  ;; lsp-enable-snippet and company-lsp-enable-snippet should be nil with
+  ;; yas-minor-mode is enabled: https://emacs.stackexchange.com/q/53104
+  (lsp-modeline-code-actions-mode)
+  (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration)
+  (add-to-list 'lsp-file-watch-ignored "\\.vscode\\'"))
 
-(add-to-list 'org-file-apps '("\\.pdf\\'" . emacs))
+(use-package markdown-mode
+  :ensure t
+  :mode ("README\\.md\\'" . gfm-mode)
+  :init (setq markdown-command "multimarkdown"))
+
+(use-package neotree
+  :ensure t
+  :bind (("<f2>" . neotree-toggle))
+  :defer
+  :config
+    (evil-set-initial-state 'neotree-mode 'normal)
+    (evil-define-key 'normal neotree-mode-map
+      (kbd "RET") 'neotree-enter
+      (kbd "c")   'neotree-create-node
+      (kbd "r")   'neotree-rename-node
+      (kbd "d")   'neotree-delete-node
+      (kbd "j")   'neotree-next-node
+      (kbd "k")   'neotree-previous-node
+      (kbd "g")   'neotree-refresh
+      (kbd "C")   'neotree-change-root
+      (kbd "I")   'neotree-hidden-file-toggle
+      (kbd "H")   'neotree-hidden-file-toggle
+      (kbd "q")   'neotree-hide
+      (kbd "l")   'neotree-enter
+      ))

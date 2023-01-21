@@ -37,7 +37,13 @@ set undofile
 set viminfo+=n~/.cache/vim/viminfo
 set undodir=~/.cache/vim/undo
 set spelllang=it,en_us
-set clipboard=unnamedplus
+if system('uname -s') == "Darwin\n"
+  "OSX
+  set clipboard=unnamed 
+else
+  "Linux
+  set clipboard=unnamedplus
+endif
 set encoding=UTF-8
 set mouse=a
 set hls

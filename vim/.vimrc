@@ -14,6 +14,7 @@ Plug 'bling/vim-bufferline'
 Plug 'itchyny/lightline.vim'
 Plug 'lervag/vimtex', {'for': 'tex'}
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 " Vim settings
@@ -108,3 +109,20 @@ let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 let g:UltiSnipsSnippetDirectories=[$XDG_DATA_HOME . "/vim/ultisnips"]
+
+function! OscCopy()
+	let encodedText=@"
+	let encodedText=substitute(encodedText, '\', '\\\\', "g")
+	let encodedText=substitute(encodedText, "'", "'\\\\''", "g")
+	let executeCmd="echo -n '".encodedText."' | base64 | tr -d '\\n'"
+	let encodedText=system(executeCmd)
+	if $TMUX != ""
+		"tmux
+		let executeCmd='echo -en "\x1bPtmux;\x1b\x1b]52;;'.encodedText.'\x1b\x1b\\\\\x1b\\" > /dev/tty'
+	else
+		let executeCmd='echo -en "\x1b]52;;'.encodedText.'\x1b\\" > /dev/tty'
+	endif
+	call system(executeCmd)
+	redraw!
+endfunction
+command! OscCopy :call OscCopy()

@@ -1,3 +1,6 @@
 emacs/.config/emacs/elpa
 .zcompdump
 newsboat/.config/newsboat/urls
+emacs/.config/emacs/tramp
+emacs/.config/emacs/undo/
+zsh/.config/zsh/.zcompcache/

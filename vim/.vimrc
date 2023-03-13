@@ -15,6 +15,8 @@ Plug 'itchyny/lightline.vim'
 Plug 'lervag/vimtex', {'for': 'tex'}
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
+Plug 'preservim/nerdtree'
 call plug#end()
 
 " Vim settings
@@ -109,6 +111,12 @@ let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 let g:UltiSnipsSnippetDirectories=[$XDG_DATA_HOME . "/vim/ultisnips"]
+
+"NERDTree
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-n> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
 
 function! OscCopy()
 	let encodedText=@"

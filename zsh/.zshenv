@@ -8,13 +8,15 @@ export USER_SCRIPTS=$HOME/.local/scripts
 ### VARS ###{{{
 export ZSH_COMPDUMP="$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
-export TERM=xterm-256color
+#export TERM=xterm-256color
 export VISUAL="vim"
 export EDITOR="vim"
 ###}}}
 
 # golang
-export GOPATH=$XDG_DATA_HOME/golang
+#export GOPATH=/usr/local/go
+export GOPATH=$XDG_CONFIG_HOME/golang
+
 
 # less
 #export LESSKEY="$XDG_CONFIG_HOME"/less/lesskey
@@ -41,12 +43,6 @@ export GNUPGHOME="$XDG_CONFIG_HOME"/gnupg
 
 # docker
 export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
-
-# cuda
-export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
-
-# pylint
-export PYLINTHOME="$XDG_CACHE_HOME"/pylint
 
 # gtk
 export GTK_RC_FILES="${XDG_CONFIG_HOME}/gtk-1.0/gtkrc"
@@ -83,3 +79,4 @@ export NNN_PLUG='z:autojump;d:dragdrop'
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$USER_BIN:$USER_SCRIPTS:$npm_config_prefix/bin
 ###}}}
+#

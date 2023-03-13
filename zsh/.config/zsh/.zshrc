@@ -1,3 +1,18 @@
+if [[ "$TERM" == "dumb" ]]; then
+  unsetopt zle
+  unsetopt prompt_cr
+  unsetopt prompt_subst
+  if whence -w precmd >/dev/null; then
+      unfunction precmd
+  fi
+  if whence -w preexec >/dev/null; then
+      unfunction preexec
+  fi
+  PS1='$ '
+  unset zle_bracketed_paste
+  unsetopt rcs
+  return
+fi
 
 ### SOURCES ###{{{
 source "$XDG_CONFIG_HOME/zsh/aliases"
@@ -11,8 +26,10 @@ PROMPT+='%(?.%F{red}@.%F{black}@)%f'  # @
 PROMPT+='%F{red}%M%b%f:'              # hostname
 PROMPT+='%F{blue}%2~%f %# '             # pwd
 
-command -v starship 1>/dev/null && \
-	eval "$(starship init zsh)"
+if [[ "$TERM" != "tramp" ]]; then
+	command -v starship 1>/dev/null && \
+		eval "$(starship init zsh)"
+fi
 
 # TODO mv histfile
 [ ! -f "$XDG_DATA_HOME"/zsh/histfile ] && touch "$XDG_DATA_HOME"/zsh/histfile

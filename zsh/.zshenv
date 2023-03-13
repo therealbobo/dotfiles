@@ -79,4 +79,7 @@ export NNN_PLUG='z:autojump;d:dragdrop'
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$USER_BIN:$USER_SCRIPTS:$npm_config_prefix/bin
 ###}}}
-#
+
+# Setting for the new UTF-8 terminal support in Lion
+export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8

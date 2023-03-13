@@ -140,7 +140,10 @@
   :ensure t
   :config
   (global-undo-tree-mode 1)
-  (undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
+  :custom
+  (undo-tree-visualizer-diff t)
+  (undo-tree-history-directory-alist '(("." . "~/.config/emacs/undo")))
+  (undo-tree-visualizer-timestamps t)
   )
 
 (use-package yaml-mode
@@ -187,13 +190,8 @@
 			     (org-bullets-mode 1)))
   )
 
-(use-package projectile
-  :ensure t
-  :config
-  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-  )
-
-(use-package company
+;; optional package to get the error squiggles as you edit
+(use-package flycheck
   :ensure t
   )
 
@@ -226,8 +224,52 @@
 (use-package helm-gtags
   :ensure t
   :init
-  (add-hook 'c++-mode-hook 'helm-gtags-mode)
-  (add-hook 'c-mode-hook 'helm-gtags-mode)
+  (add-hook 'dired-mode-hook  'helm-gtags-mode)
+  (add-hook 'eshell-mode-hook 'helm-gtags-mode)
+  (add-hook 'c-mode-hook      'helm-gtags-mode)
+  (add-hook 'c++-mode-hook    'helm-gtags-mode)
+  (add-hook 'asm-mode-hook    'helm-gtags-mode)
+  :bind(:map helm-gtags-mode-map
+	("C-c g a"  . helm-gtags-tags-in-this-function)
+	("C-j"      . helm-gtags-select)
+	("s-."      . helm-gtags-dwim)
+	("s-,"      . helm-gtags-pop-stack)
+	("C-c <"    . helm-gtags-previous-history)
+	("C-c >"    . helm-gtags-next-history)
+	)
+  :config
+  ;;(diminish 'helm-gtags-mode (my:safe-lighter-icon "" "tags"))
+  (global-unset-key "\M-.")
+  (custom-set-variables
+   '(helm-gtags-ignore-case t)
+   '(helm-gtags-fuzzy-match t)
+   '(helm-gtags-auto-update t)
+   '(helm-gtags-use-input-at-cursor t)
+   '(helm-gtags-pulse-at-cursor t)
+   '(helm-gtags-prefix-key "\C-cg")
+   '(helm-gtags-suggested-key-mapping t)
+   )
+  )
+
+(use-package function-args
+  :ensure t
+  :init
+  (add-hook 'dired-mode-hook  'function-args-mode)
+  (add-hook 'eshell-mode-hook 'function-args-mode)
+  (add-hook 'c-mode-hook      'function-args-mode)
+  (add-hook 'c++-mode-hook    'function-args-mode)
+  :config
+  (fa-config-default)
+  :bind
+  (:map c-mode-map
+	("M-o" . fa-show))
+  (:map c++-mode-map
+	("M-o" . fa-show)))
+
+(use-package semantic
+  :ensure t
+  :init
+  (add-hook 'c-mode-hook 'semantic-mode)
   )
 
 (use-package dashboard
@@ -235,6 +277,12 @@
   :config
   (dashboard-setup-startup-hook)
   (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
+  (setq dashboard-set-heading-icons t)
+  (setq dashboard-set-file-icons t)
+  (setq dashboard-items '((recents  . 5)
+                        (bookmarks . 5)
+                        (projects . 5)
+                        (registers . 5)))
   )
 
 (use-package ace-window
@@ -299,4 +347,10 @@
     (kbd "q")   'neotree-hide
     (kbd "l")   'neotree-enter
     )
+  )
+
+(use-package tramp
+  :init
+  (add-to-list 'tramp-connection-properties
+		 (list ".*" "locale" "LC_ALL=C"))
   )

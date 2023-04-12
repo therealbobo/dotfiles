@@ -16,7 +16,6 @@ disabled = false
 [git_branch]
 symbol = '🌱 '
 truncation_symbol = ''
-ignore_branches = ['master', 'main']
 
 [git_commit]
 commit_hash_length = 4

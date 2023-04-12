@@ -9,14 +9,14 @@ if empty(glob("~/.local/share/vim/autoload/plug.vim"))
 endif
 
 call plug#begin('~/.local/share/vim/plugged')
-Plug 'SirVer/ultisnips'
+"Plug 'SirVer/ultisnips'
 Plug 'bling/vim-bufferline'
 Plug 'itchyny/lightline.vim'
-Plug 'lervag/vimtex', {'for': 'tex'}
+"Plug 'lervag/vimtex', {'for': 'tex'}
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-fugitive'
 Plug 'preservim/nerdtree'
+Plug 'AndrewRadev/linediff.vim'
 call plug#end()
 
 " Vim settings
@@ -134,3 +134,4 @@ function! OscCopy()
 	redraw!
 endfunction
 command! OscCopy :call OscCopy()
+

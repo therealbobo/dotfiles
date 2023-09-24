@@ -4,3 +4,4 @@ newsboat/.config/newsboat/urls
 emacs/.config/emacs/tramp
 emacs/.config/emacs/undo/
 zsh/.config/zsh/.zcompcache/
+vim/.local/

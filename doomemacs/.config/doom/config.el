@@ -84,3 +84,8 @@
   :pre-init
   (setq evil-respect-visual-line-mode t) ;; sane j and k behavior
   t)
+
+(setq window-divider-default-right-width 4
+	  window-divider-default-bottom-width 4)
+(custom-set-faces! '(vertical-border :foreground "blue"))
+(custom-set-faces! '(mode-line-inactive :background "blue20"))

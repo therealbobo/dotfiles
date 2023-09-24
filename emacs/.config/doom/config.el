@@ -74,3 +74,18 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+(set-eglot-client! 'cc-mode '("clangd" "-j=3" "--clang-tidy"))
+
+(after! evil-snipe
+  (evil-snipe-mode -1))
+
+(use-package-hook! evil
+  :pre-init
+  (setq evil-respect-visual-line-mode t) ;; sane j and k behavior
+  t)
+
+(setq window-divider-default-right-width 4
+	  window-divider-default-bottom-width 4)
+(custom-set-faces! '(vertical-border :foreground "blue"))
+(custom-set-faces! '(mode-line-inactive :background "blue20"))

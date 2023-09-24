@@ -15,16 +15,28 @@ else
 fi
 echo "[+] Done stowing"
 
-echo "[-] Setting up vim"
+echo "[-] Setting XDG dirs"
 
-if [ -z "$XDG_DATA_HOME" ]; then
-	echo '[!] XDG_DATA_HOME is not set. Please enter XDG_DATA_HOME: '
+if [[ -z "$XDG_DATA_HOME" ]]; then
+	echo '[!] XDG_DATA_HOME is not set. Please enter XDG_DATA_HOME (newline for default): '
 	read -r XDG_DATA_HOME
+	if [[ -z "$XDG_DATA_HOME" ]]; then
+		XDG_DATA_HOME=${HOME}/.local/share
+	fi
+	if [[ ! -d "$XDG_DATA_HOME" ]]; then
+		mkdir -p "$XDG_DATA_HOME"
+	fi
 fi
 
-if [ -z "$XDG_CACHE_HOME" ]; then
-	echo '[!] XDG_CACHE_HOME is not set. Please enter XDG_CACHE_HOME: '
+if [[ -z "$XDG_CACHE_HOME" ]]; then
+	echo '[!] XDG_CACHE_HOME is not set. Please enter XDG_CACHE_HOME (newline for default): '
 	read -r XDG_CACHE_HOME
+	if [[ -z "$XDG_CACHE_HOME" ]]; then
+		XDG_CACHE_HOME=${HOME}/.cache/
+	fi
+	if [[ ! -d "$XDG_CACHE_HOME" ]]; then
+		mkdir -p "$XDG_CACHE_HOME"
+	fi
 fi
 
 mkdir -p "$XDG_CACHE_HOME"/vim       \
@@ -34,10 +46,12 @@ mkdir -p "$XDG_CACHE_HOME"/vim       \
 		 "$XDG_DATA_HOME"/vim/pack	 \
 		 "$XDG_DATA_HOME"/zsh
 
-[ ! -f "$XDG_CACHE_HOME"/vim/viminfo ] && touch "$XDG_CACHE_HOME"/vim/viminfo
+echo "[+] Done setting XDG dirs"
 
-# Install spell and snippests
+echo "[-] Setting up vim"
+
+# Install spell
 curl -L 'http://ftp.vim.org/pub/vim/runtime/spell/it.utf-8.spl' -o "$XDG_DATA_HOME/vim/spell/it.utf-8.spl"
 
-echo '[+] Done settinging up vim'
+echo '[+] Done setting up vim'
 echo '[+] All done!'

@@ -48,3 +48,4 @@ alias scc='systemctl cat'
 alias scie='systemctl is-enabled'
 
 alias em='emacsclient -c & disown'
+alias doom="~/.config/emacs/bin/doom"

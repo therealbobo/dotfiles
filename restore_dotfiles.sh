@@ -42,7 +42,6 @@ fi
 mkdir -p "$XDG_CACHE_HOME"/vim       \
 		 "$XDG_DATA_HOME"/vim        \
 		 "$XDG_DATA_HOME"/vim/spell  \
-		 "$XDG_DATA_HOME"/vim/after  \
 		 "$XDG_DATA_HOME"/vim/pack	 \
 		 "$XDG_DATA_HOME"/zsh
 

@@ -1,5 +1,37 @@
 set nocompatible
+
+function! CreateDirIfNotExists(dir)
+	if !isdirectory(a:dir)
+		call mkdir(a:dir,"p")
+	endif
+endfunction
+
+function! TouchFileIfNotExists(file)
+	if !filereadable(a:file)
+		call writefile([], a:file)
+	endif
+endfunction
+
+function! OscCopy()
+	let encodedText=@"
+	let encodedText=substitute(encodedText, '\', '\\\\', "g")
+	let encodedText=substitute(encodedText, "'", "'\\\\''", "g")
+	let executeCmd="echo -n '".encodedText."' | base64 | tr -d '\\n'"
+	let encodedText=system(executeCmd)
+	if $TMUX != ""
+		"tmux
+		let executeCmd='echo -en "\x1bPtmux;\x1b\x1b]52;;'.encodedText.'\x1b\x1b\\\\\x1b\\" > /dev/tty'
+	else
+		let executeCmd='echo -en "\x1b]52;;'.encodedText.'\x1b\\" > /dev/tty'
+	endif
+	call system(executeCmd)
+	redraw!
+endfunction
+command! OscCopy :call OscCopy()
+nnoremap <C-k> :call OscCopy()<CR>
+
 filetype off
+call CreateDirIfNotExists($HOME . "/.local/share/vim/after")
 set rtp+=~/.local/share/vim/
 set rtp+=~/.local/share/vim/after
 
@@ -9,21 +41,20 @@ if empty(glob("~/.local/share/vim/autoload/plug.vim"))
 endif
 
 call plug#begin('~/.local/share/vim/plugged')
-"Plug 'SirVer/ultisnips'
 Plug 'bling/vim-bufferline'
 Plug 'itchyny/lightline.vim'
-"Plug 'lervag/vimtex', {'for': 'tex'}
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'preservim/nerdtree'
 Plug 'AndrewRadev/linediff.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 " Vim settings
 "packloadall
 filetype plugin indent on
 syntax on
-"set noshowmode
 set virtualedit=all
 set autoindent
 set smartindent
@@ -37,14 +68,14 @@ set path+=**
 set background=dark
 set t_Co=256
 set undofile
+call TouchFileIfNotExists($XDG_CACHE_HOME . "/vim/viminfo")
 set viminfo+=n~/.cache/vim/viminfo
-set undodir=~/.cache/vim/undo
+call CreateDirIfNotExists($XDG_DATA_HOME . "/vim/undo/")
+let &undodir=$XDG_DATA_HOME . "/vim/undo/"
 set spelllang=it,en_us
 if system('uname -s') == "Darwin\n"
-  "OSX
   set clipboard=unnamed 
 else
-  "Linux
   set clipboard=unnamedplus
 endif
 set encoding=UTF-8
@@ -87,51 +118,8 @@ let g:bufferline_echo = 0
 let g:bufferline_active_buffer_left = ''
 let g:bufferline_active_buffer_right = ''
 
-"vimtex
-let g:tex_flavor='latex'
-let g:vimtex_view_method='zathura'
-let g:vimtex_quickfix_mode=0
-set conceallevel=1
-let g:tex_conceal='abdmg'
-let g:vimtex_view_use_temp_files = 1
-let g:vimtex_compiler_latexmk = {
-	\ 'build_dir' : 'build',
-    \ 'options' : [
-    \   '-pdf',
-    \   '-shell-escape',
-    \   '-verbose',
-    \   '-file-line-error',
-    \   '-synctex=1',
-    \   '-interaction=nonstopmode',
-    \ ],
-    \}
-
-"ultrasnip
-let g:UltiSnipsExpandTrigger = '<tab>'
-let g:UltiSnipsJumpForwardTrigger = '<tab>'
-let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-let g:UltiSnipsSnippetDirectories=[$XDG_DATA_HOME . "/vim/ultisnips"]
-
 "NERDTree
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
-
-function! OscCopy()
-	let encodedText=@"
-	let encodedText=substitute(encodedText, '\', '\\\\', "g")
-	let encodedText=substitute(encodedText, "'", "'\\\\''", "g")
-	let executeCmd="echo -n '".encodedText."' | base64 | tr -d '\\n'"
-	let encodedText=system(executeCmd)
-	if $TMUX != ""
-		"tmux
-		let executeCmd='echo -en "\x1bPtmux;\x1b\x1b]52;;'.encodedText.'\x1b\x1b\\\\\x1b\\" > /dev/tty'
-	else
-		let executeCmd='echo -en "\x1b]52;;'.encodedText.'\x1b\\" > /dev/tty'
-	endif
-	call system(executeCmd)
-	redraw!
-endfunction
-command! OscCopy :call OscCopy()
-

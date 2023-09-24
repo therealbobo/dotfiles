@@ -47,5 +47,5 @@ alias sclt='systemctl list-timers'
 alias scc='systemctl cat'
 alias scie='systemctl is-enabled'
 
-alias em='emacsclient -c & disown'
+alias em='TERM=xterm-24bit emacsclient -c'
 alias doom="~/.config/emacs/bin/doom"

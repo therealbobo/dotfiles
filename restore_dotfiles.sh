@@ -53,4 +53,11 @@ echo "[-] Setting up vim"
 curl -L 'http://ftp.vim.org/pub/vim/runtime/spell/it.utf-8.spl' -o "$XDG_DATA_HOME/vim/spell/it.utf-8.spl"
 
 echo '[+] Done setting up vim'
+
+echo '[-] Setting up tmux'
+if [[ ! -d "${XDG_CONFIG_HOME}/tmux/plugins/tpm" ]]; then
+	git clone https://github.com/tmux-plugins/tpm "${XDG_CONFIG_HOME}/tmux/plugins/tpm"
+fi
+echo '[+] Done setting up tmux'
+
 echo '[+] All done!'

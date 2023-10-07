@@ -45,6 +45,7 @@ Plug 'bling/vim-bufferline'
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-unimpaired'
 Plug 'preservim/nerdtree'
 Plug 'AndrewRadev/linediff.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }

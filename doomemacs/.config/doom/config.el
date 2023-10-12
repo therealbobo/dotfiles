@@ -77,13 +77,12 @@
 
 (set-eglot-client! 'cc-mode '("clangd" "-j=3" "--clang-tidy"))
 
-(after! evil-snipe
-  (evil-snipe-mode -1))
-
 (use-package-hook! evil
   :pre-init
   (setq evil-respect-visual-line-mode t) ;; sane j and k behavior
   t)
+
+(remove-hook 'doom-first-input-hook #'evil-snipe-mode)
 
 (setq window-divider-default-right-width 4
 	  window-divider-default-bottom-width 4)

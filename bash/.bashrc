@@ -48,4 +48,4 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$USER_BIN:$USER_SCRIPTS
 ###}}}
 
-
+set -o vi

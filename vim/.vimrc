@@ -129,6 +129,9 @@ nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 
+"fzf
+nnoremap <silent> <C-p> :Files<CR>
+
 "clangd
 if executable('clangd')
     augroup lsp_clangd

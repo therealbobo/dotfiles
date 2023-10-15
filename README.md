@@ -3,7 +3,7 @@ My Linux dotfiles.
 
 ## Usage
 ```
-$ git clone https://github.com/therealbobo/dotfiles .dotfiles
+$ git clone --recurse-submodules https://github.com/therealbobo/dotfiles .dotfiles
 $ cd .dotfiles
 $ ./restore_dotfiles
 ```

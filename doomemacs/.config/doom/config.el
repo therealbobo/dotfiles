@@ -75,6 +75,8 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+(setq display-line-numbers-type 'relative)
+
 (set-eglot-client! 'cc-mode '("clangd" "-j=3" "--clang-tidy"))
 
 (use-package-hook! evil

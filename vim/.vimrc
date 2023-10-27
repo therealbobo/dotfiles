@@ -54,6 +54,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'ajh17/vimcompletesme'
+Plug 'hotwatermorning/auto-git-diff'
 call plug#end()
 
 " Vim settings

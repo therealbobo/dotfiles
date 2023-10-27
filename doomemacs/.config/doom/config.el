@@ -86,6 +86,9 @@
 
 (remove-hook 'doom-first-input-hook #'evil-snipe-mode)
 
+;; threat _ as part of a word in evil
+(modify-syntax-entry ?_ "w")
+
 (setq window-divider-default-right-width 4
 	  window-divider-default-bottom-width 4)
 (custom-set-faces! '(vertical-border :foreground "blue"))

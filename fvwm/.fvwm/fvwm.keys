@@ -59,6 +59,11 @@ Silent Key l A SC MoveWithWarp w+5   keep
 Silent Key j A SC MoveWithWarp keep  w+5
 Silent Key k A SC MoveWithWarp keep  w-5
 
+Silent Key h A MS MoveWithWarp w-100   keep
+Silent Key l A MS MoveWithWarp w+100   keep
+Silent Key j A MS MoveWithWarp keep    w+100
+Silent Key k A MS MoveWithWarp keep    w-100
+
 Silent Key h W MSC MoveToPage wrapx wrapy -1p  0p
 Silent Key l W MSC MoveToPage wrapx wrapy +1p  0p
 Silent Key j W MSC MoveToPage wrapx wrapy  0p -1p

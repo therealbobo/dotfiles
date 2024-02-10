@@ -30,6 +30,7 @@ if [[ "$TERM" != "tramp" ]]; then
 	command -v starship 1>/dev/null && \
 		eval "$(starship init zsh)"
 fi
+eval "$(zoxide init zsh)"
 
 # TODO mv histfile
 [ ! -f "$XDG_DATA_HOME"/zsh/histfile ] && touch "$XDG_DATA_HOME"/zsh/histfile

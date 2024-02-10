@@ -6,8 +6,8 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
-(setq user-full-name "John Doe"
-      user-mail-address "john@doe.com")
+;;(setq user-full-name "John Doe"
+;;      user-mail-address "john@doe.com")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
@@ -37,6 +37,7 @@
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
+(setq display-line-numbers-type 'relative)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -75,8 +76,6 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-(setq display-line-numbers-type 'relative)
-
 (set-eglot-client! 'cc-mode '("clangd" "-j=3" "--clang-tidy"))
 
 (use-package-hook! evil
@@ -93,3 +92,40 @@
 	  window-divider-default-bottom-width 4)
 (custom-set-faces! '(vertical-border :foreground "blue"))
 (custom-set-faces! '(mode-line-inactive :background "blue20"))
+
+;; disable smart parens
+(after! smartparens (smartparens-global-mode -1))
+
+;; treesit stuff
+(setq treesit-language-source-alist
+   '((bash "https://github.com/tree-sitter/tree-sitter-bash")
+     (c "https://github.com/tree-sitter/tree-sitter-c")
+     (cpp "https://github.com/tree-sitter/tree-sitter-cpp")
+     (cmake "https://github.com/uyha/tree-sitter-cmake")
+     (css "https://github.com/tree-sitter/tree-sitter-css")
+     (elisp "https://github.com/Wilfred/tree-sitter-elisp")
+     (go "https://github.com/tree-sitter/tree-sitter-go")
+     (html "https://github.com/tree-sitter/tree-sitter-html")
+     (javascript "https://github.com/tree-sitter/tree-sitter-javascript" "master" "src")
+     (json "https://github.com/tree-sitter/tree-sitter-json")
+     (make "https://github.com/alemuller/tree-sitter-make")
+     (markdown "https://github.com/ikatyang/tree-sitter-markdown")
+     (python "https://github.com/tree-sitter/tree-sitter-python")
+     (toml "https://github.com/tree-sitter/tree-sitter-toml")
+     (yaml "https://github.com/ikatyang/tree-sitter-yaml"))
+)
+
+;; workspace tab bar
+(after! persp-mode
+  (defun workspaces-formatted (
+    (+workspace--tabline))
+
+  (defun hy/invisible-current-workspace ()
+    (propertize (safe-persp-name (get-current-persp)) 'invisible t))
+
+  (customize-set-variable 'tab-bar-format '(workspaces-formatted tab-bar-format-align-right hy/invisible-current-workspace))
+
+  (advice-add #'+workspace/display :override #'ignore)
+  (advice-add #'+workspace-message :override #'ignore))
+
+(run-at-time nil nil (cmd! (tab-bar-mode +1)))

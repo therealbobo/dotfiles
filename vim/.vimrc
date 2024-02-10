@@ -51,9 +51,6 @@ Plug 'preservim/nerdtree'
 Plug 'AndrewRadev/linediff.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'ajh17/vimcompletesme'
 Plug 'hotwatermorning/auto-git-diff'
 call plug#end()
 
@@ -132,19 +129,3 @@ nnoremap <C-f> :NERDTreeFind<CR>
 
 "fzf
 nnoremap <silent> <C-p> :Files<CR>
-
-"clangd
-if executable('clangd')
-    augroup lsp_clangd
-        autocmd!
-        autocmd User lsp_setup call lsp#register_server({
-                    \ 'name': 'clangd',
-                    \ 'cmd': {server_info->['clangd']},
-                    \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
-                    \ })
-        autocmd FileType c setlocal omnifunc=lsp#complete
-        autocmd FileType cpp setlocal omnifunc=lsp#complete
-        autocmd FileType objc setlocal omnifunc=lsp#complete
-        autocmd FileType objcpp setlocal omnifunc=lsp#complete
-    augroup end
-endif

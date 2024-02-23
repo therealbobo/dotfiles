@@ -117,7 +117,7 @@
 
 ;; workspace tab bar
 (after! persp-mode
-  (defun workspaces-formatted (
+  (defun workspaces-formatted ()
     (+workspace--tabline))
 
   (defun hy/invisible-current-workspace ()

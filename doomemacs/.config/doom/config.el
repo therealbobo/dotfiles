@@ -129,3 +129,8 @@
   (advice-add #'+workspace-message :override #'ignore))
 
 (run-at-time nil nil (cmd! (tab-bar-mode +1)))
+
+;; dired usability hacks
+(map! :map dired-mode-map
+      :n "h" #'dired-up-directory
+      :n "l" #'dired-find-alternate-file)

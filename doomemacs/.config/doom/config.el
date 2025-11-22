@@ -76,7 +76,15 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-(set-eglot-client! 'cc-mode '("clangd" "-j=3" "--clang-tidy"))
+(set-eglot-client! 'cc-mode '("clangd"
+                              "-j=3"
+                              "--background-index"
+                              "--malloc-trim"
+                              "--pch-storage=memory"
+                              "--cross-file-rename"
+                              "--completion-style=detailed"
+                              "--header-insertion-decorators=0"
+                              "--clang-tidy"))
 
 (use-package-hook! evil
   :pre-init
@@ -87,14 +95,6 @@
 
 ;; threat _ as part of a word in evil
 (modify-syntax-entry ?_ "w")
-
-(setq window-divider-default-right-width 4
-	  window-divider-default-bottom-width 4)
-(custom-set-faces! '(vertical-border :foreground "blue"))
-(custom-set-faces! '(mode-line-inactive :background "blue20"))
-
-;; disable smart parens
-(after! smartparens (smartparens-global-mode -1))
 
 ;; treesit stuff
 (setq treesit-language-source-alist
@@ -134,3 +134,7 @@
 (map! :map dired-mode-map
       :n "h" #'dired-up-directory
       :n "l" #'dired-find-alternate-file)
+(with-eval-after-load 'eglot
+  (customize-set-variable
+   'eglot-code-action-indicator
+   "*")) ;; pick any string or symbol

@@ -13,11 +13,6 @@ export VISUAL="vim"
 export EDITOR="vim"
 ###}}}
 
-# golang
-#export GOPATH=/usr/local/go
-export GOPATH=$XDG_CONFIG_HOME/golang
-
-
 # less
 #export LESSKEY="$XDG_CONFIG_HOME"/less/lesskey
 export LESSHISTFILE=-
@@ -76,10 +71,12 @@ export QT_SCALE_FACTOR_ROUNDING_POLICY=Round
 export NNN_PLUG='z:autojump;d:dragdrop'
 
 ### PATH CONFIG ###{{{
-export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOPATH/bin:/home/ubuntu/.cargo/bin
 export PATH=$PATH:$USER_BIN:$USER_SCRIPTS:$npm_config_prefix/bin
 ###}}}
 
 # Setting for the new UTF-8 terminal support in Lion
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+
+source "$HOME/.cargo/env"

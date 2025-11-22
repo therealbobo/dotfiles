@@ -26,10 +26,6 @@ PROMPT+='%(?.%F{red}@.%F{black}@)%f'  # @
 PROMPT+='%F{red}%M%b%f:'              # hostname
 PROMPT+='%F{blue}%2~%f %# '             # pwd
 
-if [[ "$TERM" != "tramp" ]]; then
-	command -v starship 1>/dev/null && \
-		eval "$(starship init zsh)"
-fi
 eval "$(zoxide init zsh)"
 
 # TODO mv histfile

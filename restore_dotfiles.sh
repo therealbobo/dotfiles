@@ -19,33 +19,21 @@ echo "[+] Done stowing"
 
 echo "[-] Setting XDG dirs"
 
-if [[ -z "$XDG_DATA_HOME" ]]; then
-	echo '[!] XDG_DATA_HOME is not set. Please enter XDG_DATA_HOME (newline for default): '
-	read -r XDG_DATA_HOME
-	if [[ -z "$XDG_DATA_HOME" ]]; then
-		XDG_DATA_HOME=${HOME}/.local/share
-	fi
-	if [[ ! -d "$XDG_DATA_HOME" ]]; then
-		mkdir -p "$XDG_DATA_HOME"
-	fi
-fi
+read -r -p "[!] XDG_CACHE_HOME (Enter for default: $HOME/.cache): " input
+export XDG_CACHE_HOME="${input:-${XDG_CACHE_HOME:-$HOME/.cache}}"
 
-if [[ -z "$XDG_CACHE_HOME" ]]; then
-	echo '[!] XDG_CACHE_HOME is not set. Please enter XDG_CACHE_HOME (newline for default): '
-	read -r XDG_CACHE_HOME
-	if [[ -z "$XDG_CACHE_HOME" ]]; then
-		XDG_CACHE_HOME=${HOME}/.cache/
-	fi
-	if [[ ! -d "$XDG_CACHE_HOME" ]]; then
-		mkdir -p "$XDG_CACHE_HOME"
-	fi
-fi
+read -r -p "[!] XDG_CONFIG_HOME (Enter for default: $HOME/.config): " input
+export XDG_CONFIG_HOME="${input:-${XDG_CONFIG_HOME:-$HOME/.config}}"
+
+read -r -p "[!] XDG_DATA_HOME (Enter for default: $HOME/.local/share): " input
+export XDG_DATA_HOME="${input:-${XDG_DATA_HOME:-$HOME/.local/share}}"
 
 mkdir -p "$XDG_CACHE_HOME"/vim       \
 		 "$XDG_DATA_HOME"/vim        \
 		 "$XDG_DATA_HOME"/vim/spell  \
 		 "$XDG_DATA_HOME"/vim/pack	 \
-		 "$XDG_DATA_HOME"/zsh
+		 "$XDG_DATA_HOME"/zsh        \
+		 "$XDG_CONFIG_HOME"
 
 echo "[+] Done setting XDG dirs"
 

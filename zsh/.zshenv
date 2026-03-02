@@ -9,9 +9,10 @@ export GOPATH="${GOPATH:-$XDG_DATA_HOME/golang}"
 ### VARS ###{{{
 export ZSH_COMPDUMP="$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
-#export TERM=xterm-256color
 export VISUAL="vim"
 export EDITOR="vim"
+export MANPAGER='less -R --use-color -Dd+r -Du+b'
+export _JAVA_AWT_WM_NONREPARENTING=1
 ###}}}
 
 # less
@@ -24,9 +25,6 @@ export PARALLEL_HOME="$XDG_CONFIG_HOME"/parallel
 # vagrant
 export VAGRANT_HOME="$XDG_DATA_HOME"/vagrant
 export VAGRANT_ALIAS_FILE="$XDG_DATA_HOME"/vagrant/aliases
-
-# z TODO broken
-export _Z_DATA="$XDG_DATA_HOME/z"
 
 # mplayer
 export MPLAYER_HOME="$XDG_CONFIG_HOME"/mplayer
@@ -78,7 +76,7 @@ export PATH
 ###}}}
 
 # Setting for the new UTF-8 terminal support in Lion
-export LC_CTYPE=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
+export LANG="${LANG:-en_US.UTF-8}"
+export LC_CTYPE="${LC_CTYPE:-$LANG}"
 
 [[ -r "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"

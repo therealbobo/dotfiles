@@ -15,9 +15,9 @@ if [[ "$TERM" == "dumb" ]]; then
 fi
 
 ### SOURCES ###{{{
-source "$XDG_CONFIG_HOME/zsh/aliases"
-source "$XDG_CONFIG_HOME/zsh/vars.zsh"
-source "$XDG_CONFIG_HOME/zsh/zstyles.zsh"
+[[ -r "$XDG_CONFIG_HOME/zsh/aliases" ]] && source "$XDG_CONFIG_HOME/zsh/aliases"
+[[ -r "$XDG_CONFIG_HOME/zsh/vars.zsh" ]] && source "$XDG_CONFIG_HOME/zsh/vars.zsh"
+[[ -r "$XDG_CONFIG_HOME/zsh/zstyles.zsh" ]] && source "$XDG_CONFIG_HOME/zsh/zstyles.zsh"
 ###}}}
 
 PROMPT='%f'
@@ -73,7 +73,16 @@ preexec() { echo -en "\e]0;${1}\a" }
 # autocompletion
 autoload -Uz compinit
 mkdir -p "$XDG_CACHE_HOME/zsh"
-compinit -d "$ZSH_COMPDUMP"
+zmodload zsh/stat 2>/dev/null || true
+integer _run_compaudit=1
+typeset -A _compdump_stat
+if (( $+functions[zstat] )) && zstat -A _compdump_stat +mtime -- "$ZSH_COMPDUMP" 2>/dev/null; then
+  (( EPOCHSECONDS - _compdump_stat[mtime] < 86400 )) && _run_compaudit=0
+fi
+if (( _run_compaudit )); then
+  compinit -d "$ZSH_COMPDUMP"
+else
+  compinit -C -d "$ZSH_COMPDUMP"
+fi
+unset _run_compaudit _compdump_stat
 _comp_options+=(globdots)
-
-[[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh

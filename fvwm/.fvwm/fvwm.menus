@@ -42,7 +42,7 @@ Test (x xemacs)        + "Emacs"    Exec exec emacs
 Test (x gimp)          + "Gimp"     Exec exec gimp
 Test (x mpv)           + "mpv"      Exec exec mpv
 Test (x termite)       + "Termite"  Exec exec termite
-Test (x alacritty)     + "Termite"  Exec exec alacritty
+Test (x alacritty)     + "Alacritty" Exec exec alacritty
 
 # Background Menu
 #

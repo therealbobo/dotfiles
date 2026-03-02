@@ -60,7 +60,10 @@ RedefineFunc ViewManPage
 + I Exec exec $[infostore.terminal] -t "Manual Page - $0" -e man "$0"
 
 RedefineFunc SetBG
-+ I Exec exec feh --randomize --no-fehbg --bg-fill /home/robi/Pictures/Wallpapers/*
++ I Test (f "$[FVWM_USERDIR]/images/background/$0") \
+    Exec exec feh --no-fehbg --bg-fill "$[FVWM_USERDIR]/images/background/$0"
++ I TestRc (NoMatch) \
+    Exec exec feh --randomize --no-fehbg --bg-fill "$HOME"/Pictures/Wallpapers/*
 
 # Function: IconManClick
 #

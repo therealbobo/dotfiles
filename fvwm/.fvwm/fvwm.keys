@@ -80,10 +80,10 @@ Silent Key q W MS Close
 Silent Key k W MS Destroy
 
 Silent Key Super_L A A   Exec exec $[infostore.terminal]
-Silent Key Super_L A C   Exec exec /home/robi/.local/scripts/alacritty_cwd.sh
+Silent Key Super_L A C   Exec exec $HOME/.local/scripts/alacritty_cwd.sh
 Silent Key Super_L A S   Exec exec rofi -modi drun -show drun -show-icons -icons-theme hicolor
 Silent Key e       A MS  Exec exec rofi -modi emoji -show emoji
-Silent Key s       A M   Exec exec rofi -modi emoji -show ssh
+Silent Key s       A M   Exec exec rofi -modi ssh -show ssh
 Silent Key z       A M   Exec exec brave
 Silent Key z       A MS  Exec exec brave --incognito
 Silent Key e       A M   Exec exec emacsclient -cn
@@ -95,7 +95,6 @@ Silent Key grave  A C   Exec exec dunstctl history-pop
 
 # Multimedia Keys
 Silent Key XF86AudioRaiseVolume   A  N  Exec exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-Silent Key XF86AudioLowerVolume   A  N  Exec exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 Silent Key XF86AudioLowerVolume   A  N  Exec exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 Silent Key XF86AudioMute          A  N  Exec exec pactl set-sink-mute   @DEFAULT_SINK@ toggle
 Silent Key XF86AudioPlay          A  N  Exec exec playerctl play-pause

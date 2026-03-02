@@ -75,7 +75,8 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-(set-eglot-client! 'cc-mode '("clangd" "-j=3" "--clang-tidy"))
+(when (executable-find "clangd")
+  (set-eglot-client! 'cc-mode '("clangd" "-j=3" "--clang-tidy")))
 
 (after! evil-snipe
   (evil-snipe-mode -1))

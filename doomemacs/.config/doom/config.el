@@ -36,7 +36,6 @@
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
 (setq display-line-numbers-type 'relative)
 
 ;; If you use `org' and don't want your org files in the default location below,
@@ -76,15 +75,16 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-(set-eglot-client! 'cc-mode '("clangd"
-                              "-j=3"
-                              "--background-index"
-                              "--malloc-trim"
-                              "--pch-storage=memory"
-                              "--cross-file-rename"
-                              "--completion-style=detailed"
-                              "--header-insertion-decorators=0"
-                              "--clang-tidy"))
+(when (executable-find "clangd")
+  (set-eglot-client! 'cc-mode '("clangd"
+                                "-j=3"
+                                "--background-index"
+                                "--malloc-trim"
+                                "--pch-storage=memory"
+                                "--cross-file-rename"
+                                "--completion-style=detailed"
+                                "--header-insertion-decorators=0"
+                                "--clang-tidy")))
 
 (use-package-hook! evil
   :pre-init
@@ -93,8 +93,8 @@
 
 (remove-hook 'doom-first-input-hook #'evil-snipe-mode)
 
-;; threat _ as part of a word in evil
-(modify-syntax-entry ?_ "w")
+;; treat _ as part of a word in evil motions/text-objects
+(modify-syntax-entry ?_ "w" (standard-syntax-table))
 
 ;; treesit stuff
 (setq treesit-language-source-alist
@@ -128,9 +128,10 @@
   (advice-add #'+workspace/display :override #'ignore)
   (advice-add #'+workspace-message :override #'ignore))
 
-(run-at-time nil nil (cmd! (tab-bar-mode +1)))
+(add-hook 'doom-after-init-hook (lambda () (tab-bar-mode +1)))
 
 ;; dired usability hacks
+(put 'dired-find-alternate-file 'disabled nil)
 (map! :map dired-mode-map
       :n "h" #'dired-up-directory
       :n "l" #'dired-find-alternate-file)

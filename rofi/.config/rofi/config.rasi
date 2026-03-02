@@ -1,5 +1,5 @@
 configuration {
-	terminal: "/usr/bin/alacritty";
+	terminal: "/usr/bin/ghostty";
 	ssh-client: "ssh";
 	ssh-command: "{terminal} -e {ssh-client} {host}";
 	case-sensitive: false;

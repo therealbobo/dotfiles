@@ -37,12 +37,12 @@ Test (x chromium)      + "Chromium" Exec exec chromium
 Test (x firefox)       + "Firefox"  Exec exec firefox
 Test (x google-chrome) + "Chrome"   Exec exec google-chrome
 Test (x gvim)          + "gVim"     Exec exec gvim
-Test (x vim)           + "Vim"      Exec exec alacritty -e vim
+Test (x vim)           + "Vim"      Exec exec ghostty -e vim
 Test (x xemacs)        + "Emacs"    Exec exec emacs
 Test (x gimp)          + "Gimp"     Exec exec gimp
 Test (x mpv)           + "mpv"      Exec exec mpv
 Test (x termite)       + "Termite"  Exec exec termite
-Test (x alacritty)     + "Alacritty" Exec exec alacritty
+Test (x ghostty)       + "Ghostty"  Exec exec ghostty
 
 # Background Menu
 #

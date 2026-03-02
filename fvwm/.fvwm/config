@@ -9,7 +9,7 @@
 #
 #################################
 
-InfoStoreAdd terminal alacritty
+InfoStoreAdd terminal ghostty
 
 Read fvwm.funcs
 Read fvwm.styles

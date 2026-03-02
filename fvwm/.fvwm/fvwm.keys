@@ -80,7 +80,7 @@ Silent Key q W MS Close
 Silent Key k W MS Destroy
 
 Silent Key Super_L A A   Exec exec $[infostore.terminal]
-Silent Key Super_L A C   Exec exec $HOME/.local/scripts/alacritty_cwd.sh
+Silent Key Super_L A C   Exec exec ghostty
 Silent Key Super_L A S   Exec exec rofi -modi drun -show drun -show-icons -icons-theme hicolor
 Silent Key e       A MS  Exec exec rofi -modi emoji -show emoji
 Silent Key s       A M   Exec exec rofi -modi ssh -show ssh

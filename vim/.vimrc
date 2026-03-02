@@ -37,7 +37,7 @@ set rtp+=~/.local/share/vim/after
 
 " Load vim-plug
 if empty(glob("~/.local/share/vim/autoload/plug.vim"))
-    execute '!curl -fLo ~/.local/share/vim/autoload/plug.vim --create-dirs https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+    execute '!curl -fLo ~/.local/share/vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 endif
 
 call plug#begin('~/.local/share/vim/plugged')
@@ -72,7 +72,7 @@ set background=dark
 set t_Co=256
 set undofile
 call TouchFileIfNotExists($XDG_CACHE_HOME . "/vim/viminfo")
-set viminfo+=n~/.cache/vim/viminfo
+let &viminfo = &viminfo . ',n' . $XDG_CACHE_HOME . '/vim/viminfo'
 call CreateDirIfNotExists($XDG_DATA_HOME . "/vim/undo/")
 let &undodir=$XDG_DATA_HOME . "/vim/undo/"
 set spelllang=it,en_us
@@ -124,7 +124,6 @@ let g:bufferline_active_buffer_right = ''
 "NERDTree
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
-nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 
 "fzf

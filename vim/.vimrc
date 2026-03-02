@@ -13,24 +13,17 @@ function! TouchFileIfNotExists(file)
 endfunction
 
 function! OscCopy()
-	let encodedText=@"
-	let encodedText=substitute(encodedText, '\', '\\\\', "g")
-	let encodedText=substitute(encodedText, "'", "'\\\\''", "g")
-	let executeCmd="echo -n '".encodedText."' | base64 | tr -d '\\n'"
-	let encodedText=system(executeCmd)
+	let encodedText = substitute(system('base64', @"), '\n', '', 'g')
 	if $TMUX != ""
-		"tmux
-		let executeCmd='echo -en "\x1bPtmux;\x1b\x1b]52;;'.encodedText.'\x1b\x1b\\\\\x1b\\" > /dev/tty'
+		silent execute "!printf '\\033Ptmux;\\033\\033]52;;" . encodedText . "\\033\\033\\\\\\033\\\\' > /dev/tty"
 	else
-		let executeCmd='echo -en "\x1b]52;;'.encodedText.'\x1b\\" > /dev/tty'
+		silent execute "!printf '\\033]52;;" . encodedText . "\\033\\\\' > /dev/tty"
 	endif
-	call system(executeCmd)
 	redraw!
 endfunction
 command! OscCopy :call OscCopy()
 nnoremap <C-k> :call OscCopy()<CR>
 
-filetype off
 call CreateDirIfNotExists($HOME . "/.local/share/vim/after")
 set rtp+=~/.local/share/vim/
 set rtp+=~/.local/share/vim/after
@@ -61,6 +54,7 @@ syntax on
 set virtualedit=all
 set autoindent
 set smartindent
+set ignorecase
 set smartcase
 set showmatch
 set tabstop=4
@@ -97,7 +91,10 @@ cnoremap w!!! execute 'silent! write !sudo tee % > /dev/null' <bar> edit!
 
 "remember last cursor position
 if has("autocmd")
-  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+  augroup DotfilesLastCursor
+    autocmd!
+    autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+  augroup END
 endif
 
 " netrw

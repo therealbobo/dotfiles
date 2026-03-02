@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+set -euo pipefail
 
 # thanks to jclosure
 # https://gitlab.com/jclosure/dotfiles/-/blob/develop/common/install-terminfo-xterm-24bit.sh
@@ -6,11 +8,12 @@
 # If you run emacs (26.1+) setting TERM=xterm-24bit, then it
 # will use 24bit color
 
-echo -ne "[-] installing termifo xterm-24bit\r"
+echo -ne "[-] Installing terminfo xterm-24bit\r"
 
 TMP=$(mktemp -d)
+trap 'rm -rf "$TMP"' EXIT
 
-cat <<EOF > ${TMP}/terminfo-24bit.src
+cat <<EOF > "${TMP}/terminfo-24bit.src"
 # Use colon separators.
 xterm-24bit|xterm with 24-bit direct color mode,
   use=xterm-256color,
@@ -23,7 +26,6 @@ xterm-24bits|xterm with 24-bit direct color mode,
   setf24=\E[38;2;%p1%{65536}%/%d;%p1%{256}%/%{255}%&%d;%p1%{255}%&%dm,
 EOF
 
-tic -x -o ~/.terminfo ${TMP}/terminfo-24bit.src
-rm -rf $TMP
+tic -x -o "${HOME}/.terminfo" "${TMP}/terminfo-24bit.src"
 
-echo '[+] Done installing termifo xterm-24bit'
+echo '[+] Done installing terminfo xterm-24bit'

@@ -1,9 +1,10 @@
 ### XDG-CONFIGS ###{{{
-export XDG_CONFIG_HOME=$HOME/.config
-export XDG_CACHE_HOME=$HOME/.cache
-export XDG_DATA_HOME=$HOME/.local/share
-export USER_BIN=$HOME/.local/bin
-export USER_SCRIPTS=$HOME/.local/scripts
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
+export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+export USER_BIN="${USER_BIN:-$HOME/.local/bin}"
+export USER_SCRIPTS="${USER_SCRIPTS:-$HOME/.local/scripts}"
+export GOPATH="${GOPATH:-$XDG_DATA_HOME/golang}"
 
 ### VARS ###{{{
 export ZSH_COMPDUMP="$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
@@ -47,14 +48,14 @@ export GTK2_RC_FILES="${XDG_CONFIG_HOME}/gtk-2.0/gtkrc"
 export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
 
 # node
-export npm_config_prefix=$XDG_DATA_HOME/node_modules
+export npm_config_prefix="$XDG_DATA_HOME/node_modules"
 
 # android
 export ANDROID_PREFS_ROOT="$XDG_CONFIG_HOME"/android
 export ANDROID_EMULATOR_HOME="$XDG_DATA_HOME"/android/emulator
 
 # java
-export _JAVA_OPTIONS="-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java -Dawt.useSystemAAFontSettings=on"
+export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=${XDG_CONFIG_HOME}/java -Dawt.useSystemAAFontSettings=on"
 
 # ruby
 export GEM_HOME="$XDG_DATA_HOME"/gem
@@ -71,12 +72,13 @@ export QT_SCALE_FACTOR_ROUNDING_POLICY=Round
 export NNN_PLUG='z:autojump;d:dragdrop'
 
 ### PATH CONFIG ###{{{
-export PATH=$PATH:$GOPATH/bin:/home/ubuntu/.cargo/bin
-export PATH=$PATH:$USER_BIN:$USER_SCRIPTS:$npm_config_prefix/bin
+typeset -U path PATH
+path+=("$GOPATH/bin" "$HOME/.cargo/bin" "$USER_BIN" "$USER_SCRIPTS" "$npm_config_prefix/bin")
+export PATH
 ###}}}
 
 # Setting for the new UTF-8 terminal support in Lion
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-source "$HOME/.cargo/env"
+[[ -r "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"

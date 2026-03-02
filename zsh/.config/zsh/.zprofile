@@ -89,7 +89,6 @@
 
 #[[ -f ~/.zshrc ]] && . ~/.zshrc
 
-if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+if [[ -z "${DISPLAY:-}" && "${XDG_VTNR:-0}" -eq 1 ]]; then
   startx -- -keeptty >/tmp/xorg.log 2>&1
 fi
-

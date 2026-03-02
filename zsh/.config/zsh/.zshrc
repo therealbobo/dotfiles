@@ -26,9 +26,12 @@ PROMPT+='%(?.%F{red}@.%F{black}@)%f'  # @
 PROMPT+='%F{red}%M%b%f:'              # hostname
 PROMPT+='%F{blue}%2~%f %# '             # pwd
 
-eval "$(zoxide init zsh)"
+if (( ${+commands[zoxide]} )); then
+  eval "$(zoxide init zsh)"
+fi
 
 # TODO mv histfile
+mkdir -p "$XDG_DATA_HOME/zsh"
 [ ! -f "$XDG_DATA_HOME"/zsh/histfile ] && touch "$XDG_DATA_HOME"/zsh/histfile
 HISTFILE="$XDG_DATA_HOME"/zsh/histfile
 HISTSIZE=10000000
@@ -55,8 +58,8 @@ bindkey -v
 bindkey '^R' history-incremental-search-backward
 
 # plugins
-source $ZDOTDIR/plugins/sudo.zsh
-source $ZDOTDIR/plugins/fzf.zsh
+[[ -r "$ZDOTDIR/plugins/sudo.zsh" ]] && source "$ZDOTDIR/plugins/sudo.zsh"
+[[ -r "$ZDOTDIR/plugins/fzf.zsh" ]] && source "$ZDOTDIR/plugins/fzf.zsh"
 
 # edit command commands in vim
 autoload -U edit-command-line
@@ -69,7 +72,8 @@ preexec() { echo -en "\e]0;${1}\a" }
 
 # autocompletion
 autoload -Uz compinit
-compinit -d $ZSH_COMPDUMP
+mkdir -p "$XDG_CACHE_HOME/zsh"
+compinit -d "$ZSH_COMPDUMP"
 _comp_options+=(globdots)
 
 [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh

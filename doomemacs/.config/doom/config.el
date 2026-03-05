@@ -145,3 +145,7 @@
       :n "l" #'dired-find-alternate-file)
 (with-eval-after-load 'eglot
   (setq eglot-code-action-indicator "*")) ;; pick any string or symbol
+
+;; Keep Doom's workspace/project switch flow, but open Magit for the new project.
+(after! persp-mode
+  (setq +workspaces-switch-project-function #'magit-status))

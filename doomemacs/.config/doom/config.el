@@ -94,7 +94,9 @@
 (remove-hook 'doom-first-input-hook #'evil-snipe-mode)
 
 ;; treat _ as part of a word in evil motions/text-objects
-(modify-syntax-entry ?_ "w" (standard-syntax-table))
+(defun my/prog-mode-underscore-word-syntax ()
+  (modify-syntax-entry ?_ "w"))
+(add-hook 'prog-mode-hook #'my/prog-mode-underscore-word-syntax)
 
 ;; treesit stuff
 (setq treesit-language-source-alist
@@ -120,12 +122,16 @@
   (defun workspaces-formatted ()
     (+workspace--tabline))
 
+  ;; Keep emacs' underlying current tab in sync so workspace highlighting is correct.
+  (defun hy/invisible-current-workspace ()
+    (propertize (safe-persp-name (get-current-persp)) 'invisible t))
+
   ;; Keep workspace tabs compact so many fit in a single tab-bar line.
   (setq tab-bar-auto-width t
         tab-bar-auto-width-max 18
         tab-bar-close-button-show nil
         tab-bar-new-button nil)
-  (customize-set-variable 'tab-bar-format '(workspaces-formatted))
+  (setq tab-bar-format '(workspaces-formatted tab-bar-format-align-right hy/invisible-current-workspace))
 
   (advice-add #'+workspace/display :override #'ignore)
   (advice-add #'+workspace-message :override #'ignore))
@@ -138,6 +144,4 @@
       :n "h" #'dired-up-directory
       :n "l" #'dired-find-alternate-file)
 (with-eval-after-load 'eglot
-  (customize-set-variable
-   'eglot-code-action-indicator
-   "*")) ;; pick any string or symbol
+  (setq eglot-code-action-indicator "*")) ;; pick any string or symbol

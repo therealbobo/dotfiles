@@ -120,10 +120,12 @@
   (defun workspaces-formatted ()
     (+workspace--tabline))
 
-  (defun hy/invisible-current-workspace ()
-    (propertize (safe-persp-name (get-current-persp)) 'invisible t))
-
-  (customize-set-variable 'tab-bar-format '(workspaces-formatted tab-bar-format-align-right hy/invisible-current-workspace))
+  ;; Keep workspace tabs compact so many fit in a single tab-bar line.
+  (setq tab-bar-auto-width t
+        tab-bar-auto-width-max 18
+        tab-bar-close-button-show nil
+        tab-bar-new-button nil)
+  (customize-set-variable 'tab-bar-format '(workspaces-formatted))
 
   (advice-add #'+workspace/display :override #'ignore)
   (advice-add #'+workspace-message :override #'ignore))
